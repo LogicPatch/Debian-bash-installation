@@ -118,10 +118,10 @@ echo $(logname) 'ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
 
 # Update des Betriebssystems
-print()
-print(ifyellow + 'Es folgt noch ein Update des Systems ' + reset)
-time.sleep(3)
-os.system('apt-get update')
-os.system('apt-get upgrade -y')
-os.system('apt-get dist-upgrade -y')
-os.system('apt autoremove -y')
+echo ''
+echo -e ${ifyellow} '>>>>> Es folgt noch ein Update des Systems'
+sleep 3
+apt update
+apt upgrade -y
+apt dist-upgrade -y
+apt autoremove -y
