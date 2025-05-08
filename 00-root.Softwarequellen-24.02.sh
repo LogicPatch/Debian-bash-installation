@@ -41,17 +41,19 @@ echo ''
 # Datei /etc/apt/sources.list anpassen
 echo -e ${yellow}'>>>>> Die Datei /etc/apt/sources.list wird angepasst'${KF}
 sleep 3
-echo '# Official Sources' >	/etc/apt/sources.list
-echo 'deb http://deb.debian.org/debian/ bookworm main non-free-firmware contrib non-free' >> /etc/apt/sources.list
-echo 'deb-src http://deb.debian.org/debian/ bookworm main non-free-firmware contrib non-free' >> /etc/apt/sources.list
-echo 'deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware contrib non-free' >> /etc/apt/sources.list
-echo 'deb-src http://deb.debian.org/debian/ bookworm-updates main non-free-firmware contrib non-free' >> /etc/apt/sources.list
-echo 'deb http://security.debian.org/debian-security bookworm-security main non-free-firmware contrib' >> /etc/apt/sources.list
-echo 'deb-src http://security.debian.org/debian-security bookworm-security main non-free-firmware contrib' >> /etc/apt/sources.list
+tee /etc/apt/sources.list &>/dev/null <<EOF
+# Official Sources
+deb http://deb.debian.org/debian/ bookworm main non-free-firmware contrib non-free
+deb-src http://deb.debian.org/debian/ bookworm main non-free-firmware contrib non-free
+deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware contrib non-free
+deb-src http://deb.debian.org/debian/ bookworm-updates main non-free-firmware contrib non-free
+deb http://security.debian.org/debian-security bookworm-security main non-free-firmware contrib
+deb-src http://security.debian.org/debian-security bookworm-security main non-free-firmware contrib
 
-echo '# Backports' >> /etc/apt/sources.list
-echo 'deb http://deb.debian.org/debian bookworm-backports main non-free-firmware contrib non-free' >> /etc/apt/sources.list
-echo 'deb-src http://deb.debian.org/debian bookworm-backports main non-free-firmware contrib non-free' >> /etc/apt/sources.list
+# Backports
+deb http://deb.debian.org/debian bookworm-backports main non-free-firmware contrib non-free
+deb-src http://deb.debian.org/debian bookworm-backports main non-free-firmware contrib non-free
+EOF
 apt-get update
 
 
@@ -77,42 +79,19 @@ fi
 
 
 
-# Debian Multimedia Repository hinzufügen
-if debmul in ('Y', 'y', ''):
-    print()
-    if os.path.isfile('/etc/apt/sources.list.d/multimedia.list'):
-        print(rot + '>>>>> Das Debian Multimedia Repository wurde bereits hinzugefügt, mache nichts.' + reset)
-        time.sleep(3)
-    else:
-        print(green + '>>>>> Das Debian Multimedia Repository wird hinzugefügt.' + reset)
-        time.sleep(3)
-        Multimedia = [
-            '\n# Debian Multimedia Repository\n',
-            'deb https://www.deb-multimedia.org bookworm main non-free\n'
-        ]
-        deb = open('/etc/apt/sources.list.d/multimedia.list', 'w')
-        deb.writelines(Multimedia)
-        deb.close()
-        os.system('apt-get update -oAcquire::AllowInsecureRepositories=true')
-        os.system('apt-get install deb-multimedia-keyring -oAcquire::AllowInsecureRepositories=true')
-        os.system('apt-get update')
-
-
-
-
 # Multilib installieren
-print()
-print(yellow + '>>>>> Um Mulitilib zu ermöglichen, werden zunächst die Unterstützten Architekturen angezeigt.' + reset)
-os.system('dpkg --print-architecture ; dpkg --print-foreign-architectures')
-print(yellow + '>>>>> Noch sollte hier nur amd64 angezeigt werden' + reset)
-time.sleep(3)
-os.system('dpkg --add-architecture i386')
-os.system('apt-get update')
-os.system('apt-get install -y libc6-i386 sudo')
-print()
-os.system('dpkg --print-architecture ; dpkg --print-foreign-architectures')
-print(yellow + '>>>>> Jetzt sollte zusätzlich noch i386 angezeigt werden' + reset)
-time.sleep(3)
+echo ''
+echo -e ${yellow} '>>>>> Um Mulitilib zu ermöglichen, werden zunächst die Unterstützten Architekturen angezeigt.'
+dpkg --print-architecture ; dpkg --print-foreign-architectures
+echo -e ${yellow} '>>>>> Noch sollte hier nur amd64 angezeigt werden'
+sleep 3
+dpkg --add-architecture i386
+apt update
+apt install -y libc6-i386 sudo
+echo ''
+dpkg --print-architecture ; dpkg --print-foreign-architectures
+echo -e ${yellow} '>>>>> Jetzt sollte zusätzlich noch i386 angezeigt werden'
+sleep 3
 
 
 
