@@ -12,7 +12,7 @@ ifblu='\e[1;94m'	# intensives fettes Blau (neu zu installierende Pakete)
 iftks='\e[1;96m'	# intensives fettes Türkis (Überprüfungsmeldung) 
 itks='\e[0;96m'		# intensives Türkis (Paketnamen)
 ifrot='\e[1;91m'	# intensives fettes Rot (Fehler)
-yellow='\033[1;33m'   # Gelb
+ifyellow='\033[1;93m'   # Gelb
 
 
 
@@ -39,7 +39,7 @@ user = $USER
 
 echo ''
 # Datei /etc/apt/sources.list anpassen
-echo -e ${yellow}'>>>>> Die Datei /etc/apt/sources.list wird angepasst'${KF}
+echo -e ${ifyellow}'>>>>> Die Datei /etc/apt/sources.list wird angepasst'${KF}
 sleep 3
 tee /etc/apt/sources.list &>/dev/null <<EOF
 # Official Sources
@@ -63,10 +63,10 @@ apt-get update
 if [[ $debmul == @(Y|y|'') ]] ; then
     echo ''
     if [ -f /etc/apt/sources.list.d/multimedia.list ] ; then
-        echo -e ${yellow}'>>>>> Das Debian Multimedia Repository wurde bereits hinzugefügt, mache nichts.'
+        echo -e ${bgreen}'>>>>> Das Debian Multimedia Repository wurde bereits hinzugefügt, mache nichts.'
         sleep 3
     else
-        echo -e ${yellow}'>>>>> Das Debian Multimedia Repository wird hinzugefügt.'
+        echo -e ${ifyellow}'>>>>> Das Debian Multimedia Repository wird hinzugefügt.'
         sleep 3
         echo '#Debian Multimedia Repository' > /etc/apt/sources.list.d/multimedia.list
         echo 'deb https://www.deb-multimedia.org bookworm main non-free' >> /etc/apt/sources.list.d/multimedia.list
@@ -81,16 +81,16 @@ fi
 
 # Multilib installieren
 echo ''
-echo -e ${yellow} '>>>>> Um Mulitilib zu ermöglichen, werden zunächst die Unterstützten Architekturen angezeigt.'
+echo -e ${ifyellow} '>>>>> Um Mulitilib zu ermöglichen, werden zunächst die Unterstützten Architekturen angezeigt.'
 dpkg --print-architecture ; dpkg --print-foreign-architectures
-echo -e ${yellow} '>>>>> Noch sollte hier nur amd64 angezeigt werden'
+echo -e ${ifyellow} '>>>>> Noch sollte hier nur amd64 angezeigt werden'
 sleep 3
 dpkg --add-architecture i386
 apt update
 apt install -y libc6-i386 sudo
 echo ''
 dpkg --print-architecture ; dpkg --print-foreign-architectures
-echo -e ${yellow} '>>>>> Jetzt sollte zusätzlich noch i386 angezeigt werden'
+echo -e ${ifyellow} '>>>>> Jetzt sollte zusätzlich noch i386 angezeigt werden'
 sleep 3
 
 
@@ -99,33 +99,27 @@ sleep 3
 # Flatpak installieren
 if [[ $flatpak == @(Y|y|'') ]] ; then
     echo ''
-    echo -e ${yellow} '>>>>> Es wird alles Bereit gemacht um über Flatpak Pakete installieren zu können.'
+    echo -e ${bgreen} '>>>>> Es wird alles Bereit gemacht um über Flatpak Pakete installieren zu können.'
     sleep 3
     apt install -y flatpak
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    echo -e ${yellow} '>>>>> >>> Es ist sinnvoll jetzt ein reboot auszuführen. Dann können Flatpak-Pakete installiert werden.'
+    echo -e ${ifyellow} '>>> Es ist sinnvoll jetzt ein reboot auszuführen. Dann können Flatpak-Pakete installiert werden.'
     sleep 3
 
 
 
 
 # Den Benutzer mit Admin-Rechten der Datei  /etc/sudoers  hinzufügen
-print()
-print(yellow + '>>>>> Der Benutzer wird der Datei /etc/sudoers mit Admin-Rechten hinzugefügt.' + reset)
-time.sleep(3)
-Zeilen = [
-    user + ' ALL=(ALL:ALL) ALL\n',
-]
-sudoers = open('/etc/sudoers', 'a')
-sudoers.writelines(Zeilen)
-sudoers.close()
-
+echo ''
+echo -e ${ifyellow} '>>>>> Der Benutzer wird der Datei /etc/sudoers mit Admin-Rechten hinzugefügt.'
+sleep 3
+echo $(logname) 'ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
 
 
 # Update des Betriebssystems
 print()
-print(yellow + 'Es folgt noch ein Update des Systems ' + reset)
+print(ifyellow + 'Es folgt noch ein Update des Systems ' + reset)
 time.sleep(3)
 os.system('apt-get update')
 os.system('apt-get upgrade -y')
