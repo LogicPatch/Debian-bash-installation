@@ -97,14 +97,14 @@ sleep 3
 
 
 # Flatpak installieren
-if flatpak in ('Y', 'y', ''):
-    print()
-    print(green + '>>>>> Es wird alles Bereit gemacht um über Flatpak Pakete installieren zu können.' + reset)
-    time.sleep(3)
-    os.system('apt-get install -y flatpak gnome-software-plugin-flatpak')
-    os.system('flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo')
-    print(yellow + '>>> Es ist sinnvoll jetzt ein reboot auszuführen. Dann können Flatpak-Pakete installiert werden.' + reset)
-    time.sleep(3)
+if [[ $flatpak == @(Y|y|'') ]] ; then
+    echo ''
+    echo -e ${yellow} '>>>>> Es wird alles Bereit gemacht um über Flatpak Pakete installieren zu können.'
+    sleep 3
+    apt install -y flatpak
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    echo -e ${yellow} '>>>>> >>> Es ist sinnvoll jetzt ein reboot auszuführen. Dann können Flatpak-Pakete installiert werden.'
+    sleep 3
 
 
 
