@@ -1,3 +1,8 @@
+![Debian](../debian-logo.gif)
+
+
+
+
 # Debian 12 customizations via bash scripts
 The scripts are intended to help with various customizations such as adding the most important repositories, various desktop environments or programs.
 
