@@ -13,11 +13,11 @@ itks='\e[0;96m'		    # intensives Türkis (Paketnamen)
 ifrot='\e[1;91m'	    # intensives fettes Rot (Fehler)
 ifyellow='\e[1;93m'     # intensives fettes Gelb
 
-#DISTRO='?????'             # Debian 15 Coming up
-#DISTRO='forky'             # Debian 14 Unstable
-#DISTRO='trixie'            # Debian 13 Testing
-#DISTRO='bookworm'  		# Debian 12 Stable
-#DISTRO='bullseye'			# Debian 11 Oldstable
+#DISTRO='?????'             # Debian 16 Coming up
+#DISTRO='duke'              # Debian 15 Unstable/sid
+#DISTRO='forky'             # Debian 14 Testing
+#DISTRO='trixie'            # Debian 13 Stable
+#DISTRO='bookworm'  		# Debian 12 Oldstable
 
 # ----------------------------------------------------------------------------------
 
@@ -31,31 +31,54 @@ loginuser=$LOGNAME
 
 
 #=========================   ToDo: NVidia-Treiber    ================================
-basic = input(yellow + 'Sollen die Grundlegenden Programme installiert werden (Y/n)?: ' + reset)
-codecs = input(yellow + 'Sollen Codecs für Spiel-, Bild- und Videoformate (mkv,mp4 usw.) installiert werden (Y/n)?: ' + reset)
-cups = input(yellow + 'Sollen Basistools für die Nutzung von Druckern bzw. Scannern installiert werden)? (Y/n): ' + reset)
-wlan = input(yellow + 'Sollen Basistools für das WLAN installiert werden (nötig falls der PC WLAN-fähig sein soll)? (Y/n): ' + reset)
-tlp = input(yellow + 'Soll Debian für die Nutzung auf dem Laptop bereit gemacht werden? (Akkulaufzeit, Schnellere Zugriffszeiten/Boot?) (Y/n): ' + reset)
-vim = input(yellow + 'Soll der Editor vim/neovim installiert werden? (Y/n): ' + reset)
-visualstudio = input(yellow + 'Soll die Entwicklungs-IDE Visual Studio Code installiert werden? (Y/n): ' + reset)
-emacs = input(yellow + 'Soll der Editor emacs installiert werden? (Y/n): ' + reset)
-if emacs in ('Y', 'y', ''):
-    doom = input(yellow + 'Soll zusätzlich zu emacs noch doom-emacs installiert werden? (Y/n): ' + reset)
-print()
-grafik = input(yellow + 'Welcher Grafiktreiber soll installiert werden?\n 1 NVidia     - Für NVidia muss noch getestet werden, welche Pakete notwendig sind.\n 2 AMD        - Grafikkarten und APUs von AMD\n 3 Intel      - APUs von Intel\n 4 VirtualBox - Die GuestAdditions für den Einsatz in der VirtualBox\n 5 Gnome-Boxes - Für einen Einsatz als Gast in Gnome-Boxes\n 6 Keine Treiber für die Grafik installieren\n\n 1, 2, 3, 4, 5 oder 6? ' + reset)
+read -p "Sollen die Grundlegenden Programme installiert werden (Y/n)?: " basic
+read -p "Sollen Codecs für Spiel-, Bild- und Videoformate (mkv,mp4 usw.) installiert werden (Y/n)?: " codecs
+read -p "Sollen Basistools für die Nutzung von Druckern bzw. Scannern installiert werden) (Y/n)?: " cups
+read -p "Sollen Basistools für das WLAN installiert werden (nötig falls der PC WLAN-fähig sein soll) (Y/n)?: " wlan
+read -p "Soll Debian für die Nutzung auf dem Laptop bereit gemacht werden (Akkulaufzeit, Schnellere Zugriffszeiten/Boot?) (Y/n)?: " tlp
+read -p "Soll der Editor vim/neovim installiert werden (Y/n)?: " vim
+read -p "Soll die Entwicklungs-IDE Visual Studio Code installiert werden (Y/n)?: " visualstudio
+read -p "Soll der Editor emacs installiert werden (Y/n)?: " emacs
+if [[ $emacs == @(Y|y|'') ]] ; then
+    read -p "Soll zusätzlich zu emacs noch doom-emacs installiert werden? (Y/n): " doom
+echo ''
+read -p "Welcher Grafiktreiber soll installiert werden?\n 1 NVidia     - Für NVidia muss noch getestet werden, welche Pakete notwendig sind.\n 2 AMD        - Grafikkarten und APUs von AMD\n 3 Intel      - APUs von Intel\n 4 VirtualBox - Die GuestAdditions für den Einsatz in der VirtualBox\n 5 Gnome-Boxes - Für einen Einsatz als Gast in Gnome-Boxes\n 6 Keine Treiber für die Grafik installieren\n\n 1, 2, 3, 4, 5 oder 6? " grafik
+
+
+
+#basic = input(yellow + 'Sollen die Grundlegenden Programme installiert werden (Y/n)?: ' + reset)
+#codecs = input(yellow + 'Sollen Codecs für Spiel-, Bild- und Videoformate (mkv,mp4 usw.) installiert werden (Y/n)?: ' + reset)
+#cups = input(yellow + 'Sollen Basistools für die Nutzung von Druckern bzw. Scannern installiert werden)? (Y/n): ' + reset)
+#wlan = input(yellow + 'Sollen Basistools für das WLAN installiert werden (nötig falls der PC WLAN-fähig sein soll)? (Y/n): ' + reset)
+#tlp = input(yellow + 'Soll Debian für die Nutzung auf dem Laptop bereit gemacht werden? (Akkulaufzeit, Schnellere Zugriffszeiten/Boot?) (Y/n): ' + reset)
+#vim = input(yellow + 'Soll der Editor vim/neovim installiert werden? (Y/n): ' + reset)
+#visualstudio = input(yellow + 'Soll die Entwicklungs-IDE Visual Studio Code installiert werden? (Y/n): ' + reset)
+#emacs = input(yellow + 'Soll der Editor emacs installiert werden? (Y/n): ' + reset)
+#if emacs in ('Y', 'y', ''):
+#    doom = input(yellow + 'Soll zusätzlich zu emacs noch doom-emacs installiert werden? (Y/n): ' + reset)
+#print()
+#grafik = input(yellow + 'Welcher Grafiktreiber soll installiert werden?\n 1 NVidia     - Für NVidia muss noch getestet werden, welche Pakete notwendig sind.\n 2 AMD        - Grafikkarten und APUs von AMD\n 3 Intel      - APUs von Intel\n 4 VirtualBox - Die GuestAdditions für den Einsatz in der VirtualBox\n 5 Gnome-Boxes - Für einen Einsatz als Gast in Gnome-Boxes\n 6 Keine Treiber für die Grafik installieren\n\n 1, 2, 3, 4, 5 oder 6? ' + reset)
 
 
 
 
 # Grundlegende Programme installieren      [git, gparted, htop, ncdu, nmap] Schnon vorinstalliert: efibootmgr, imagemagick, rsync
-if basic in ('Y', 'y', ''):
-    print()
-    print(green + '>>>>> Grundlegende Programme werden installiert.' + reset)
-    time.sleep(3)
-    os.system('sudo apt-get install -y apt-transport-https git gparted htop hunspell hunspell-de-de linux-headers-$(uname -r) module-assistant ncdu nmap openssh-server python3-pip software-properties-common wget xinput xterm zvbi')
-    # Starten von daemons
-    os.system('sudo systemctl enable ssh.service')
-# ERROR:  libavcodec-extra
+if [[ $basic == @(Y|y|'') ]] ; then
+    echo -e ${ifgrn}'>>>>> Grundlegende Programme werden installiert.'${KF}
+        sleep 3
+        sudo apt install -y apt-transport-https git gparted htop hunspell hunspell-de-de linux-headers-$(uname -r) module-assistant ncdu nmap openssh-server python3-pip software-properties-common wget xinput xterm zvbi
+        # Starten von daemons
+        sudo systemctl enable ssh.service
+        # ERROR:  libavcodec-extra
+fi
+#if basic in ('Y', 'y', ''):
+#    print()
+#    print(green + '>>>>> Grundlegende Programme werden installiert.' + reset)
+#    time.sleep(3)
+#    os.system('sudo apt-get install -y apt-transport-https git gparted htop hunspell hunspell-de-de linux-headers-$(uname -r) module-assistant ncdu nmap openssh-server python3-pip software-properties-common wget xinput xterm zvbi')
+#    # Starten von daemons
+#    os.system('sudo systemctl enable ssh.service')
+## ERROR:  libavcodec-extra
 
 
 

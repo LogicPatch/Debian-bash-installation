@@ -16,7 +16,7 @@ ifyellow='\e[1;93m'     # intensives fettes Gelb
 # User ist noch nicht in  /etc/sudoers  eingetragen, daher muss dieses Script als root ausgeführt werden.
 
 #DISTRO='?????'             # Debian 16 Coming up
-#DISTRO='?????'             # Debian 15 Unstable/sid
+#DISTRO='duke'              # Debian 15 Unstable/sid
 #DISTRO='forky'             # Debian 14 Testing
 #DISTRO='trixie'            # Debian 13 Stable
 #DISTRO='bookworm'  		# Debian 12 Oldstable
