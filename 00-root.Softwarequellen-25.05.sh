@@ -15,11 +15,11 @@ ifyellow='\e[1;93m'     # intensives fettes Gelb
 
 # User ist noch nicht in  /etc/sudoers  eingetragen, daher muss dieses Script als root ausgeführt werden.
 
-#DISTRO='?????'             # Debian 15 Coming up
-#DISTRO='forky'             # Debian 14 Unstable
-#DISTRO='trixie'            # Debian 13 Testing
-#DISTRO='bookworm'  		# Debian 12 Stable
-#DISTRO='bullseye'			# Debian 11 Oldstable
+#DISTRO='?????'             # Debian 16 Coming up
+#DISTRO='?????'             # Debian 15 Unstable/sid
+#DISTRO='forky'             # Debian 14 Testing
+#DISTRO='trixie'            # Debian 13 Stable
+#DISTRO='bookworm'  		# Debian 12 Oldstable
 
 #------------------------------------------------------------------------------------------
 
@@ -37,16 +37,16 @@ echo -e ${ifyellow}'>>>>> Die Datei /etc/apt/sources.list wird angepasst'${KF}
 sleep 3
 tee /etc/apt/sources.list &>/dev/null <<EOF
 # Official Sources
-deb http://deb.debian.org/debian/ bookworm main non-free-firmware contrib non-free
-deb-src http://deb.debian.org/debian/ bookworm main non-free-firmware contrib non-free
-deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware contrib non-free
-deb-src http://deb.debian.org/debian/ bookworm-updates main non-free-firmware contrib non-free
-deb http://security.debian.org/debian-security bookworm-security main non-free-firmware contrib
-deb-src http://security.debian.org/debian-security bookworm-security main non-free-firmware contrib
+deb http://deb.debian.org/debian/ trixie main non-free-firmware contrib non-free
+deb-src http://deb.debian.org/debian/ trixie main non-free-firmware contrib non-free
+deb http://deb.debian.org/debian/ trixie-updates main non-free-firmware contrib non-free
+deb-src http://deb.debian.org/debian/ trixie-updates main non-free-firmware contrib non-free
+deb http://security.debian.org/debian-security trixie-security main non-free-firmware contrib
+deb-src http://security.debian.org/debian-security trixie-security main non-free-firmware contrib
 
 # Backports
-deb http://deb.debian.org/debian bookworm-backports main non-free-firmware contrib non-free
-deb-src http://deb.debian.org/debian bookworm-backports main non-free-firmware contrib non-free
+deb http://deb.debian.org/debian trixie-backports main non-free-firmware contrib non-free
+deb-src http://deb.debian.org/debian trixie-backports main non-free-firmware contrib non-free
 EOF
 apt-get update
 
@@ -63,7 +63,7 @@ if [[ $debmul == @(Y|y|'') ]] ; then
         echo -e ${ifyellow}'>>>>> Das Debian Multimedia Repository wird hinzugefügt.'${KF}
         sleep 3
         echo '#Debian Multimedia Repository' > /etc/apt/sources.list.d/multimedia.list
-        echo 'deb https://www.deb-multimedia.org bookworm main non-free' >> /etc/apt/sources.list.d/multimedia.list
+        echo 'deb https://www.deb-multimedia.org trixie main non-free' >> /etc/apt/sources.list.d/multimedia.list
         apt-get update -oAcquire::AllowInsecureRepositories=true
         apt-get install -y deb-multimedia-keyring -oAcquire::AllowInsecureRepositories=true
         apt-get update
