@@ -71,10 +71,12 @@ case $debmul in
         else
             echo ${ifyellow}'>>>>> Das Debian Multimedia Repository wird hinzugefügt.'${KF}
             sleep 3
-	    ##### Keyring von deb-multimedia herunterladen und installieren
-	    wget https://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2024.9.1_all.deb
+	        ##### Keyring von deb-multimedia herunterladen und installieren
+	        wget https://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2024.9.1_all.deb
             sudo dpkg -i deb-multimedia-keyring_2024.9.1_all.deb
-	    ##### Repository hinzufügen in Datei    multimedia.list
+            sleep 3
+            rm -rf deb-multimedia-keyring_2024.9.1_all.deb
+	        ##### Repository hinzufügen in Datei    multimedia.list
             echo "#Debian Multimedia Repository" > /etc/apt/sources.list.d/multimedia.list
             echo "deb https://www.deb-multimedia.org trixie main non-free" >> /etc/apt/sources.list.d/multimedia.list
             #apt-get update -oAcquire::AllowInsecureRepositories=true
@@ -89,14 +91,14 @@ esac
 echo ''
 echo ${ifyellow} '>>>>> Um Mulitilib zu ermöglichen, werden zunächst die Unterstützten Architekturen angezeigt.'${KF}
 dpkg --print-architecture ; dpkg --print-foreign-architectures
-echo ${ifyellow} '>>>>> Noch sollte hier nur amd64 angezeigt werden'${KF}
+echo ${ifgrn} '***** Noch sollte hier nur amd64 angezeigt werden'${KF}
 sleep 3
 dpkg --add-architecture i386
 apt update
 apt install -y libc6-i386 sudo
 echo ''
 dpkg --print-architecture ; dpkg --print-foreign-architectures
-echo ${ifyellow} '>>>>> Jetzt sollte zusätzlich noch i386 angezeigt werden'${KF}
+echo ${ifgrn} '***** Jetzt sollte zusätzlich noch i386 angezeigt werden'${KF}
 sleep 3
 
 
@@ -107,11 +109,11 @@ sleep 3
 case $flatpak in 
     [Yy]*|"")
         echo ''
-        echo ${ifgrn} '>>>>> Es wird alles Bereit gemacht um über Flatpak Pakete installieren zu können.'${KF}
+        echo ${ifyellow} '>>>>> Es wird alles Bereit gemacht um über Flatpak Pakete installieren zu können.'${KF}
         sleep 3
         apt install -y flatpak
         flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-        echo ${ifyellow} '>>> Es ist sinnvoll jetzt ein reboot auszuführen. Dann können Flatpak-Pakete installiert werden.'${KF}
+        echo ${ifgrn} '***** Es ist sinnvoll jetzt ein reboot auszuführen. Dann können Flatpak-Pakete installiert werden.'${KF}
         sleep 3
 esac
 #fi
