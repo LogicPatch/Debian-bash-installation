@@ -32,6 +32,15 @@ read -p "Soll über Flatpak Pakete installiert werden können (Y/n)?: " flatpak
 
 
 
+##### Den Benutzer mit Admin-Rechten der Datei  /etc/sudoers  hinzufügen
+echo ''
+echo ${ifyellow} '>>>>> Der Benutzer wird der Datei /etc/sudoers mit Admin-Rechten hinzugefügt.'${KF}
+sleep 3
+echo $(logname) 'ALL=(ALL:ALL) ALL' >> /etc/sudoers
+
+
+
+
 ##### Datei /etc/apt/sources.list anpassen
 echo ""
 echo ${ifyellow}'>>>>> Die Datei /etc/apt/sources.list wird angepasst'${KF}
@@ -107,14 +116,6 @@ case $flatpak in
 esac
 #fi
 
-
-
-
-##### Den Benutzer mit Admin-Rechten der Datei  /etc/sudoers  hinzufügen
-echo ''
-echo ${ifyellow} '>>>>> Der Benutzer wird der Datei /etc/sudoers mit Admin-Rechten hinzugefügt.'${KF}
-sleep 3
-echo $(logname) 'ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
 
 
