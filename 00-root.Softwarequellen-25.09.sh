@@ -31,90 +31,96 @@ read -p "Soll über Flatpak Pakete installiert werden können (Y/n)?: " flatpak
 
 
 
-echo ''
-# Datei /etc/apt/sources.list anpassen
-echo -e ${ifyellow}'>>>>> Die Datei /etc/apt/sources.list wird angepasst'${KF}
-sleep 3
-tee /etc/apt/sources.list &>/dev/null <<EOF
-# Official Sources
-deb http://deb.debian.org/debian/ trixie main non-free-firmware contrib non-free
-deb-src http://deb.debian.org/debian/ trixie main non-free-firmware contrib non-free
-deb http://deb.debian.org/debian/ trixie-updates main non-free-firmware contrib non-free
-deb-src http://deb.debian.org/debian/ trixie-updates main non-free-firmware contrib non-free
-deb http://security.debian.org/debian-security trixie-security main non-free-firmware contrib
-deb-src http://security.debian.org/debian-security trixie-security main non-free-firmware contrib
 
-# Backports
-deb http://deb.debian.org/debian trixie-backports main non-free-firmware contrib non-free
-deb-src http://deb.debian.org/debian trixie-backports main non-free-firmware contrib non-free
-EOF
+##### Datei /etc/apt/sources.list anpassen
+echo ""
+echo ${ifyellow}'>>>>> Die Datei /etc/apt/sources.list wird angepasst'${KF}
+sleep 3
+echo "# Official Sources" > /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian/ trixie main non-free-firmware contrib non-free" >> /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian/ trixie main non-free-firmware contrib non-free" >> /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian/ trixie-updates main non-free-firmware contrib non-free" >> /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian/ trixie-updates main non-free-firmware contrib non-free" >> /etc/apt/sources.list
+echo "deb http://security.debian.org/debian-security trixie-security main non-free-firmware contrib" >> /etc/apt/sources.list
+echo "deb-src http://security.debian.org/debian-security trixie-security main non-free-firmware contrib" >> /etc/apt/sources.list
+
+echo "# Backports" >> /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian trixie-backports main non-free-firmware contrib non-free" >> /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian trixie-backports main non-free-firmware contrib non-free" >> /etc/apt/sources.list
 apt-get update
 
 
 
 
-# Debian Multimedia Repository hinzufügen
-if [[ $debmul == @(Y|y|'') ]] ; then
-    echo ''
-    if [ -f /etc/apt/sources.list.d/multimedia.list ] ; then
-        echo -e ${bgreen}'>>>>> Das Debian Multimedia Repository wurde bereits hinzugefügt, mache nichts.'${KF}
-        sleep 3
-    else
-        echo -e ${ifyellow}'>>>>> Das Debian Multimedia Repository wird hinzugefügt.'${KF}
-        sleep 3
-        echo '#Debian Multimedia Repository' > /etc/apt/sources.list.d/multimedia.list
-        echo 'deb https://www.deb-multimedia.org trixie main non-free' >> /etc/apt/sources.list.d/multimedia.list
-        apt-get update -oAcquire::AllowInsecureRepositories=true
-        apt-get install -y deb-multimedia-keyring -oAcquire::AllowInsecureRepositories=true
-        apt-get update
-    fi
-fi
+##### Debian Multimedia Repository hinzufügen
+case $debmul in
+    [Yy]*|"")
+        echo ''
+        if [ -f /etc/apt/sources.list.d/multimedia.listzz ] ; then
+            echo ${ifgrn}'>>>>> Das Debian Multimedia Repository wurde bereits hinzugefügt, mache nichts.'${KF}
+            sleep 3
+        else
+            echo ${ifyellow}'>>>>> Das Debian Multimedia Repository wird hinzugefügt.'${KF}
+            sleep 3
+	    ##### Keyring von deb-multimedia herunterladen und installieren
+	    wget https://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2024.9.1_all.deb
+            sudo dpkg -i deb-multimedia-keyring_2024.9.1_all.deb
+	    ##### Repository hinzufügen in Datei    multimedia.list
+            echo "#Debian Multimedia Repository" > /etc/apt/sources.list.d/multimedia.list
+            echo "deb https://www.deb-multimedia.org trixie main non-free" >> /etc/apt/sources.list.d/multimedia.list
+            #apt-get update -oAcquire::AllowInsecureRepositories=true
+            #apt-get install -y deb-multimedia-keyring -oAcquire::AllowInsecureRepositories=true
+            apt-get update
+       fi
+esac
 
 
 
-
-# Multilib installieren
+##### Multilib installieren
 echo ''
-echo -e ${ifyellow} '>>>>> Um Mulitilib zu ermöglichen, werden zunächst die Unterstützten Architekturen angezeigt.'${KF}
+echo ${ifyellow} '>>>>> Um Mulitilib zu ermöglichen, werden zunächst die Unterstützten Architekturen angezeigt.'${KF}
 dpkg --print-architecture ; dpkg --print-foreign-architectures
-echo -e ${ifyellow} '>>>>> Noch sollte hier nur amd64 angezeigt werden'${KF}
+echo ${ifyellow} '>>>>> Noch sollte hier nur amd64 angezeigt werden'${KF}
 sleep 3
 dpkg --add-architecture i386
 apt update
 apt install -y libc6-i386 sudo
 echo ''
 dpkg --print-architecture ; dpkg --print-foreign-architectures
-echo -e ${ifyellow} '>>>>> Jetzt sollte zusätzlich noch i386 angezeigt werden'${KF}
+echo ${ifyellow} '>>>>> Jetzt sollte zusätzlich noch i386 angezeigt werden'${KF}
 sleep 3
 
 
 
 
-# Flatpak installieren
-if [[ $flatpak == @(Y|y|'') ]] ; then
-    echo ''
-    echo -e ${bgreen} '>>>>> Es wird alles Bereit gemacht um über Flatpak Pakete installieren zu können.'${KF}
-    sleep 3
-    apt install -y flatpak
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    echo -e ${ifyellow} '>>> Es ist sinnvoll jetzt ein reboot auszuführen. Dann können Flatpak-Pakete installiert werden.'${KF}
-    sleep 3
-fi
+##### Flatpak installieren
+#if [[ $flatpak == @(Y|y|'') ]] ; then
+case $flatpak in 
+    [Yy]*|"")
+        echo ''
+        echo ${ifgrn} '>>>>> Es wird alles Bereit gemacht um über Flatpak Pakete installieren zu können.'${KF}
+        sleep 3
+        apt install -y flatpak
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        echo ${ifyellow} '>>> Es ist sinnvoll jetzt ein reboot auszuführen. Dann können Flatpak-Pakete installiert werden.'${KF}
+        sleep 3
+esac
+#fi
 
 
 
 
-# Den Benutzer mit Admin-Rechten der Datei  /etc/sudoers  hinzufügen
+##### Den Benutzer mit Admin-Rechten der Datei  /etc/sudoers  hinzufügen
 echo ''
-echo -e ${ifyellow} '>>>>> Der Benutzer wird der Datei /etc/sudoers mit Admin-Rechten hinzugefügt.'${KF}
+echo ${ifyellow} '>>>>> Der Benutzer wird der Datei /etc/sudoers mit Admin-Rechten hinzugefügt.'${KF}
 sleep 3
 echo $(logname) 'ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
 
 
-# Update des Betriebssystems
+##### Update des Betriebssystems
 echo ''
-echo -e ${ifyellow} '>>>>> Es folgt noch ein Update des Systems'${KF}
+echo ${ifyellow} '>>>>> Es folgt noch ein Update des Systems'${KF}
 sleep 3
 apt update
 apt upgrade -y --allow-unauthenticated
