@@ -49,16 +49,6 @@ read -p "Welcher Grafiktreiber soll installiert werden?  1, 2, 3, 4, 5 oder 6? "
 echo ''
 
 
-#basic = input(yellow + 'Sollen die Grundlegenden Programme installiert werden (Y/n)?: ' + reset)
-#codecs = input(yellow + 'Sollen Codecs für Spiel-, Bild- und Videoformate (mkv,mp4 usw.) installiert werden (Y/n)?: ' + reset)
-#cups = input(yellow + 'Sollen Basistools für die Nutzung von Druckern bzw. Scannern installiert werden)? (Y/n): ' + reset)
-#wlan = input(yellow + 'Sollen Basistools für das WLAN installiert werden (nötig falls der PC WLAN-fähig sein soll)? (Y/n): ' + reset)
-#tlp = input(yellow + 'Soll Debian für die Nutzung auf dem Laptop bereit gemacht werden? (Akkulaufzeit, Schnellere Zugriffszeiten/Boot?) (Y/n): ' + reset)
-#vim = input(yellow + 'Soll der Editor vim/neovim installiert werden? (Y/n): ' + reset)
-#visualstudio = input(yellow + 'Soll die Entwicklungs-IDE Visual Studio Code installiert werden? (Y/n): ' + reset)
-#emacs = input(yellow + 'Soll der Editor emacs installiert werden? (Y/n): ' + reset)
-#if emacs in ('Y', 'y', ''):
-#    doom = input(yellow + 'Soll zusätzlich zu emacs noch doom-emacs installiert werden? (Y/n): ' + reset)
 # print()
 #grafik = input(yellow + 'Welcher Grafiktreiber soll installiert werden?\n 1 NVidia     - Für NVidia muss noch getestet werden, welche Pakete notwendig sind.\n 2 AMD        - Grafikkarten und APUs von AMD\n 3 Intel      - APUs von Intel\n 4 VirtualBox - Die GuestAdditions für den Einsatz in der VirtualBox\n 5 Gnome-Boxes - Für einen Einsatz als Gast in Gnome-Boxes\n 6 Keine Treiber für die Grafik installieren\n\n 1, 2, 3, 4, 5 oder 6? ' + reset)
 
@@ -69,12 +59,12 @@ echo ''
 case $basic in
     [Yy]*|"")
         echo ''
-        echo ${ifyellow} '>>>>> Grundlegende Programme werden installiert.'${KF}
+        echo ${ifgrn} '>>>>> Grundlegende Programme werden installiert.'${KF}
         sleep 3
-        sudo apt install -y apt-transport-https git gparted htop hunspell hunspell-de-de linux-headers-$(uname -r) module-assistant ncdu nmap openssh-server python3-pip software-properties-common wget xinput xterm zvbi
+        sudo apt install -y apt-transport-https git gparted htop hunspell hunspell-de-de linux-headers-$(uname -r) module-assistant ncdu nmap openssh-server python3-pip wget xinput xterm zvbi
         # Starten von daemons
         sudo systemctl enable ssh.service
-        # ERROR:  libavcodec-extra
+        # ERROR:  libavcodec-extra  software-properties-common
 esac
 
 
@@ -84,11 +74,11 @@ esac
 case $codecs in
     [Yy]*|"")
         echo ''
-        echo ${ifyellow} '>>>>> Codecs für die einzelnen Spiel-, Bild- und Videoformate werden installiert.'${KF}
+        echo ${ifgrn} '>>>>> Codecs für die einzelnen Spiel-, Bild- und Videoformate werden installiert.'${KF}
         sleep 3
         sudo apt search videostab
         read -p "Welche libopencv-videostab-Version wird aktuell verwendet? (410 von 09.08.2025?)?  " VIDEOSTAB
-        sudo apt-get install -y ffmpeg ffmpegthumbnailer ffmpegthumbs flite gnome-video-effects gstreamer1.0-qt5 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav libavc1394-tools libdvdcss2 libdvdread8 libgstreamer-opencv1.0-0 libopencv-videostab$(VIDEOSTAB) libopus0 opencv-data opus-tools speex
+        sudo apt-get install -y ffmpeg ffmpegthumbnailer ffmpegthumbs flite gnome-video-effects gstreamer1.0-qt5 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav libavc1394-tools libdvdcss2 libdvdread8 libgstreamer-opencv1.0-0 libopencv-videostab$VIDEOSTAB libopus0 opencv-data opus-tools speex
 esac
 
 
@@ -98,9 +88,9 @@ esac
 case $cups in
     [Yy]*|"")
         echo ''
-        echo ${ifyellow} '>>>>> Basistools fuer die Drucker- bzw. Scannernutzung werden installiert.'${KF}
+        echo ${ifgrn} '>>>>> Basistools fuer die Drucker- bzw. Scannernutzung werden installiert.'${KF}
         sleep 3
-        sudo apt install -y hplip foomatic-db foomatic-db-engine openprinting-ppds printer-driver-gutenprint printer-driver-hpijs printer-driver-all sane sane-airscan system-config-printer xsane
+        sudo apt install -y hplip foomatic-db foomatic-db-engine openprinting-ppds printer-driver-gutenprint printer-driver-hpijs printer-driver-all sane-airscan system-config-printer xsane
 esac
 
 
@@ -110,7 +100,7 @@ esac
 case $tlp in
     [Yy]*|"")
         echo ''
-        echo ${ifyellow} '>>>>> Notebook-Tools werden installiert.'${KF}
+        echo ${ifgrn} '>>>>> Notebook-Tools werden installiert.'${KF}
         sleep 3
         sudo apt install -y acpi acpid acpi-support preload tlp zram-tools
 esac
@@ -164,8 +154,9 @@ case $emacs in
             # Doom-emacs
             case $doom in
                 [Yy]*|"")
+                    echo ''
                     echo ${ifgrn}'***** doom für emacs wird installiert.'${KF}
-                    if [ -f .emacs.d ]; then
+                    if [ ! -f .emacs.d ]; then
                         #os.system('rm -rf /home/' + doomemacs + '/.emacs.d/')
                         cd && rm -rf .emacs.d/
                         cd && git clone --depth 1 https://github.com/hlissner/doom-emacs .emacs.d
@@ -174,6 +165,7 @@ case $emacs in
                         echo ${ifyellow}'***** Alle Fragen fuer die Installation von doom mit Ja bestätigen:'${KF}
                         echo ${ifyellow}'***** Der Pfad zu .emacs/bin soll noch den Pfadvariablen hinzugefügt werden.\n Dies geschieht durch Eintragen folgender Zeile entweder in ~/.bashrc oder  ~/.zshrc:\n    export PATH=$HOME/.emacs.d/bin:$PATH'${KF}
                     fi
+            esac
 esac
 
 
@@ -189,6 +181,7 @@ case $grafik in
         sleep 3
         echo ${ifgrn}'***** Hier die aktuell eingebaute Grafikkarte.'${KF}
         lspci -nn | egrep -i "3d|display|vga"
+        sleep 3
         echo ''
         sleep 3
         sudo apt install -y autoconf automake bison build-essential flex gcc-12-locales gcc-multilib libtool linux-headers-$(uname -r) make
@@ -200,6 +193,7 @@ case $grafik in
         sleep 3
         echo ${ifgrn}'***** Hier die aktuell eingebaute Grafikkarte.'${KF}
         lspci -nn | egrep -i "3d|display|vga"
+        sleep 3
         echo ''
         sleep 3
         sudo apt install -y mesa-opencl-icd xserver-xorg-video-ati xserver-xorg-video-radeon xserver-xorg-video-amdgpu
@@ -235,11 +229,11 @@ esac
 
 # Basistools fuer WLAN              [netctl wpagui]        vorinstalliert: wireless-regdb, wireless_tools, wpasupplicant           n/v: wpa_supplicant, wpa_supplicant-gui
 # !!!!!!!!!!!!!!!!!!!!!!!!!!! Tools für das WLAN werden am Ende des Scripts ausgeführt, da sonst kein WLAN mehr zur Verfügung steht   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-case $emacs in
+case $wlan in
     [Yy]*|"")
         echo ''
-        echo ${ifyellow} '>>>>> Basistools für das WLAN werden installiert.'${KF}
+        echo ${ifgrn} '>>>>> Basistools für das WLAN werden installiert.'${KF}
         sleep 3
-        sudo apt install -y netctl wpagui
+        sudo apt install -y net-tools wpagui
         #systemctl enable NetworkManager
 esac
