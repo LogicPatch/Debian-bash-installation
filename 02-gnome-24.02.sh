@@ -86,22 +86,46 @@ read -p "Welches Tool für Bildschirmfotos soll installiert werden?  \n 1, 2, 3,
 
 
 # Komplettinstallation von gnome
-print()
-if gnome in ('Y', 'y', ''):
-    fileName=r'/usr/share/xsessions/gnome.desktop'
-    if os.path.exists(fileName):
-        sessiongnome = input (rot + '>>>>> Es wurde bereits eine gnome-Session gefunden. Soll dennoch die gnome-Komplettinstallation durchgeführt werden? (1/2)\n' + reset + yellow + '>>> 1. Ja, die vorhandene Installation ist fehlerhaft und muss reinstalliert werden.\n>>> 2. Nein, ich überprüfe erst noch die bereits installierte gnome-Session, bevor ich Tools überschreibe. ' + reset)
-        if sessiongnome=='1':
-            print(green + '>>>>> Eine Komplettinstallation von gnome, mit allen Anwendungen wird installiert.' + reset)
-            time.sleep(3)
-            os.system('sudo apt-get install -y task-gnome-desktop wayland-utils')
-        else:
-            print(rot + '>>>>> Die vorhandene Installation wird zur Überprüfung beibehalten, mache nichts.' + reset)
-            time.sleep(3)
-    else:
-        print(green + '>>>>> Eine Komplettinstallation von gnome, mit allen Anwendungen wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y task-gnome-desktop wayland-utils')
+case $gnome in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/share/xsessions/gnome.desktop ]; then
+            echo ${ifrot}'>>>>> Es wurde bereits eine gnome-Session gefunden. Soll dennoch die gnome-Komplettinstallation durchgeführt werden? (1/2)\n'${KF}
+            read -p ">>> 1. Ja, die vorhandene Installation ist fehlerhaft und muss reinstalliert werden.\n>>> 2. Nein, ich überprüfe erst noch die bereits installierte gnome-Session, bevor ich Tools überschreibe. " sessiongnome
+            case $sessiongnome in
+                1*)
+                    echo ${ifgrn}'>>>>> Eine Komplettinstallation von gnome, mit allen Anwendungen wird installiert.'${KF}
+                    sleep 3
+                    sudo apt-get install -y task-gnome-desktop wayland-utils
+                ;;
+                2*)
+                    echo ${ifrot}'>>>>> Die vorhandene Installation wird zur Überprüfung beibehalten, mache nichts.'${KF}
+                    sleep 3
+                ;;
+            esac
+        else
+            echo ${ifgrn}'>>>>> Eine Komplettinstallation von gnome, mit allen Anwendungen wird installiert.'${KF}
+            sleep 3
+            sudo apt-get install -y task-gnome-desktop wayland-utils
+        fi
+esac
+
+# print()
+#if gnome in ('Y', 'y', ''):
+#    fileName=r'/usr/share/xsessions/gnome.desktop'
+#    if os.path.exists(fileName):
+#        sessiongnome = input (rot + '>>>>> Es wurde bereits eine gnome-Session gefunden. Soll dennoch die gnome-Komplettinstallation durchgeführt werden? (1/2)\n' + reset + yellow + '>>> 1. Ja, die vorhandene Installation ist fehlerhaft und muss reinstalliert werden.\n>>> 2. Nein, ich überprüfe erst noch die bereits installierte gnome-Session, bevor ich Tools überschreibe. ' + reset)
+#        if sessiongnome=='1':
+#            print(green + '>>>>> Eine Komplettinstallation von gnome, mit allen Anwendungen wird installiert.' + reset)
+#            time.sleep(3)
+#            os.system('sudo apt-get install -y task-gnome-desktop wayland-utils')
+#        else:
+#            print(rot + '>>>>> Die vorhandene Installation wird zur Überprüfung beibehalten, mache nichts.' + reset)
+#            time.sleep(3)
+#    else:
+#        print(green + '>>>>> Eine Komplettinstallation von gnome, mit allen Anwendungen wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y task-gnome-desktop wayland-utils')
 
 
 
