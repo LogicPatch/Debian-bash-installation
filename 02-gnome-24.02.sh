@@ -23,38 +23,64 @@ frot='\33[1;31m'        # fettes Rot (Fehler)
 #------------------------------------------------------------------------------------------
 
 
+echo ""
+echo ${ifyellow} '>>>>> Hier wird eine komplettinstallation von gnome angeboten, für den Fall dass noch\n      keine Installation von gnome durchgeführt wurde oder die Installation von gnome\n      fehlerhaft ist und die Konfiguration zurückgesetzt werden soll.'${KF}
+#print()
+#print(fcyan + '>>>>> Hier wird eine komplettinstallation von gnome angeboten, für den Fall dass noch\n      keine Installation von gnome durchgeführt wurde oder die Installation von gnome\n      fehlerhaft ist und die Konfiguration zurückgesetzt werden soll.' + reset)
 
-print()
-print(fcyan + '>>>>> Hier wird eine komplettinstallation von gnome angeboten, für den Fall dass noch\n      keine Installation von gnome durchgeführt wurde oder die Installation von gnome\n      fehlerhaft ist und die Konfiguration zurückgesetzt werden soll.' + reset)
 
 
+echo ""
+read -p "Soll eine Komplettinstallation von gnome durchgeführt werden? (Y/n): " gnome
+read -p "Sollen noch weitere Anwendungen speziell für den gnome-Desktop installiert werden? (Y/n): " appsgnome
+read -p "Sollen weitere Themes und Styles für GTK-basierte Desktops wie Budgie, Gnome oder Mate installiert werden? (Y/n): " themes
+echo ""
+echo "Soll ein Displaymanager installiert werden und falls ja welcher Displaymanager soll verwendet werden?\n 1 LightDM - Den Standarddisplaymanager von xfce, budgie, i3 u.a. verwenden\n 2 GDM     - Den Standard-Displaymanager von Gnome verwenden\n 3 sddm    - Den Simple-Desktop-Display-Manager von KDE-Plasma verwenden\n 4 Kein Displaymanager Installieren bzw. den bereits installierten nutzen\n"
+read -p "Welcher Displaymanager soll installiert werden?  1, 2, 3 oder 4? " displaymanager
+echo ""
+echo "Soll ein bestimmter Dateibrowser installiert werden und falls ja welcher?\n 1 thunar der Dateibrowser des Xfce4-Desktops\n 2 nautlius der Dateibrowser des Gnome-Desktops\n 3 dolphin der Dateibrowser des KDE-Plasma-Desktops\n 4 Alle genannten Dateibrowser installieren\n 5 Keinen Dateibrowser\n"
+read -p "Welcher Dateibrowser soll installiert werden?  \n 1, 2, 3, 4 oder 5? " files
+echo ""
+echo "Soll eine Kalenderapplikation installiert werden und falls ja welche?\n 1 gnome-calendar des Gnome-Desktops\n 2 korganizer von KDE-Plasma\n 3 deepin-calendar des Deepin-Desktops\n 4 Alle genannten Kalenderapplikation\n 5 Keine Kalenderapplikation\n"
+read -p "Welche Kalenderapplikation soll installiert werden?  \n 1, 2, 3, 4 oder 5? " kalender
+echo ""
+echo "Soll ein Editor installiert werden und falls ja welcher?\n 1 gedit des Gnome-Desktops\n 2 kate von KDE-Plasma\n 3 geany - Kann über Plugins erweitert werden\n 4 Alle genannten Editoren installieren\n 5 Keine Editorapplikation\n"
+read -p "Welcher Editor soll installiert werden?  \n 1, 2, 3, 4 oder 5? " editor
+echo ""
+echo "Soll ein bestimmter Bildbetrachter installiert werden und falls ja welcher?\n 1 eog der Bildbetrachter des Gnome-Desktops\n 2 gwenview der Bildbetrachter des KDE-Plasma-Desktops\n 3 deepin-image-viewer der Bildbetrachter des Deepin-Desktops\n 4 sxiv - ein schneller und schlanker Bildbetrachter\n 5 Alle genannten Bildbetrachter installieren\n 6 Keinen Bildbetrachter\n"
+read -p "Welcher Bildbetrachter soll installiert werden?  \n 1, 2, 3, 4, 5 oder 6? " image
+echo ""
+echo "Soll ein bestimmter PDF-Reader installiert werden und falls ja welcher?\n 1 evince der PDF-Reader des Gnome-Desktops\n 2 okular der PDF-Reader des KDE-Plasma-Desktops\n 3 mupdf - ein schlanker und genügsamer PDF-Reader\n 4 Alle genannten PDF-Reader installieren\n 5 Keinen PDF-Reader\n"
+read -p "Welcher PDF-Reader soll installiert werden?  \n 1, 2, 3, 4 oder 5? " pdf
+echo ""
+echo "Soll ein Tool für Bildschirmfotos installiert werden und falls ja welches?\n 1 scrot - Bildschirmfotos über die Kommandozeile\n 2 flameshot - GUI um Fotos zu erstellen und vor dem speichern zu bearbeiten\n 3 ksnip - ein Screenshot-Tool für den Plasma-Desktop\n 4 deepin-screenshot vom deepin-Desktop verwenden\n 5 Alle genannten Tools für Screenshots installieren\n 6 Kein Tool für Screenshots\n"
+read -p "Welches Tool für Bildschirmfotos soll installiert werden?  \n 1, 2, 3, 4, 5 oder 6? " screen
 
-
-print()
-gnome = input(fcyan + 'Soll eine Komplettinstallation von gnome durchgeführt werden? (Y/n): ' + reset)
-appsgnome = input(fcyan + 'Sollen noch weitere Anwendungen speziell für den gnome-Desktop installiert werden? (Y/n): ' + reset)
-themes = input(fcyan + 'Sollen weitere Themes und Styles für GTK-basierte Desktops wie Budgie, Gnome oder Mate installiert werden? (Y/n): ' + reset)
-print()
-print(fcyan + 'Soll ein Displaymanager installiert werden und falls ja welcher Displaymanager soll verwendet werden?' + reset)
-displaymanager = input(fcyan + ' 1 LightDM - Den Standarddisplaymanager von xfce, budgie, i3 u.a. verwenden\n 2 GDM     - Den Standard-Displaymanager von Gnome verwenden\n 3 sddm    - Den Simple-Desktop-Display-Manager von KDE-Plasma verwenden\n 4 Kein Displaymanager Installieren bzw. den bereits installierten nutzen\n\n 1, 2, 3 oder 4? ' + reset)
-print()
-print(fcyan + 'Soll ein bestimmter Dateibrowser installiert werden und falls ja welcher?' + reset)
-files = input(fcyan + ' 1 thunar der Dateibrowser des Xfce4-Desktops\n 2 nautlius der Dateibrowser des Gnome-Desktops\n 3 dolphin der Dateibrowser des KDE-Plasma-Desktops\n 4 Alle genannten Dateibrowser installieren\n 5 Keinen Dateibrowser\n\n 1, 2, 3, 4 oder 5? ' + reset)
-print()
-print(fcyan + 'Soll eine Kalenderapplikation installiert werden und falls ja welche?' + reset)
-kalender = input(fcyan + ' 1 gnome-calendar des Gnome-Desktops\n 2 korganizer von KDE-Plasma\n 3 deepin-calendar des Deepin-Desktops\n 4 Alle genannten Kalenderapplikation\n 5 Keine Kalenderapplikation\n\n 1, 2, 3, 4 oder 5? ' + reset)
-print()
-print(fcyan + 'Soll ein Editor installiert werden und falls ja welcher?' + reset)
-editor = input(fcyan + ' 1 gedit des Gnome-Desktops\n 2 kate von KDE-Plasma\n 3 geany - Kann über Plugins erweitert werden\n 4 Alle genannten Editoren installieren\n 5 Keine Editorapplikation\n\n 1, 2, 3, 4 oder 5? ' + reset)
-print()
-print(fcyan + 'Soll ein bestimmter Bildbetrachter installiert werden und falls ja welcher?' + reset)
-image = input(fcyan + ' 1 eog der Bildbetrachter des Gnome-Desktops\n 2 gwenview der Bildbetrachter des KDE-Plasma-Desktops\n 3 deepin-image-viewer der Bildbetrachter des Deepin-Desktops\n 4 sxiv - ein schneller und schlanker Bildbetrachter\n 5 Alle genannten Bildbetrachter installieren\n 6 Keinen Bildbetrachter\n\n 1, 2, 3, 4, 5 oder 6? ' + reset)
-print()
-print(fcyan + 'Soll ein bestimmter PDF-Reader installiert werden und falls ja welcher?' + reset)
-pdf = input(fcyan + ' 1 evince der PDF-Reader des Gnome-Desktops\n 2 okular der PDF-Reader des KDE-Plasma-Desktops\n 3 mupdf - ein schlanker und genügsamer PDF-Reader\n 4 Alle genannten PDF-Reader installieren\n 5 Keinen PDF-Reader\n\n 1, 2, 3, 4 oder 5? ' + reset)
-print()
-print(fcyan + 'Soll ein Tool für Bildschirmfotos installiert werden und falls ja welches?' + reset)
-screen = input(fcyan + ' 1 scrot - Bildschirmfotos über die Kommandozeile\n 2 flameshot - GUI um Fotos zu erstellen und vor dem speichern zu bearbeiten\n 3 ksnip - ein Screenshot-Tool für den Plasma-Desktop\n 4 deepin-screenshot vom deepin-Desktop verwenden\n 5 Alle genannten Tools für Screenshots installieren\n 6 Kein Tool für Screenshots\n\n 1, 2, 3, 4, 5 oder 6? ' + reset)
+#print()
+#gnome = input(fcyan + 'Soll eine Komplettinstallation von gnome durchgeführt werden? (Y/n): ' + reset)
+#appsgnome = input(fcyan + 'Sollen noch weitere Anwendungen speziell für den gnome-Desktop installiert werden? (Y/n): ' + reset)
+#themes = input(fcyan + 'Sollen weitere Themes und Styles für GTK-basierte Desktops wie Budgie, Gnome oder Mate installiert werden? (Y/n): ' + reset)
+#print()
+#print(fcyan + 'Soll ein Displaymanager installiert werden und falls ja welcher Displaymanager soll verwendet werden?' + reset)
+#displaymanager = input(fcyan + ' 1 LightDM - Den Standarddisplaymanager von xfce, budgie, i3 u.a. verwenden\n 2 GDM     - Den Standard-Displaymanager von Gnome verwenden\n 3 sddm    - Den Simple-Desktop-Display-Manager von KDE-Plasma verwenden\n 4 Kein Displaymanager Installieren bzw. den bereits installierten nutzen\n\n 1, 2, 3 oder 4? ' + reset)
+#print()
+#print(fcyan + 'Soll ein bestimmter Dateibrowser installiert werden und falls ja welcher?' + reset)
+#files = input(fcyan + ' 1 thunar der Dateibrowser des Xfce4-Desktops\n 2 nautlius der Dateibrowser des Gnome-Desktops\n 3 dolphin der Dateibrowser des KDE-Plasma-Desktops\n 4 Alle genannten Dateibrowser installieren\n 5 Keinen Dateibrowser\n\n 1, 2, 3, 4 oder 5? ' + reset)
+#print()
+#print(fcyan + 'Soll eine Kalenderapplikation installiert werden und falls ja welche?' + reset)
+#kalender = input(fcyan + ' 1 gnome-calendar des Gnome-Desktops\n 2 korganizer von KDE-Plasma\n 3 deepin-calendar des Deepin-Desktops\n 4 Alle genannten Kalenderapplikation\n 5 Keine Kalenderapplikation\n\n 1, 2, 3, 4 oder 5? ' + reset)
+#print()
+#print(fcyan + 'Soll ein Editor installiert werden und falls ja welcher?' + reset)
+#editor = input(fcyan + ' 1 gedit des Gnome-Desktops\n 2 kate von KDE-Plasma\n 3 geany - Kann über Plugins erweitert werden\n 4 Alle genannten Editoren installieren\n 5 Keine Editorapplikation\n\n 1, 2, 3, 4 oder 5? ' + reset)
+#print()
+#print(fcyan + 'Soll ein bestimmter Bildbetrachter installiert werden und falls ja welcher?' + reset)
+#image = input(fcyan + ' 1 eog der Bildbetrachter des Gnome-Desktops\n 2 gwenview der Bildbetrachter des KDE-Plasma-Desktops\n 3 deepin-image-viewer der Bildbetrachter des Deepin-Desktops\n 4 sxiv - ein schneller und schlanker Bildbetrachter\n 5 Alle genannten Bildbetrachter installieren\n 6 Keinen Bildbetrachter\n\n 1, 2, 3, 4, 5 oder 6? ' + reset)
+#print()
+#print(fcyan + 'Soll ein bestimmter PDF-Reader installiert werden und falls ja welcher?' + reset)
+#pdf = input(fcyan + ' 1 evince der PDF-Reader des Gnome-Desktops\n 2 okular der PDF-Reader des KDE-Plasma-Desktops\n 3 mupdf - ein schlanker und genügsamer PDF-Reader\n 4 Alle genannten PDF-Reader installieren\n 5 Keinen PDF-Reader\n\n 1, 2, 3, 4 oder 5? ' + reset)
+#print()
+#print(fcyan + 'Soll ein Tool für Bildschirmfotos installiert werden und falls ja welches?' + reset)
+#screen = input(fcyan + ' 1 scrot - Bildschirmfotos über die Kommandozeile\n 2 flameshot - GUI um Fotos zu erstellen und vor dem speichern zu bearbeiten\n 3 ksnip - ein Screenshot-Tool für den Plasma-Desktop\n 4 deepin-screenshot vom deepin-Desktop verwenden\n 5 Alle genannten Tools für Screenshots installieren\n 6 Kein Tool für Screenshots\n\n 1, 2, 3, 4, 5 oder 6? ' + reset)
 
 
 
