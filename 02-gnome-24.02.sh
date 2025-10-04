@@ -20,6 +20,9 @@ fcyan='\33[1;36m'       # fettes Cyan ()
 rot='\33[31m'           # Rot (Alternative: Fehler)
 frot='\33[1;31m'        # fettes Rot (Fehler)
 
+CWD=$(pwd)				# Aktuelles Verzeichnis (Current Working Directory)
+
+
 #------------------------------------------------------------------------------------------
 
 
@@ -131,23 +134,42 @@ esac
 
 
 # Weitere Anwendungen speziell für gnome
-print()
-if appsgnome in ('Y', 'y', ''):
-    print(green + '>>>>> Es werden noch weitere Anwendungen speziell für gnome installiert.' + reset)
-    time.sleep(3)
-    os.system('sudo apt-get install -y plank transmission-gtk')
+case $gnome in
+    [Yy]*|"")
+        echo ''
+        echo ${ifgrn} '>>>>> Es werden noch weitere Anwendungen speziell für gnome installiert.'${KF}
+        sleep 3
+        sudo apt install -y plank transmission-gtk
+esac
+
+#print()
+#if appsgnome in ('Y', 'y', ''):
+#    print(green + '>>>>> Es werden noch weitere Anwendungen speziell für gnome installiert.' + reset)
+#    time.sleep(3)
+#    os.system('sudo apt-get install -y plank transmission-gtk')
 
 
 
 
 # Themes und Styles installieren
-print()
-if themes in ('Y', 'y', ''):
-    print(green + '>>>>> Weitere Themes und Styles für GTK-basierte Desktops werden installiert.' + reset)
-    time.sleep(3)
-    Desktops2305.themes()
-    Desktops2305.icons()
-    Desktops2305.fonts()
+case $themes in
+    [Yy]*|"")
+        echo ''
+        echo ${ifgrn} '>>>>> Weitere Themes und Styles für GTK-basierte Desktops werden installiert.'${KF}
+        sleep 3
+        . Desktop2305.sh
+        themes
+        icons
+        fonts
+        #cd $CWD && cd ../scripts-stable/ && ./python3-stable-teil1.sh
+esac
+#print()
+#if themes in ('Y', 'y', ''):
+#    print(green + '>>>>> Weitere Themes und Styles für GTK-basierte Desktops werden installiert.' + reset)
+#    time.sleep(3)
+#    Desktops2305.themes()
+#    Desktops2305.icons()
+#    Desktops2305.fonts()
 
 
 
