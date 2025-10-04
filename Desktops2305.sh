@@ -1,32 +1,23 @@
-import unicodedata
-import os
-import time
 
 
-
-# Farbige print-Ausgaben
-reset='\33[0m'          # Keine Farbe. (Farbe zurücksetzen)
-lila='\33[35m'          # Lila (Installationsfragen)
-flila='\33[1;35m'       # fettes Lila (Installationsfragen)
-green='\33[32m'         # Grün (Alles O.K.)
-fgreen='\33[1;32m'      # fettes Grün (Alles O.K.)
-yellow='\33[1;33m'      # Gelb (Hinweismeldungen)
-gray='\33[1;30m'        #
-blue='\33[34m'          # Blau (Alternativ: Informationsausgaben)
-fblue='\33[1;34m'       # fettes Blau (Informationsausgaben)
-cyan='\33[36m'          # Cyan ()
-fcyan='\33[1;36m'       # fettes Cyan ()
-rot='\33[31m'           # Rot (Alternative: Fehler)
-frot='\33[1;31m'        # fettes Rot (Fehler)
+# Farbige echo-Ausgaben (nur bei echo -e)   https://gist.github.com/lomedil/41b739a74b481c4b0a47fca09f42bea3
+KF='\e[0m'			    # Keine Farbe. (Farbe zurücksetzen)
+iflil='\e[1;95m'	    # intensives fettes Lila (verschiedene Versionen)
+ifgrn='\e[1;92m'	    # intensives fettes Grün (bereits installierte Pakete)
+ifblu='\e[1;94m'	    # intensives fettes Blau (neu zu installierende Pakete)
+iftks='\e[1;96m'	    # intensives fettes Türkis (Überprüfungsmeldung) 
+itks='\e[0;96m'		    # intensives Türkis (Paketnamen)
+ifrot='\e[1;91m'	    # intensives fettes Rot (Fehler)
+ifyellow='\e[1;93m'     # intensives fettes Gelb
 
 #------------------------------------------------------------------------------------------
 
 
 
-'''
+: '
 Ab den Themes werden hier alle weiteren Installationen festgehalten, damit Redundance bei weiteren Desktopinstallationen vermieden wird.
    Die Komplettinstallation und die Installation weiterer Anwendungen wird weiterhin im entsprechenden Desktop-Script vorgenommen.
-'''
+'
 
 
 
@@ -34,31 +25,39 @@ Ab den Themes werden hier alle weiteren Installationen festgehalten, damit Redun
 
 # Themes und Styles installieren
 # --- STABLE trixie
+# Themes GTK
 themes () {
-    sudo apt install -y arc-theme blackbird-gtk-theme bluebird-gtk-theme breeze-gtk-theme darkblood-gtk-theme darkcold-gtk-theme darkfire-gtk-theme darkmint-gtk-theme gnome-themes-extra greybird-gtk-theme grub-theme-breeze materia-gtk-theme numix-gtk-theme orchis-gtk-theme xfwm4-theme-breeze
+    echo ""
+    echo ${ifgrn} '>>>>> Weitere GTK-Themes werden installiert.'${KF}
+    sleep 3
+    sudo apt install -y arc-theme blackbird-gtk-theme bluebird-gtk-theme breeze-gtk-theme darkblood-gtk-theme darkcold-gtk-theme darkfire-gtk-theme darkmint-gtk-theme gnome-themes-extra greybird-gtk-theme grub-theme-breeze numix-gtk-theme orchis-gtk-theme xfwm4-theme-breeze yaru-theme-gtk
 }
-#def themes():
-        # Themes GTK
-#        os.system('sudo apt-get install -y arc-theme blackbird-gtk-theme bluebird-gtk-theme breeze-gtk-theme darkblood-gtk-theme darkcold-gtk-theme darkfire-gtk-theme darkmint-gtk-theme gnome-themes-extra greybird-gtk-theme grub-theme-breeze materia-gtk-theme numix-gtk-theme orchis-gtk-theme xfwm4-theme-breeze')
+
+# Themes Qt
 themesqt () {
+    echo ""
+    echo ${ifgrn} '>>>>> Weitere Qt-Themes werden installiert.'${KF}
+    sleep 3
     sudo apt install -y adwaita-qt breeze grub-theme-breeze lxqt-themes lxqt-theme-debian materia-kde
 }
-#def themesqt():
-        # Themes Qt
-#        os.system('sudo apt-get install -y adwaita-qt breeze grub-theme-breeze lxqt-themes lxqt-theme-debian materia-kde')
+
+# Icons
 icons () {
-    sudo apt install -y adwaita-icon-theme breeze-icon-theme deepin-icon-theme elementary-icon-theme elementary-xfce-icon-theme faenza-icon-theme gnome-extra-icons gnome-icon-theme gnome-icon-theme-nuovo gnome-icon-theme-suede gnome-dust-icon-theme gnome-human-icon-theme gnome-noble-icon-theme gnome-theme-gilouche gnome-wine-icon-theme human-icon-theme moka-icon-theme numix-icon-theme numix-icon-theme-circle obsidian-icon-theme paper-icon-theme papirus-icon-theme tangerine-icon-theme tango-icon-theme
+    echo ""
+    echo ${ifgrn} '>>>>> Weitere Icon-Themes werden installiert.'${KF}
+    sleep 3
+    sudo apt install -y adwaita-icon-theme breeze-icon-theme deepin-icon-theme elementary-icon-theme elementary-xfce-icon-theme faba-icon-theme faenza-icon-theme gnome-extra-icons gnome-brave-icon-theme gnome-dust-icon-theme gnome-human-icon-theme gnome-icon-theme gnome-icon-theme-nuovo gnome-icon-theme-suede gnome-noble-icon-theme gnome-theme-gilouche gnome-wine-icon-theme moka-icon-theme numix-icon-theme numix-icon-theme-circle obsidian-icon-theme paper-icon-theme papirus-icon-theme tango-icon-theme
 }
-#def icons():
-        # Icons
-#        os.system('sudo apt-get install -y adwaita-icon-theme breeze-icon-theme deepin-icon-theme elementary-icon-theme elementary-xfce-icon-theme faenza-icon-theme gnome-extra-icons gnome-icon-theme gnome-icon-theme-nuovo gnome-icon-theme-suede gnome-dust-icon-theme gnome-human-icon-theme gnome-noble-icon-theme gnome-theme-gilouche gnome-wine-icon-theme human-icon-theme moka-icon-theme numix-icon-theme numix-icon-theme-circle obsidian-icon-theme paper-icon-theme papirus-icon-theme tangerine-icon-theme tango-icon-theme')
+
+# Schriftarten
 fonts () {
-    sudo apt install -y fonts-adf-verana fonts-anonymous-pro fonts-arundina fonts-cantarell fonts-clear-sans fonts-dejavu fonts-engadget fonts-firacode fonts-font-awesome fonts-fork-awesome fonts-hack fonts-hack-otf fonts-hack-ttf fonts-hack-web fonts-inconsolata fonts-jetbrains-mono fonts-lato fonts-liberation2 fonts-lmodern fonts-mononoki fonts-noto fonts-noto-mono fonts-radisnoir fonts-roboto fonts-roboto-slab fonts-roboto-unhinted fonts-telu fonts-terminus fonts-terminus-otb fonts-ubuntu fonts-ubuntu-console fonts-ubuntu-title ruby-font-awesome-rails ruby-prawn-icon ttf-ancient-fonts ttf-anonymous-pro ttf-bitstream-vera ttf-mscorefonts-installer ttf-staypuft ttf-summersby ttf-xfree86-nonfree xfonts-base xfonts-encodings xfonts-mona xfonts-scalable xfonts-terminus xfonts-terminus-oblique
+    echo ""
+    echo ${ifgrn} '>>>>> Weitere Schriftarten werden installiert.'${KF}
+    sleep 3
+    sudo apt install -y fonts-adf-verana fonts-anonymous-pro fonts-arundina fonts-cantarell fonts-clear-sans fonts-dejavu fonts-engadget fonts-firacode fonts-font-awesome fonts-fork-awesome fonts-hack fonts-hack-otf fonts-hack-ttf fonts-hack-web fonts-inconsolata fonts-jetbrains-mono fonts-lato fonts-liberation2 fonts-lmodern fonts-mononoki fonts-noto fonts-noto-mono fonts-radisnoir fonts-roboto fonts-roboto-slab fonts-roboto-unhinted fonts-telu fonts-terminus fonts-terminus-otb fonts-ubuntu fonts-ubuntu-console fonts-ubuntu-title ruby-prawn-icon ttf-ancient-fonts ttf-bitstream-vera ttf-mscorefonts-installer ttf-staypuft ttf-summersby ttf-xfree86-nonfree xfonts-base xfonts-encodings xfonts-mona xfonts-scalable xfonts-terminus xfonts-terminus-oblique
 }
-#def fonts():
-        # Fonts
-#        os.system('sudo apt-get install -y fonts-adf-verana fonts-anonymous-pro fonts-arundina fonts-cantarell fonts-clear-sans fonts-dejavu fonts-engadget fonts-firacode fonts-font-awesome fonts-fork-awesome fonts-hack fonts-hack-otf fonts-hack-ttf fonts-hack-web fonts-inconsolata fonts-jetbrains-mono fonts-lato fonts-liberation2 fonts-lmodern fonts-mononoki fonts-noto fonts-noto-mono fonts-radisnoir fonts-roboto fonts-roboto-slab fonts-roboto-unhinted fonts-telu fonts-terminus fonts-terminus-otb fonts-ubuntu fonts-ubuntu-console fonts-ubuntu-title ruby-font-awesome-rails ruby-prawn-icon ttf-ancient-fonts ttf-anonymous-pro ttf-bitstream-vera ttf-mscorefonts-installer ttf-staypuft ttf-summersby ttf-xfree86-nonfree xfonts-base xfonts-encodings xfonts-mona xfonts-scalable xfonts-terminus xfonts-terminus-oblique')
-# ====================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+
+# ====================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
 # --- TESTING forky 2025.09
 def themestesting():
         # Themes GTK
