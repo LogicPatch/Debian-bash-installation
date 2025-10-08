@@ -37,7 +37,7 @@ echo ""
 echo ${ifyellow} "Soll ein bestimmter Dateibrowser installiert werden und falls ja welcher?\n" ${KF}"(1) thunar der Dateibrowser des Xfce4-Desktops\n (2) nautlius der Dateibrowser des Gnome-Desktops\n (3) dolphin der Dateibrowser des KDE-Plasma-Desktops\n (4) Alle genannten Dateibrowser installieren\n (5) Keinen Dateibrowser"
 read -p "  " files
 echo ""
-echo ${ifyellow} "Soll eine Kalenderapplikation installiert werden und falls ja welche?\n" ${KF}"(1) gnome-calendar des Gnome-Desktops\n (2) korganizer von KDE-Plasma\n (3) deepin-calendar des Deepin-Desktops\n (4) Alle genannten Kalenderapplikation\n (5) Keine Kalenderapplikation"
+echo ${ifyellow} "Soll eine Kalenderapplikation installiert werden und falls ja welche?\n" ${KF}"(1) gnome-calendar des Gnome-Desktops\n (2) korganizer von KDE-Plasma\n (3) calindori für Plasma-Mobile\n (4) Alle genannten Kalenderapplikation\n (5) Keine Kalenderapplikation"
 read -p "  " kalender
 echo ""
 echo ${ifyellow} "Soll ein Editor installiert werden und falls ja welcher?\n" ${KF}"(1) gedit des Gnome-Desktops\n (2) kate von KDE-Plasma\n (3) geany - Kann über Plugins erweitert werden\n (4) Alle genannten Editoren installieren\n (5) Keine Editorapplikation"
@@ -111,29 +111,35 @@ esac
 
 
 # Displaymanager
-print()
-Desktops2305.displaymanager(displaymanager)
+. ./Desktops2305.sh
+displaymanager
 
 
 
 
 # Dateibrowser installieren
-print()
-Desktops2305.files(files)
+. ./Desktops2305.sh
+files
+#print()
+#Desktops2305.files(files)
 
 
 
 
 # Kalenderapplikation(en) installieren
-print()
-Desktops2305.kalender(kalender)
+. ./Desktops2305.sh
+kalender
+#print()
+#Desktops2305.kalender(kalender)
 
 
 
 
 # Editoren(en) installieren
-print()
-Desktops2305.editor(editor)
+. ./Desktops2305.sh
+editor
+#print()
+#Desktops2305.editor(editor)
 
 
 
