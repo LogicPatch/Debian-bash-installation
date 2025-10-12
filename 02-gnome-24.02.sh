@@ -43,13 +43,13 @@ echo ""
 echo ${ifyellow} "Soll ein Editor installiert werden und falls ja welcher?\n" ${KF}"(1) gedit des Gnome-Desktops\n (2) kate von KDE-Plasma\n (3) geany - Kann über Plugins erweitert werden\n (4) Alle genannten Editoren installieren\n (5) Keine Editorapplikation"
 read -p "  " editor
 echo ""
-echo ${ifyellow} "Soll ein bestimmter Bildbetrachter installiert werden und falls ja welcher?\n" ${KF}"(1) eog der Bildbetrachter des Gnome-Desktops\n (2) gwenview der Bildbetrachter des KDE-Plasma-Desktops\n (3) deepin-image-viewer der Bildbetrachter des Deepin-Desktops\n (4) sxiv - ein schneller und schlanker Bildbetrachter\n (5) Alle genannten Bildbetrachter installieren\n (6) Keinen Bildbetrachter"
+echo ${ifyellow} "Soll ein bestimmter Bildbetrachter installiert werden und falls ja welcher?\n" ${KF}"(1) eog der Bildbetrachter des Gnome-Desktops\n (2) gwenview der Bildbetrachter des KDE-Plasma-Desktops\n (3) lximage der Bildbetrachter des LxQT-Desktops\n (4) sxiv - ein schneller und schlanker Bildbetrachter\n (5) Alle genannten Bildbetrachter installieren\n (6) Keinen Bildbetrachter"
 read -p "  " image
 echo ""
-echo ${ifyellow} "Soll ein bestimmter PDF-Reader installiert werden und falls ja welcher?\n" ${KF}"(1) evince der PDF-Reader des Gnome-Desktops\n (2) okular der PDF-Reader des KDE-Plasma-Desktops\n (3) mupdf - ein schlanker und genügsamer PDF-Reader\n (4) Alle genannten PDF-Reader installieren\n (5) Keinen PDF-Reader"
+echo ${ifyellow} "Soll ein bestimmter PDF-Reader installiert werden und falls ja welcher?\n" ${KF}"(1) papers der PDF-Reader des Gnome-Desktops\n (2) okular der PDF-Reader des KDE-Plasma-Desktops\n (3) mupdf - ein schlanker und genügsamer PDF-Reader\n (4) Alle genannten PDF-Reader installieren\n (5) Keinen PDF-Reader"
 read -p "  " pdf
 echo ""
-echo ${ifyellow} "Soll ein Tool für Bildschirmfotos installiert werden und falls ja welches?\n" ${KF}"(1) scrot - Bildschirmfotos über die Kommandozeile\n (2) flameshot - GUI um Fotos zu erstellen und vor dem speichern zu bearbeiten\n (3) ksnip - ein Screenshot-Tool für den Plasma-Desktop\n (4) deepin-screenshot vom deepin-Desktop verwenden\n (5) Alle genannten Tools für Screenshots installieren\n (6) Kein Tool für Screenshots"
+echo ${ifyellow} "Soll ein Tool für Bildschirmfotos installiert werden und falls ja welches?\n" ${KF}"(1) flameshot - GUI um Fotos zu erstellen und vor dem speichern zu bearbeiten\n (2) spectacle - Das Screenshot-Tool des KDE-Plasma-Desktops\n (3) scrot - Bildschirmfotos über die Kommandozeile\n (4) xfce4-screenshooter - Das Screenshot-Tool des xfce-Desktops\n (5) Alle genannten Tools für Screenshots installieren\n (6) Kein Tool für Screenshots"
 read -p "  " screen
 
 
@@ -145,8 +145,10 @@ editor
 
 
 # Bildbetrachter installieren
-print()
-Desktops2305.image(image)
+. ./Desktops2305.sh
+image
+#print()
+#Desktops2305.image(image)
 
 
 

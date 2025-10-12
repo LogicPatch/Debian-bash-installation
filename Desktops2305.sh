@@ -261,92 +261,135 @@ editor () {
 
 
 # Bildbetrachter installieren
-def image(image):
-    if image=='1':
-        print()
-        print(green + '>>>>> eog - Der Bildbetrachter des Gnome-Desktops wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y eog eog-plugins')
-    elif image=='2':
-        print()
-        print(green + '>>>>> gwenview - Der Bildbetrachter des KDE-Plasma-Desktop wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y gwenview')
-    elif image=='3':
-        print()
-        print(green + '>>>>> deepin-image-viewer - Der Bildbetrachter des Deepin-Desktops wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y deepin-image-viewer')
-    elif image=='4':
-        print()
-        print(green + '>>>>> sxiv - Ein schlanker und schneller Bildbetrachter mit vielen Funktionen wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y sxiv')
-    elif image=='5':
-        print()
-        print(green + '>>>>> Es werden zunächst alle Bildbetrachter für eine spätere Selektion installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y eog eog-plugins gwenview deepin-image-viewer sxiv')
-    else:
-        pass
+image () {
+    case $image in
+        1*)
+            ##### eog
+            echo ""
+            echo ${ifgrn}'>>>>> eog - Der Bildbetrachter des Gnome-Desktops wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y eog eog-plugins
+    ;;
+        2*)
+            ##### gwenview
+            echo ""
+            echo ${ifgrn}'>>>>> gwenview - Der Bildbetrachter des KDE-Plasma-Desktop wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y gwenview
+    ;;
+        3*)
+            ##### lximage
+            echo ""
+            echo ${ifgrn}'>>>>> lximage - Der Bildbetrachter des LxQT-Desktops wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y lximage-qt lximage-qt-l10n
+    ;;
+        4*)
+            ##### sxiv
+            echo ""
+            echo ${ifgrn}'>>>>> sxiv - Ein schlanker und schneller Bildbetrachter mit vielen Funktionen wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y sxiv
+    ;;    
+        5*)
+            ##### Alle Bildbetrachter
+            echo ""
+            echo ${ifgrn}'>>>>> Es werden zunächst alle Editorapplikationen für eine spätere Selektion installiert.'${KF}
+            sleep 3
+            sudo apt install -y eog eog-plugins gwenview lximage-qt lximage-qt-l10n sxiv
+    ;;
+        6*)
+            ##### Kein Bildbetrachter
+            :
+    ;;
+    esac
+}
 
 
 
 
 # PDF-Reader installieren
-def pdf(pdf):
-    if pdf=='1':
-        print()
-        print(green + '>>>>> evince - Der PDF-Reader des Gnome-Desktops wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y evince')
-    elif pdf=='2':
-        print()
-        print(green + '>>>>> okular - Der PDF-Reader des KDE-Plasma-Desktop wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y okular okular-backend-odp okular-backend-odt okular-extra-backends')
-    elif pdf=='3':
-        print()
-        print(green + '>>>>> mupdf - Ein schlanker und schneller PDF-Reader Bildbetrachter mit vielen Funktionen wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y mupdf mupdf-tools')
-    elif pdf=='4':
-        print()
-        print(green + '>>>>> Es werden zunächst alle PDF-Reader für eine spätere Selektion installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y evince okular okular-backend-odp okular-backend-odt okular-extra-backends mupdf mupdf-tools')
-    else:
-        pass
+pdf () {
+    case $pdf in
+        1*)
+            ##### papers
+            echo ""
+            echo ${ifgrn}'>>>>> papers - Der PDF-Reader des Gnome-Desktops wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y papers
+    ;;
+        2*)
+            ##### okular
+            echo ""
+            echo ${ifgrn}'>>>>> okular - Der PDF-Reader des KDE-Plasma-Desktop wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y okular okular-backend-odp okular-backend-odt okular-extra-backends
+    ;;
+        3*)
+            ##### mupdf
+            echo ""
+            echo ${ifgrn}'>>>>> mupdf - Ein schlanker und schneller PDF-Reader Bildbetrachter mit vielen Funktionen wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y mupdf mupdf-tools
+    ;;
+        4*)
+            ##### Alle PDF-Reader
+            echo ""
+            echo ${ifgrn}'>>>>> Es werden zunächst alle PDF-Reader für eine spätere Selektion installiert.'${KF}
+            sleep 3
+            sudo apt install -y papers okular okular-backend-odp okular-backend-odt okular-extra-backends mupdf mupdf-tools
+    ;;
+        5*)
+            ##### Keine PDF-Reader
+            :
+    ;;
+    esac
+}
 
 
 
 
 # Tool für Bildschirmfotos installieren
-def screen(screen):
-    if screen=='1':
-        print()
-        print(green + '>>>>> scrot für die Kommandozeile wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y scrot')
-    elif screen=='2':
-        print()
-        print(green + '>>>>> flameshot wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y flameshot')
-    elif screen=='3':
-        print()
-        print(green + '>>>>> ksnip wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y ksnip')
-    elif screen=='4':
-        print()
-        print(green + '>>>>> deepin-screenshot vom deepin-System wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y deepin-screenshot')
-    elif screen=='5':
-        print()
-        print(green + '>>>>> Für eine spätere Selektion werden zunächst alle Tools für Screenshots installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y scrot flameshot ksnip deepin-screenshot')
-    else:
-        pass
+screen () {
+    case $screen in
+        1*)
+            ##### flameshot
+            echo ""
+            echo ${ifgrn}'>>>>> flameshot wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y flameshot
+    ;;
+        2*)
+            ##### spectacle
+            echo ""
+            echo ${ifgrn}'>>>>> spectacle - Das Screenshot-Tool des KDE-Plasma-Desktops wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y kde-spectacle
+    ;;
+        3*)
+            ##### scrot
+            echo ""
+            echo ${ifgrn}'>>>>> scrot für die Kommandozeile wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y scrot
+    ;;
+        4*)
+            ##### xfce4-screenshooter
+            echo ""
+            echo ${ifgrn}'>>>>> xfce4-screenshooter - Das Screenshot-Tool des xfce-Desktops wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y xfce4-screenshooter
+    ;;    
+        5*)
+            ##### Alle Screenshot-Tools
+            echo ""
+            echo ${ifgrn}'>>>>> Für eine spätere Selektion werden zunächst alle Tools für Screenshots installiert.'${KF}
+            sleep 3
+            sudo apt install -y flameshot kde-spectacle scrot xfce4-screenshooter
+    ;;
+        6*)
+            ##### Kein Screenshot-Tools
+            :
+    ;;
+    esac
+}
