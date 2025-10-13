@@ -103,9 +103,9 @@ displaymanager () {
             echo ${ifgrn}'>>>>> LightDM - Der Standarddisplaymanager von xfce, budgie, i3 u.a. wird installiert.'${KF}
             sleep 3
             sudo apt install -y lightdm lightdm-settings lightdm-gtk-greeter lightdm-gtk-greeter-settings slick-greeter
-            echo ""
-            echo ${ifyellow}'Bitte wählen Sie den zu verwendenden Displaymanager aus der Liste aus.'${KF}
-            sudo dpkg-reconfigure lightdm
+            #echo ""
+            #echo ${ifyellow}'Bitte wählen Sie den zu verwendenden Displaymanager aus der Liste aus.'${KF}
+            #sudo dpkg-reconfigure lightdm
     ;;
         2*)
             ##### GDM
@@ -113,9 +113,9 @@ displaymanager () {
             echo ${ifgrn}'>>>>> GDM - Der Standard-Displaymanager von Gnome wird installiert.'${KF}
             sleep 3
             sudo apt install -y gdm3
-            echo ""
-            echo ${ifyellow}'Bitte wählen Sie den zu verwendenden Displaymanager aus der Liste aus.'${KF}
-            sudo dpkg-reconfigure gdm3
+            #echo ""
+            #echo ${ifyellow}'Bitte wählen Sie den zu verwendenden Displaymanager aus der Liste aus.'${KF}
+            #sudo dpkg-reconfigure gdm3
     ;;
         3*)
             ##### SDDM
@@ -123,9 +123,9 @@ displaymanager () {
             echo ${ifgrn}'>>>>> sddm - Der Simple-Desktop-Display-Manager von KDE-Plasma wird installiert.'${KF}
             sleep 3
             sudo apt install -y sddm kde-config-sddm sddm-theme-breeze sddm-theme-debian-breeze sddm-theme-elarun sddm-theme-debian-elarun sddm-theme-maui sddm-theme-debian-maui sddm-theme-maya sddm-theme-maldives
-            echo ""
-            echo ${ifyellow}'Bitte wählen Sie den zu verwendenden Displaymanager aus der Liste aus.'${KF}
-            sudo dpkg-reconfigure sddm
+            #echo ""
+            #echo ${ifyellow}'Bitte wählen Sie den zu verwendenden Displaymanager aus der Liste aus.'${KF}
+            #sudo dpkg-reconfigure sddm
     ;;
         4*)
             ##### Kein Displaymanager

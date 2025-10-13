@@ -15,8 +15,6 @@ ifyellow='\e[1;93m'     # intensives fettes Gelb
 #DISTRO='trixie'            # Debian 13 Stable
 #DISTRO='bookworm'  		# Debian 12 Oldstable
 
-#CWD=$(pwd)				# Aktuelles Verzeichnis (Current Working Directory)
-
 
 #------------------------------------------------------------------------------------------
 
@@ -104,7 +102,6 @@ case $themes in
         themes
         icons
         fonts
-        #cd $CWD && cd ../scripts-stable/ && ./python3-stable-teil1.sh
 esac
 
 
@@ -120,8 +117,6 @@ displaymanager
 # Dateibrowser installieren
 . ./Desktops2305.sh
 files
-#print()
-#Desktops2305.files(files)
 
 
 
@@ -129,8 +124,6 @@ files
 # Kalenderapplikation(en) installieren
 . ./Desktops2305.sh
 kalender
-#print()
-#Desktops2305.kalender(kalender)
 
 
 
@@ -138,8 +131,6 @@ kalender
 # Editoren(en) installieren
 . ./Desktops2305.sh
 editor
-#print()
-#Desktops2305.editor(editor)
 
 
 
@@ -147,19 +138,17 @@ editor
 # Bildbetrachter installieren
 . ./Desktops2305.sh
 image
-#print()
-#Desktops2305.image(image)
 
 
 
 
 # PDF-Reader installieren
-print()
-Desktops2305.pdf(pdf)
+. ./Desktops2305.sh
+pdf
 
 
 
 
 # Tool für Bildschirmfotos installieren
-print()
-Desktops2305.screen(screen)
+. ./Desktops2305.sh
+screen
