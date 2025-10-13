@@ -98,7 +98,7 @@ esac
 # Themes und Styles installieren
 case $themes in
     [Yy]*|"")
-        . ./Desktops2305.sh
+        . ./Desktops2510.sh
         themes
         icons
         fonts
@@ -108,47 +108,47 @@ esac
 
 
 # Displaymanager
-. ./Desktops2305.sh
+. ./Desktops2510.sh
 displaymanager
 
 
 
 
 # Dateibrowser installieren
-. ./Desktops2305.sh
+. ./Desktops2510.sh
 files
 
 
 
 
 # Kalenderapplikation(en) installieren
-. ./Desktops2305.sh
+. ./Desktops2510.sh
 kalender
 
 
 
 
 # Editoren(en) installieren
-. ./Desktops2305.sh
+. ./Desktops2510.sh
 editor
 
 
 
 
 # Bildbetrachter installieren
-. ./Desktops2305.sh
+. ./Desktops2510.sh
 image
 
 
 
 
 # PDF-Reader installieren
-. ./Desktops2305.sh
+. ./Desktops2510.sh
 pdf
 
 
 
 
 # Tool für Bildschirmfotos installieren
-. ./Desktops2305.sh
+. ./Desktops2510.sh
 screen
