@@ -8,8 +8,8 @@
 # google-chrome                 (Flatpak)
 # thunderbird
 # geary
-# signal                        (Flatpak)
 # telegram
+# signal                        (Flatpak)
 # viber                         (Flatpak)
 # discord
 # Microsoft Teams               (2023.03.20 Nur noch die PWA ; Weboberfläche)
@@ -339,72 +339,127 @@ esac
 
 
 
-# signal-desktop (Flatpak)
-if signal in ('Y', 'y', ''):
-    print()
-    fileName=r'/var/lib/flatpak/app/org.signal.Signal'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Messenger signal wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Messenger signal wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo flatpak install -y org.signal.Signal')
-
-
-
-
 # Telegram-Desktop
-if telegram in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/telegram-desktop'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Messenger telegram wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Messenger telegram wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y telegram-desktop')
+case $telegram in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/telegram-desktop ]; then
+            echo ${frot}'>>>>> Der Messenger telegram wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Messenger telegram wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y telegram-desktop
+        fi
+esac
+#if telegram in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/telegram-desktop'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Messenger telegram wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Messenger telegram wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y telegram-desktop')
+
+
+
+
+# signal-desktop (Flatpak)
+case $signal in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/org.signal.Signal ]; then
+            echo ${frot}'>>>>> Der Messenger signal wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Messenger signal wird installiert.'${KF}
+            sleep 3
+            sudo flatpak install -y org.signal.Signal
+        fi
+esac
+#if signal in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/var/lib/flatpak/app/org.signal.Signal'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Messenger signal wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Messenger signal wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo flatpak install -y org.signal.Signal')
 
 
 
 
 # viber über Flatpak
-if viber in ('Y', 'y', ''):
-    print()
-    fileName=r'/var/lib/flatpak/app/com.viber.Viber'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Messenger viber wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Messenger viber wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo flatpak install -y com.viber.Viber')
+case $viber in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/com.viber.Viber ]; then
+            echo ${frot}'>>>>> Der Messenger viber wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Messenger viber wird installiert.'${KF}
+            sleep 3
+            sudo flatpak install -y com.viber.Viber
+        fi
+esac
+#if viber in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/var/lib/flatpak/app/com.viber.Viber'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Messenger viber wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Messenger viber wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo flatpak install -y com.viber.Viber')
 
 
 
 
 # discord über Flatpak
-if discord in ('Y', 'y', ''):
-    print()
-    fileName=r'/var/lib/flatpak/app/com.discordapp.Discord'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Messenger discord wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Messenger discord wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo flatpak install -y com.discordapp.Discord')
+case $discord in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/com.discordapp.Discord ]; then
+            echo ${frot}'>>>>> Der Messenger discord wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Messenger discord wird installiert.'${KF}
+            sleep 3
+            sudo flatpak install -y com.discordapp.Discord
+        fi
+esac
+#if discord in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/var/lib/flatpak/app/com.discordapp.Discord'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Messenger discord wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Messenger discord wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo flatpak install -y com.discordapp.Discord')
 
 
 
 
 # Zoom installieren
-if zoom in ('Y', 'y', ''):
-    print()
-    fileName=r'/var/lib/flatpak/app/us.zoom.Zoom'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Messenger Zoom wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Messenger Zoom wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo flatpak install -y us.zoom.Zoom')
+case $zoom in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/us.zoom.Zoom ]; then
+            echo ${frot}'>>>>> Der Messenger Zoom wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Messenger Zoom wird installiert.'${KF}
+            sleep 3
+            sudo flatpak install -y us.zoom.Zoom
+        fi
+esac
+#if zoom in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/var/lib/flatpak/app/us.zoom.Zoom'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Messenger Zoom wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Messenger Zoom wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo flatpak install -y us.zoom.Zoom')
 
 
 
