@@ -290,29 +290,51 @@ esac
 
 
 # thunderbird installieren
-if thunderbird in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/thunderbird'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der E-Mailclient thunderbird wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der E-Mailclient thunderbird wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y thunderbird thunderbird-l10n-de')
+case $thunderbird in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/thunderbird ]; then
+            echo ${frot}'>>>>> Der E-Mailclient thunderbird wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der E-Mailclient thunderbird wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y thunderbird thunderbird-l10n-de
+        fi
+esac
+#if thunderbird in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/thunderbird'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der E-Mailclient thunderbird wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der E-Mailclient thunderbird wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y thunderbird thunderbird-l10n-de')
 
 
 
 
 # geary installieren
-if geary in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/geary'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der E-Mailclient geary wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der E-Mailclient geary wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y geary')
+case $geary in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/geary ]; then
+            echo ${frot}'>>>>> Der E-Mailclient geary wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der E-Mailclient geary wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y geary
+        fi
+esac
+#if geary in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/geary'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der E-Mailclient geary wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der E-Mailclient geary wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y geary')
 
 
 
