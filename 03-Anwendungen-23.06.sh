@@ -21,9 +21,10 @@
 # rhythmbox
 # musicpod
 # soundconverter
+# eyedropper
 # gpick
-# gcolor3
 # gimp
+# krita
 # simplescreenrecorder
 # handbrake
 # kdenlive
@@ -106,9 +107,10 @@ read -p "Soll der Videoplayer parole installiert werden? (Y/n): " parole
 read -p "Soll der Audioplayer rhythmbox installiert werden? (Y/n): " rhythmbox
 read -p "Soll der Audioplayer musicpod installiert werden? (Y/n): " musicpod
 read -p "Soll das Programm soundconverter installiert werden? (Y/n): " soundconverter
+read -p "Soll das Programm eyedropper installiert werden? (Y/n): " eyedropper
 read -p "Soll das Programm gpick installiert werden? (Y/n): " gpick
-read -p "Soll das Programm gcolor3 installiert werden? (Y/n): " gcolor3
 read -p "Soll das Bildbearbeitungsprogramm gimp installiert werden? (Y/n): " gimp
+read -p "Soll das Bildbearbeitungsprogramm krita installiert werden? (Y/n): " krita
 read -p "Soll der Desktoprecorder simplescreenrecorder installiert werden? (Y/n): " ssrecorder
 read -p "Soll das Videobearbeitungs-Programm HandBrake installiert werden? (Y/n): " handbrake
 read -p "Soll das Videoschnitt-Programm kdenlive installiert werden? (Y/n): " kdenlive
@@ -621,57 +623,108 @@ esac
 
 
 # soundconverter installieren
-if soundconverter in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/soundconverter'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Programm soundconverter wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das Programm soundconverter wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y soundconverter')
+case $soundconverter in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/soundconverter ]; then
+            echo ${frot}'>>>>> Der Programm soundconverter wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Programm soundconverter wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y soundconverter
+        fi
+esac
+#if soundconverter in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/soundconverter'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Das Programm soundconverter wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Das Programm soundconverter wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y soundconverter')
+
+
+
+
+# eyedropper installieren
+case $eyedropper in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/com.github.finefindus.eyedropper ]; then
+            echo ${frot}'>>>>> Das Programm eyedropper wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Das Programm eyedropper wird installiert.'${KF}
+            sleep 3
+            sudo flatpak install -y com.github.finefindus.eyedropper
+        fi
+esac
 
 
 
 
 # gpick installieren
-if gpick in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/gpick'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Programm gpick wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das Programm gpick wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y gpick')
-
-
-
-
-# gcolor3 installieren
-if gcolor3 in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/gcolor3'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Programm gcolor3 wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das Programm gcolor3 wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y gcolor3')
+case $gpick in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/gpick ]; then
+            echo ${frot}'>>>>> Der Programm gpick wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Programm gpick wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y gpick
+        fi
+esac
+#if gpick in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/gpick'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Das Programm gpick wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Das Programm gpick wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y gpick')
 
 
 
 
 # gimp installieren
-if gimp in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/gimp'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Bildbearbeitungsprogramm gimp wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das Bildbearbeitungsprogramm gimp wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y gimp gimp-help-de')
+case $gimp in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/gimp ]; then
+            echo ${frot}'>>>>> Der Bildbearbeitungsprogramm gimp wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Bildbearbeitungsprogramm gimp wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y gimp gimp-help-de
+        fi
+esac
+#if gimp in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/gimp'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Das Bildbearbeitungsprogramm gimp wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Das Bildbearbeitungsprogramm gimp wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y gimp gimp-help-de')
+
+
+
+
+# krita installieren
+case $krita in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/krita ]; then
+            echo ${frot}'>>>>> Der Bildbearbeitungsprogramm krita wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Bildbearbeitungsprogramm krita wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y krita krita-gmic krita-l10n
+        fi
+esac
 
 
 
