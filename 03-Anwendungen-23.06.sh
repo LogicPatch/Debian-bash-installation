@@ -46,7 +46,6 @@
 # gnome-passwordsafe
 # pycharm Entwicklungs-IDE      (Flatpak)
 # sublime-text Entwicklungs-IDE (Repository musste hinzugefügt werden)
-# clementine
 # weechat
 # KVM
 # virtualbox
@@ -581,15 +580,42 @@ esac
 
 
 # Rhythmbox-Audioplayer installieren
-if rhythmbox in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/rhythmbox'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Audioplayer rhythmbox wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Audioplayer rhythmbox wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y rhythmbox rhythmbox-plugins')
+case $rhythmbox in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/rhythmbox ]; then
+            echo ${frot}'>>>>> Der Audioplayer rhythmbox wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Audioplayer rhythmbox wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y rhythmbox rhythmbox-plugins
+        fi
+esac
+#if rhythmbox in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/rhythmbox'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Audioplayer rhythmbox wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Audioplayer rhythmbox wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y rhythmbox rhythmbox-plugins')
+
+
+
+
+# musicpod-Audioplayer installieren
+case $musicpod in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/org.feichtmeier.Musicpod ]; then
+            echo ${frot}'>>>>> Der Audioplayer musicpod wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Audioplayer musicpod wird installiert.'${KF}
+            sleep 3
+            sudo flatpak install -y org.feichtmeier.Musicpod
+        fi
+esac
 
 
 
@@ -996,20 +1022,6 @@ if sublime in ('Y', 'y', ''):
         # Sublime-Text installation
         os.system('sudo apt-get update')
         os.system('sudo apt-get install -y sublime-text')
-
-
-
-
-# clementine installieren
-if clementine in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/clementine'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Musik-Player clementine wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Musik-Player clementine wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y clementine')
 
 
 
