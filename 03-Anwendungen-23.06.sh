@@ -99,8 +99,8 @@ read -p "Soll der Messenger signal installiert werden? (Y/n): " signal
 read -p "Soll der Messenger viber installiert werden? (Y/n): " viber
 read -p "Soll der Messenger discord installiert werden? (Y/n): " discord
 read -p "Soll der Messenger Zoom installiert werden? (Y/n): " zoom
-read -p "Soll der Videoplayer mpv installiert werden? (Y/n): " mpv
 read -p "Soll der Videoplayer showtime installiert werden? (Y/n): " showtime
+read -p "Soll der Videoplayer mpv installiert werden? (Y/n): " mpv
 read -p "Soll der Videoplayer vlc installiert werden? (Y/n): " vlc
 read -p "Soll der Videoplayer celluloid installiert werden? (Y/n): " celluloid
 read -p "Soll der Videoplayer parole installiert werden? (Y/n): " parole
@@ -464,72 +464,118 @@ esac
 
 
 
+# showtime-Videoplayer installieren
+case $showtime in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/showtime ]; then
+            echo ${frot}'>>>>> Der Videoplayer showtime wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Videoplayer showtime wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y showtime
+        fi
+esac
+
+
+
+
 # mpv-Videoplayer installieren
-if mpv in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/mpv'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Videoplayer mpv wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Videoplayer mpv wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y mpv')
-
-
-
-
-# Totem-Videoplayer installieren
-if totem in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/totem'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Videoplayer totem wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Videoplayer totem wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y totem totem-common totem-plugins')
+case $mpv in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/mpv ]; then
+            echo ${frot}'>>>>> Der Videoplayer mpv wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Videoplayer mpv wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y mpv
+        fi
+esac
+#if mpv in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/mpv'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Videoplayer mpv wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Videoplayer mpv wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y mpv')
 
 
 
 
 # vlc-Videoplayer installieren
-if vlc in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/vlc'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Videoplayer vlc wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Videoplayer vlc wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y vlc vlc-plugin-base vlc-plugin-access-extra vlc-plugin-qt vlc-plugin-skins2 vlc-plugin-video-output vlc-l10n vlc-data')
+case $vlc in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/vlc ]; then
+            echo ${frot}'>>>>> Der Videoplayer vlc wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Videoplayer vlc wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y vlc vlc-plugin-base vlc-plugin-access-extra vlc-plugin-qt vlc-plugin-skins2 vlc-plugin-video-output vlc-l10n vlc-data
+        fi
+esac
+#if vlc in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/vlc'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Videoplayer vlc wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Videoplayer vlc wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y vlc vlc-plugin-base vlc-plugin-access-extra vlc-plugin-qt vlc-plugin-skins2 vlc-plugin-video-output vlc-l10n vlc-data')
 
 
 
 
 # celluloid installieren
-if celluloid in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/celluloid'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Videoplayer celluloid wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Videoplayer celluloid wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y celluloid')
+case $celluloid in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/celluloid ]; then
+            echo ${frot}'>>>>> Der Videoplayer celluloid wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Videoplayer celluloid wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y celluloid
+        fi
+esac
+#if celluloid in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/celluloid'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Videoplayer celluloid wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Videoplayer celluloid wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y celluloid')
 
 
 
 
 # Parole-Videoplayer installieren
-if parole in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/parole'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Videoplayer parole wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Videoplayer parole wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y parole libxfce4util-bin libxfce4ui-utils')
+case $parole in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/parole ]; then
+            echo ${frot}'>>>>> Der Videoplayer parole wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Videoplayer parole wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y parole libxfce4util-bin libxfce4ui-utils
+        fi
+esac
+#if parole in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/parole'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Videoplayer parole wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Videoplayer parole wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y parole libxfce4util-bin libxfce4ui-utils')
 
 
 
