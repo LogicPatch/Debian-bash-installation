@@ -730,56 +730,101 @@ esac
 
 
 # simplescreenrecorder installieren
-if ssrecorder in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/simplescreenrecorder'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Desktoprecorder simplescreenrecorder wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Desktoprecorder simplescreenrecorder wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y simplescreenrecorder')
+case $ssrecorder in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/simplescreenrecorder ]; then
+            echo ${frot}'>>>>> Der Desktoprecorder simplescreenrecorder wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Desktoprecorder simplescreenrecorder wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y simplescreenrecorder
+        fi
+esac
+#if ssrecorder in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/simplescreenrecorder'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Desktoprecorder simplescreenrecorder wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Desktoprecorder simplescreenrecorder wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y simplescreenrecorder')
 
 
 
 
-if handbrake in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/handbrake-gtk'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Videobearbeitungs-Programm HandBrake wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das Videobearbeitungs-Programm HandBrake wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y handbrake handbrake-cli handbrake-gtk')
+# handbrake installieren
+case $handbrake in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/handbrake-gtk ]; then
+            echo ${frot}'>>>>> Das Videobearbeitungs-Programm HandBrake wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Das Videobearbeitungs-Programm HandBrake wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y handbrake handbrake-cli handbrake-gtk
+        fi
+esac
+#if handbrake in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/handbrake-gtk'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Das Videobearbeitungs-Programm HandBrake wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Das Videobearbeitungs-Programm HandBrake wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y handbrake handbrake-cli handbrake-gtk')
 
 
 
 
 # kdenlive installieren
-if kdenlive in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/kdenlive'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Videoschnitt-Programm kdenlive wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das Videoschnitt-Programm kdenlive wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y kdenlive')
+case $kdenlive in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/kdenlive ]; then
+            echo ${frot}'>>>>> Das Videoschnitt-Programm kdenlive wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Das Videoschnitt-Programm kdenlive wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y kdenlive
+        fi
+esac
+#if kdenlive in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/kdenlive'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Das Videoschnitt-Programm kdenlive wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Das Videoschnitt-Programm kdenlive wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y kdenlive')
 
 
 
 
 # openshot installieren
-if openshot in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/openshot-qt'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Videoschnitt-Programm openshot wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das Videoschnitt-Programm openshot wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y openshot-qt')
+case $openshot in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/openshot-qt ]; then
+            echo ${frot}'>>>>> Das Videoschnitt-Programm openshot wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Das Videoschnitt-Programm openshot wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y openshot-qt
+        fi
+esac
+#if openshot in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/openshot-qt'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Das Videoschnitt-Programm openshot wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Das Videoschnitt-Programm openshot wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y openshot-qt')
 
 
 
