@@ -830,35 +830,66 @@ esac
 
 
 # wine und playonlinux
-if wine in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/wine'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Emulatoren wine und PlayOnLinux wurden bereits installiert, mache nichts.' + reset)
-    else:
-        print('Zunächst wird überprüft, ob das Winehq Repository nicht bereits hinzugefügt wurde.')
-        time.sleep(3)
-        if os.path.isfile('/etc/apt/sources.list.d/winehq.list'):
-            print('Das winehq-Repository wurde bereits hinzugefügt, mache nichts.')
-        else:
-            print(green + '>>>>> Die Emulatoren wine und PlayOnLinux werden installiert.' + reset)
-            time.sleep(3)
+case $wine in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/wine ]; then
+            echo ${frot}'>>>>> Die Emulatoren wine und PlayOnLinux wurden bereits installiert, mache nichts.'${KF}
+        else
+            if [ -f /etc/apt/sources.list.d/winehq.list ]; then
+                echo ${frot}'Das winehq-Repository wurde bereits hinzugefügt, mache nichts.'${KF}
+            else
+                echo ${fgreen}'>>>>> Die Emulatoren wine und PlayOnLinux werden installiert.'${KF}
+                sleep 3
 
-            # apt-secure key Installation
-            os.system('sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key')
-            ##########os.system('wget -O- https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor | sudo tee /usr/share/keyrings/winehq.gpg')
+                #===== apt-secure key Installation
+                sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                ##########os.system('wget -O- https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor | sudo tee /usr/share/keyrings/winehq.gpg')
 
-            # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
-            os.system('sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources')
-            ##########os.system('echo "# Debian Winehq Repository" > winehq.list')
-            ##########os.system('echo "deb [signed-by=/usr/share/keyrings/winehq.gpg] http://dl.winehq.org/wine-builds/debian/ bullseye main" >> winehq.list')
-            ##########os.system('sudo mv winehq.list /etc/apt/sources.list.d/')
-            ##########os.system('sudo chown root:root /etc/apt/sources.list.d/winehq.list')
-
-            # Installation von wine
-            ##########os.system('rm -rf winehq.key*')
-            os.system('sudo apt-get update')
-            os.system('sudo apt-get install --install-recommends -y winehq-staging playonlinux fonts-liberation libc6-dev-i386 libedit-dev libfreetype-dev libfreetype6 libfreetype6-dev libgl1-mesa-dev libgl1-mesa-glx libgnutls28-dev libgphoto2-dev libice-dev libjson-c-dev liblcms2-dev libldap2-dev libogg-dev libosmesa6 libosmesa6-dev libpcap-dev libpng16-16 libpng-dev libpng++-dev libpng-tools libsm-dev libsndfile1-dev libv4l-dev libvorbis-dev libwayland-client++1 libwayland-client-extra++1 libwayland-dev libx11-dev libxcursor-dev libxext-dev libxi-dev libxinerama-dev libxml2-dev libxrandr-dev libxrender-dev libxslt1-dev libxtst-dev libxxf86vm-dev ncurses-examples ocl-icd-dev ocl-icd-opencl-dev uuid-dev zlib1g zlib1g-dev')
+                #===== Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
+                sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources
+                #sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
+                ##########os.system('echo "# Debian Winehq Repository" > winehq.list')
+                ##########os.system('echo "deb [signed-by=/usr/share/keyrings/winehq.gpg] http://dl.winehq.org/wine-builds/debian/ bullseye main" >> winehq.list')
+                ##########os.system('sudo mv winehq.list /etc/apt/sources.list.d/')
+                ##########os.system('sudo chown root:root /etc/apt/sources.list.d/winehq.list')
+                
+                #===== Installation von wine
+                ##########os.system('rm -rf winehq.key*')
+                sudo apt update
+                sudo apt install --install-recommends -y winehq-staging playonlinux fonts-liberation libc6-dev-i386 libedit-dev libfreetype-dev libfreetype6 libfreetype6-dev libgl1-mesa-dev libgl1-mesa-glx libgnutls28-dev libgphoto2-dev libice-dev libjson-c-dev liblcms2-dev libldap2-dev libogg-dev libosmesa6 libosmesa6-dev libpcap-dev libpng16-16 libpng-dev libpng++-dev libpng-tools libsm-dev libsndfile1-dev libv4l-dev libvorbis-dev libwayland-client++1 libwayland-client-extra++1 libwayland-dev libx11-dev libxcursor-dev libxext-dev libxi-dev libxinerama-dev libxml2-dev libxrandr-dev libxrender-dev libxslt1-dev libxtst-dev libxxf86vm-dev ncurses-examples ocl-icd-dev ocl-icd-opencl-dev uuid-dev zlib1g zlib1g-dev
+            fi
+        fi
+esac
+#if wine in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/wine'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Emulatoren wine und PlayOnLinux wurden bereits installiert, mache nichts.' + reset)
+#    else:
+#        print('Zunächst wird überprüft, ob das Winehq Repository nicht bereits hinzugefügt wurde.')
+#        time.sleep(3)
+#        if os.path.isfile('/etc/apt/sources.list.d/winehq.list'):
+#            print('Das winehq-Repository wurde bereits hinzugefügt, mache nichts.')
+#        else:
+#            print(green + '>>>>> Die Emulatoren wine und PlayOnLinux werden installiert.' + reset)
+#            time.sleep(3)
+#
+#            # apt-secure key Installation
+#            os.system('sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key')
+#            ##########os.system('wget -O- https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor | sudo tee /usr/share/keyrings/winehq.gpg')
+#
+#            # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
+#            os.system('sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources')
+#            ##########os.system('echo "# Debian Winehq Repository" > winehq.list')
+#            ##########os.system('echo "deb [signed-by=/usr/share/keyrings/winehq.gpg] http://dl.winehq.org/wine-builds/debian/ bullseye main" >> winehq.list')
+#            ##########os.system('sudo mv winehq.list /etc/apt/sources.list.d/')
+#            ##########os.system('sudo chown root:root /etc/apt/sources.list.d/winehq.list')
+#
+#            # Installation von wine
+#            ##########os.system('rm -rf winehq.key*')
+#            os.system('sudo apt-get update')
+#            os.system('sudo apt-get install --install-recommends -y winehq-staging playonlinux fonts-liberation libc6-dev-i386 libedit-dev libfreetype-dev libfreetype6 libfreetype6-dev libgl1-mesa-dev libgl1-mesa-glx libgnutls28-dev libgphoto2-dev libice-dev libjson-c-dev liblcms2-dev libldap2-dev libogg-dev libosmesa6 libosmesa6-dev libpcap-dev libpng16-16 libpng-dev libpng++-dev libpng-tools libsm-dev libsndfile1-dev libv4l-dev libvorbis-dev libwayland-client++1 libwayland-client-extra++1 libwayland-dev libx11-dev libxcursor-dev libxext-dev libxi-dev libxinerama-dev libxml2-dev libxrandr-dev libxrender-dev libxslt1-dev libxtst-dev libxxf86vm-dev ncurses-examples ocl-icd-dev ocl-icd-opencl-dev uuid-dev zlib1g zlib1g-dev')
 
 
 
