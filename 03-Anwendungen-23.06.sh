@@ -895,31 +895,53 @@ esac
 
 
 # steam über Flatpak
-if steam in ('Y', 'y', ''):
-    print()
-    fileName=r'/var/lib/flatpak/app/com.valvesoftware.Steam'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Spieleplattform steam wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Die Spieleplattform steam wird installiert.' + reset)
-        time.sleep(3)
-        print()
-        os.system('sudo flatpak install -y flathub com.valvesoftware.Steam')
+case $steam in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/com.valvesoftware.Steam ]; then
+            echo ${frot}'>>>>> Die Spieleplattform steam wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Spieleplattform steam wurde bereits installiert, mache nichts.'${KF}
+            sleep 3
+            sudo flatpak install -y com.valvesoftware.Steam
+        fi
+esac
+#if steam in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/var/lib/flatpak/app/com.valvesoftware.Steam'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Spieleplattform steam wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Die Spieleplattform steam wird installiert.' + reset)
+#        time.sleep(3)
+#        print()
+#        os.system('sudo flatpak install -y flathub com.valvesoftware.Steam')
 
 
 
 
 # lutris über flatpak
-if lutris in ('Y', 'y', ''):
-    print()
-    fileName=r'/var/lib/flatpak/app/net.lutris.Lutris'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Spieleplattform lutris wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Die Spieleplattform lutris wird installiert.' + reset)
-        time.sleep(3)
-        print()
-        os.system('sudo flatpak install -y flathub net.lutris.Lutris')
+case $lutris in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/app/net.lutris.Lutris ]; then
+            echo ${frot}'>>>>> Die Spieleplattform lutris wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Spieleplattform lutris wurde bereits installiert, mache nichts.'${KF}
+            sleep 3
+            sudo flatpak install -y app/net.lutris.Lutris
+        fi
+esac
+#if lutris in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/var/lib/flatpak/app/net.lutris.Lutris'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Spieleplattform lutris wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Die Spieleplattform lutris wird installiert.' + reset)
+#        time.sleep(3)
+#        print()
+#        os.system('sudo flatpak install -y flathub net.lutris.Lutris')
 # # lutris installieren
 # if lutris in ('Y', 'y', ''):
 #     print()
