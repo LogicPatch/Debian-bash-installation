@@ -31,10 +31,12 @@
 # openshot
 # wine
 # steam                         (Flatpak)
-# lutris
+# lutris                        (Flatpak)
 # anydesk                       (Flatpak)
+# rustdesk                      (Flatpak)
 # teamviewer                    (Über Webseite)
 # ranger
+# yazi                          (Flatpak)
 # zsh
 # ghostty
 # kitty
@@ -70,11 +72,9 @@ rot='\33[31m'           # Rot (Alternative: Fehler)
 frot='\33[1;31m'        # fettes Rot (Fehler)
 
 #DISTRO='?????'             # Debian 15 Coming up
-#DISTRO='forky'             # Debian 14 Unstable
-#DISTRO='trixie'            # Debian 13 Testing
-#DISTRO='bookworm'  		# Debian 12 Stable
-#DISTRO='bullseye'			# Debian 11 Oldstable
-
+#DISTRO='forky'             # Debian 14 Testing
+#DISTRO='trixie'            # Debian 13 Stable
+#DISTRO='bookworm'  		# Debian 12 Oldstable
 
 
 #LIBPOPPLER='libpoppler102'          # Bibliothek zur PDF-Darstellung (für ranger)  Version vom 2021.03
@@ -119,8 +119,10 @@ read -p "Sollen die Emulatoren Wine und playonlinux installiert werden? (Y/n): "
 read -p "Soll die Spieleplattform lutris installiert werden? (Y/n): " lutris
 read -p "Soll die Spieleplattform steam installiert werden? (Y/n): " steam
 read -p "Soll die Remotesoftware AnyDesk installiert werden? (Y/n): " anydesk
+read -p "Soll die Remotesoftware RustDesk installiert werden? (Y/n): " rustdesk
 read -p "Soll die Remotesoftware Teamviewer für den privaten Gebrauch installiert werden? (Y/n): " teamviewer
 read -p "Soll der Terminal-Dateimanager ranger installiert werden? (Y/n): " ranger
+read -p "Soll der Terminal-Dateimanager yazi installiert werden? (Y/n): " yazi
 read -p "Soll die Shell zsh installiert werden? (Y/n): " zsh
 read -p "Soll das Terminal ghostty installiert werden? (Y/n): " ghostty
 read -p "Soll das Terminal kitty installiert werden? (Y/n): " kitty
@@ -924,12 +926,12 @@ esac
 case $lutris in
     [Yy]*|"")
         echo ''
-        if [ -d /var/lib/flatpak/app/app/net.lutris.Lutris ]; then
+        if [ -d /var/lib/flatpak/app/net.lutris.Lutris ]; then
             echo ${frot}'>>>>> Die Spieleplattform lutris wurde bereits installiert, mache nichts.'${KF}
         else
             echo ${fgreen}'>>>>> Die Spieleplattform lutris wurde bereits installiert, mache nichts.'${KF}
             sleep 3
-            sudo flatpak install -y app/net.lutris.Lutris
+            sudo flatpak install -y net.lutris.Lutris
         fi
 esac
 #if lutris in ('Y', 'y', ''):
@@ -971,31 +973,71 @@ esac
 
 
 # anydesk über Flatpak
-if anydesk in ('Y', 'y', ''):
-    print()
-    fileName=r'/var/lib/flatpak/app/com.anydesk.Anydesk'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Remotesoftware anydesk wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Die Remotesoftware anydesk wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo flatpak install -y com.anydesk.Anydesk')
+case $anydesk in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/com.anydesk.Anydesk ]; then
+            echo ${frot}'>>>>> Die Remotesoftware anydesk wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Remotesoftware anydesk wurde bereits installiert, mache nichts.'${KF}
+            sleep 3
+            sudo flatpak install -y com.anydesk.Anydesk
+        fi
+esac
+#if anydesk in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/var/lib/flatpak/app/com.anydesk.Anydesk'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Remotesoftware anydesk wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Die Remotesoftware anydesk wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo flatpak install -y com.anydesk.Anydesk')
+
+
+
+
+# rustdesk über Flatpak
+case $rustdesk in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/com.rustdesk.RustDesk ]; then
+            echo ${frot}'>>>>> Die Remotesoftware rustdesk wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Remotesoftware rustdesk wurde bereits installiert, mache nichts.'${KF}
+            sleep 3
+            sudo flatpak install -y com.rustdesk.RustDesk
+        fi
+esac
 
 
 
 
 # teamviewer über Webseite installieren
-if teamviewer in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/teamviewer'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Remotesoftware teamviewer wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Die Remotesoftware teamviewer wird installiert.' + reset)
-        time.sleep(3)
-        os.system('wget -q https://download.teamviewer.com/download/linux/teamviewer_amd64.deb')
-        os.system('sudo apt-get install -y ./teamviewer*.deb')
-        os.system('rm teamviewer*.deb')
+case $teamviewer in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/teamviewer ]; then
+            echo ${frot}'>>>>> Die Remotesoftware teamviewer wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Remotesoftware teamviewer wird installiert.'${KF}
+            sleep 3
+            wget -q https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+            sudo apt install -y ./teamviewer*.deb
+            rm teamviewer*.deb
+        fi
+esac
+#if teamviewer in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/teamviewer'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Remotesoftware teamviewer wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Die Remotesoftware teamviewer wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('wget -q https://download.teamviewer.com/download/linux/teamviewer_amd64.deb')
+#        os.system('sudo apt-get install -y ./teamviewer*.deb')
+#        os.system('rm teamviewer*.deb')
 
 
 
