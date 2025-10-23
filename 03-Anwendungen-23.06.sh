@@ -1054,7 +1054,7 @@ case $ranger in
             apt-cache pkgnames libpoppler | grep -v dev
             read -p "Welche libpoppler-Version wird aktuell verwendet? (126 von 06.2023?) " LIBPOPPLERVER
             sudo apt install -y highlight atool w3m libpoppler${LIBPOPPLERVER} poppler-utils mediainfo ranger xfce4-terminal
-            echo ${flila}'Für die Konfiguration von Ranger siehe zim-Wiki Dateimanager.ranger'${KF}
+            echo ${yellow}'Für die Konfiguration von Ranger siehe zim-Wiki Dateimanager.ranger'${KF}
             sleep 3
         fi
 esac
@@ -1092,49 +1092,122 @@ esac
 
 
 # zsh installieren
-if zsh in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/zsh'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Shell zsh wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Die Shell zsh wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y zsh zsh-autosuggestions zsh-syntax-highlighting')
-        os.system('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
-        # zsh-syntax-highlighting
-        print(yellow + 'Um syntax-highlighting in zsh zu Aktivieren muss am Ende der .zshrc-Datei folgende Zeile hinzugefügt werden:    source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh    ' + reset)
-        print(yellow + 'Um die Login-Shell auf zsh zu ändern nutzt man als NORMALER Benutzer den Befehl:    $ chsh -s /bin/zsh    ' + reset)
+case $zsh in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/zsh ]; then
+            echo ${frot}'>>>>> Die Shell zsh wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Shell zsh wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y zsh zsh-autosuggestions zsh-syntax-highlighting
+            sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+            # zsh-syntax-highlighting
+            echo ${yellow}'>>>>> Um syntax-highlighting in zsh zu Aktivieren muss am Ende der .zshrc-Datei folgende Zeile hinzugefügt werden:    source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'${KF}
+            echo ${yellow}'>>>>> Um die Login-Shell auf zsh zu ändern nutzt man als NORMALER Benutzer den Befehl:    $ chsh -s /bin/zsh'${KF}
+        fi
+esac
+#if zsh in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/zsh'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Shell zsh wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Die Shell zsh wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y zsh zsh-autosuggestions zsh-syntax-highlighting')
+#        os.system('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
+#        # zsh-syntax-highlighting
+#        print(yellow + 'Um syntax-highlighting in zsh zu Aktivieren muss am Ende der .zshrc-Datei folgende Zeile hinzugefügt werden:    source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh    ' + reset)
+#        print(yellow + 'Um die Login-Shell auf zsh zu ändern nutzt man als NORMALER Benutzer den Befehl:    $ chsh -s /bin/zsh    ' + reset)
 
 
 
 
-# urxvt installieren
-if urxvt in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/urxvt'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Terminal urxvt wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das Terminal urxvt wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y rxvt-unicode xclip')
-        print(yellow + '>>>>> Zum konfigurieren benötigt man eine ~/.Xresources oder ~/.Xdefaults  Datei.\n      Nach ändern dieser Datei muss man ein $ xrdb -merge ~/.Xresources ausführen:' + reset)
-        time.sleep(3)
+# ghostty installieren (Webseite)
+case $ghostty in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/ghostty ]; then
+            echo ${frot}'>>>>> Das Terminal ghostty wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Das Terminal ghostty wird installiert.'${KF}
+            sleep 3
+            # Downloadlink über https://github.com/dariogriffo/ghostty-debian/releases 
+            wget -c https://github.com/dariogriffo/ghostty-debian/releases/download/1.2.2%2B1/ghostty_1.2.2-1+trixie_amd64.deb
+            sudo dpkg -i ghostty_1.2.2-1+trixie_amd64.deb
+        fi
+esac
+
+
+
+
+# kitty installieren
+case $kitty in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/kitty ]; then
+            echo ${frot}'>>>>> Das Terminal kitty wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Das Terminal kitty wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y kitty
+        fi
+esac
 
 
 
 
 # tilix installieren
-if tilix in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/tilix'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Terminal tilix wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das Terminal tilix wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y tilix')
+case $tilix in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/tilix ]; then
+            echo ${frot}'>>>>> Das Terminal tilix wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Das Terminal tilix wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y tilix
+        fi
+esac
+#if tilix in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/tilix'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Das Terminal tilix wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Das Terminal tilix wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y tilix')
+
+
+
+
+# urxvt installieren
+case $urxvt in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/urxvt ]; then
+            echo ${frot}'>>>>> Das Terminal urxvt wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Das Terminal urxvt wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y rxvt-unicode xclip
+            echo ${yellow}'>>>>> Zum konfigurieren benötigt man eine ~/.Xresources oder ~/.Xdefaults  Datei.\n      Nach ändern dieser Datei muss man ein $ xrdb -merge ~/.Xresources ausführen:'${KF}
+            time.sleep(3)
+        fi
+esac
+#if urxvt in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/urxvt'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Das Terminal urxvt wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Das Terminal urxvt wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y rxvt-unicode xclip')
+#        print(yellow + '>>>>> Zum konfigurieren benötigt man eine ~/.Xresources oder ~/.Xdefaults  Datei.\n      Nach ändern dieser Datei muss man ein $ xrdb -merge ~/.Xresources ausführen:' + reset)
+#        time.sleep(3)
 
 
 
