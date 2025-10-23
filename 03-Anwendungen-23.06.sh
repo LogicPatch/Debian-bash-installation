@@ -1043,19 +1043,50 @@ esac
 
 
 # ranger installieren
-if ranger in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/ranger'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Terminal-Dateimanager ranger wird installiert.' + reset)
-        time.sleep(3)
-        os.system('apt-cache pkgnames libpoppler | grep -v dev')
-        LIBPOPPLERVER = input(yellow + 'Welche libpoppler-Version wird aktuell verwendet? (126 von 06.2023?) ' + reset)
-        os.system('sudo apt-get install -y highlight atool w3m libpoppler' + LIBPOPPLERVER + ' poppler-utils mediainfo ranger xfce4-terminal')
-        print(flila + 'Für die Konfiguration von Ranger siehe zim-Wiki Dateimanager.ranger' + reset)
-        time.sleep(3)
+case $ranger in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/ranger ]; then
+            echo ${frot}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            sleep 3
+            apt-cache pkgnames libpoppler | grep -v dev
+            read -p "Welche libpoppler-Version wird aktuell verwendet? (126 von 06.2023?) " LIBPOPPLERVER
+            sudo apt install -y highlight atool w3m libpoppler${LIBPOPPLERVER} poppler-utils mediainfo ranger xfce4-terminal
+            echo ${flila}'Für die Konfiguration von Ranger siehe zim-Wiki Dateimanager.ranger'${KF}
+            sleep 3
+        fi
+esac
+#if ranger in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/ranger'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Terminal-Dateimanager ranger wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('apt-cache pkgnames libpoppler | grep -v dev')
+#        LIBPOPPLERVER = input(yellow + 'Welche libpoppler-Version wird aktuell verwendet? (126 von 06.2023?) ' + reset)
+#        os.system('sudo apt-get install -y highlight atool w3m libpoppler' + LIBPOPPLERVER + ' poppler-utils mediainfo ranger xfce4-terminal')
+#        print(flila + 'Für die Konfiguration von Ranger siehe zim-Wiki Dateimanager.ranger' + reset)
+#        time.sleep(3)
+
+
+
+
+# yazi über Flatpak
+case $yazi in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/io.github.sxyazi.yazi ]; then
+            echo ${frot}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            sleep 3
+            sudo flatpak install -y io.github.sxyazi.yazi
+        fi
+esac
 
 
 
