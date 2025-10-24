@@ -1288,29 +1288,51 @@ esac
 
 
 # keepassxc Passwortmanager installieren
-if keepassxc in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/keepassxc'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Passwortmanager keepassxc wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Passwortmanager keepassxc wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y keepassxc')
+case $keepassxc in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/keepassxc ]; then
+            echo ${frot}'>>>>> Der Passwortmanager keepassxc wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Passwortmanager keepassxc wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y keepassxc
+        fi
+esac
+#if keepassxc in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/keepassxc'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Passwortmanager keepassxc wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Passwortmanager keepassxc wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y keepassxc')
 
 
 
 
 # gnome-passwordsafe Passwortmanager installieren
-if gsafe in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/secrets'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Passwortmanager gnome-passwordsafe wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Passwortmanager gnome-passwordsafe wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y gnome-passwordsafe')
+case $gsafe in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/secrets ]; then
+            echo ${frot}'>>>>> Der Passwortmanager gnome-passwordsafe wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Passwortmanager gnome-passwordsafe wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y gnome-passwordsafe
+        fi
+esac
+#if gsafe in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/secrets'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Passwortmanager gnome-passwordsafe wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Passwortmanager gnome-passwordsafe wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y gnome-passwordsafe')
 
 
 
