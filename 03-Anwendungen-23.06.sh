@@ -1213,43 +1213,76 @@ esac
 
 
 # conky installieren
-if conky in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/conky'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der Systemmonitor conky wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der Systemmonitor conky wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y --allow-unauthenticated conky conky-all lm-sensors')
+case $conky in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/conky ]; then
+            echo ${frot}'>>>>> Der Systemmonitor conky wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der Systemmonitor conky wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y --allow-unauthenticated conky conky-all lm-sensors
+        fi
+esac
+#if conky in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/conky'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der Systemmonitor conky wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der Systemmonitor conky wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y --allow-unauthenticated conky conky-all lm-sensors')
 
 
 
 
 # Zim-Desktop Wiki installieren
-if zim in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/zim'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Desktop-Wiki zim wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das Desktop-Wiki zim wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y zim')
+case $zim in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/zim ]; then
+            echo ${frot}'>>>>> Das Desktop-Wiki zim wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Das Desktop-Wiki zim wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y zim
+        fi
+esac
+#if zim in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/zim'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Das Desktop-Wiki zim wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Das Desktop-Wiki zim wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y zim')
 
 
 
 
 # xpad installieren
-if xpad in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/xpad'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Notizzettel-App xpad wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Die Notizzettel-App xpad wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y xpad')
+case $xpad in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/xpad ]; then
+            echo ${frot}'>>>>> Die Notizzettel-App xpad wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Notizzettel-App xpad wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y xpad
+        fi
+esac
+#if xpad in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/xpad'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Notizzettel-App xpad wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Die Notizzettel-App xpad wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y xpad')
 
 
 
