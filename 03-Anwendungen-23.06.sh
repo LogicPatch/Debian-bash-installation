@@ -77,12 +77,6 @@ frot='\33[1;31m'        # fettes Rot (Fehler)
 #DISTRO='bookworm'  		# Debian 12 Oldstable
 
 
-#LIBPOPPLER='libpoppler102'          # Bibliothek zur PDF-Darstellung (für ranger)  Version vom 2021.03
-# Homeverzeichnis des aktuellen Benutzers auslesen lassen (ohne endendes /)
-user = os.environ['HOME']
-# Nur den Benutzernamen des aktuellen Benutzers auslesen lassen
-username = getpass.getuser()
-
 #------------------------------------------------------------------------------------------
 
 
@@ -1414,61 +1408,122 @@ esac
 
 
 # weechat-IRC-Client installieren
-if weechat in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/weechat'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Der IRC-Client weechat wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Der IRC-Client weechat wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y weechat weechat-scripts')
+case $weechat in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/weechat ]; then
+            echo ${frot}'>>>>> Der IRC-Client weechat wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Der IRC-Client weechat wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y weechat weechat-scripts
+        fi
+esac
+#if weechat in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/weechat'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Der IRC-Client weechat wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Der IRC-Client weechat wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y weechat weechat-scripts')
 
 
 
 
 # kvm/qemu/virt-manager installieren
-if kvm in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/virt-manager'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y bridge-utils libvirt-clients libvirt-daemon libvirt-daemon-system python3 python3-pip qemu-kvm qemu-system qemu-utils virtinst')
-        os.system('sudo apt-get install -y virt-manager')
-        kvmuser = ('Wie lautet der Benutzername welcher der Gruppe libvirt hinzugefügt werden soll? ')
-        os.system('sudo usermod -aG libvirt' + kvmuser)
-        os.system('sudo usermod -aG kvm' + kvmuser)
-        # Netzwerk verfügbar machen
-        os.system('sudo virsh net-start default')
-        os.system('sudo virsh net-autostart default')
-        # Kernel Modul für virtuelle Netzwerke laden
-        os.system('sudo modprobe vhost_net')
+case $kvm in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/virt-manager ]; then
+            echo ${frot}'>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wird installiert.'${KF}
+            sleep 3
+            ### Installation von KVM
+            sudo apt install -y bridge-utils libvirt-clients libvirt-daemon libvirt-daemon-system python3 python3-pip qemu-kvm qemu-system qemu-utils virtinst
+            sudo apt-get install -y virt-manager
+            ### Benutzer zur Gruppe libvirt hinzufügen
+            # OBSOLET?? read -p "Wie lautet der Benutzername welcher der Gruppe libvirt hinzugefügt werden soll? " kvmuser
+            sudo usermod -aG libvirt ${USER}
+            sudo usermod -aG kvm ${USER}
+            ### Netzwerk verfügbar machen
+            sudo virsh net-start default
+            sudo virsh net-autostart default
+            ### Kernel Modul für virtuelle Netzwerke laden
+            sudo modprobe vhost_net
+
+        fi
+esac
+#if kvm in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/virt-manager'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y bridge-utils libvirt-clients libvirt-daemon libvirt-daemon-system python3 python3-pip qemu-kvm qemu-system qemu-utils virtinst')
+#        os.system('sudo apt-get install -y virt-manager')
+#        kvmuser = ('Wie lautet der Benutzername welcher der Gruppe libvirt hinzugefügt werden soll? ')
+#        os.system('sudo usermod -aG libvirt' + kvmuser)
+#        os.system('sudo usermod -aG kvm' + kvmuser)
+#        # Netzwerk verfügbar machen
+#        os.system('sudo virsh net-start default')
+#        os.system('sudo virsh net-autostart default')
+#        # Kernel Modul für virtuelle Netzwerke laden
+#        os.system('sudo modprobe vhost_net')
 
 
 
 
 # VirtualBox installieren
-if vbox in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/virtualbox'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Virtualisierungsumgebung Virtualbox wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Die Virtualisierungsumgebung Virtualbox wird installiert.' + reset)
-        time.sleep(3)
+case $vbox in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/virtualbox ]; then
+            echo ${frot}'>>>>> Die Virtualisierungsumgebung Virtualbox wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Virtualisierungsumgebung Virtualbox wird installiert.'${KF}
+            sleep 3
 
-        # apt-secure key Installation
-        os.system('wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg')
-        os.system('rm oracle_vbox_2016.asc')
+            ### apt-secure key Installation
+            wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg
+            rm oracle_vbox_2016.asc
 
-        # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
-        os.system('echo "# Debian Virtualbox Repository" > virtualbox.list')
-        os.system('echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian bookworm contrib\n" >> virtualbox.list')
-        os.system('sudo mv virtualbox.list /etc/apt/sources.list.d/')
-        os.system('sudo chown root:root /etc/apt/sources.list.d/virtualbox.list')
+            ### Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
+            echo "# Debian Virtualbox Repository" > virtualbox.list
+            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian bookworm contrib\n" >> virtualbox.list
+            sudo mv virtualbox.list /etc/apt/sources.list.d/
+            sudo chown root:root /etc/apt/sources.list.d/virtualbox.list
+
+            ### Installation der Virtualbox
+            sudo apt update
+            sudo apt install -y dkms gnupg2 virtualbox-7.0
+            sudo usermod -aG vboxusers ${USER}
+            echo ${yellow}'>>>>> Jetzt noch ein Reboot durchführen'${KF}
+            sleep 3
+        fi
+esac
+#if vbox in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/virtualbox'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Virtualisierungsumgebung Virtualbox wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Die Virtualisierungsumgebung Virtualbox wird installiert.' + reset)
+#        time.sleep(3)
+#
+#        # apt-secure key Installation
+#        os.system('wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg')
+#        os.system('rm oracle_vbox_2016.asc')
+#
+#        # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
+#        os.system('echo "# Debian Virtualbox Repository" > virtualbox.list')
+#        os.system('echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian bookworm contrib\n" >> virtualbox.list')
+#        os.system('sudo mv virtualbox.list /etc/apt/sources.list.d/')
+#        os.system('sudo chown root:root /etc/apt/sources.list.d/virtualbox.list')
 
 #         virtzeilen = [
 #         '# Debian Virtualbox Repository\n',
@@ -1478,12 +1533,12 @@ if vbox in ('Y', 'y', ''):
 #         SourcesList.writelines(virtzeilen)
 #         SourcesList.close()
 
-        # Installation der Virtualbox
-        os.system('sudo apt-get update')
-        os.system('sudo apt-get install -y dkms gnupg2 virtualbox-7.0')
-        os.system('sudo usermod -aG vboxusers ' + username)
-        print(yellow + '>>>>> Jetzt noch ein Reboot durchführen' + reset)
-        time.sleep(3)
+#        # Installation der Virtualbox
+#        os.system('sudo apt-get update')
+#        os.system('sudo apt-get install -y dkms gnupg2 virtualbox-7.0')
+#        os.system('sudo usermod -aG vboxusers ' + username)
+#        print(yellow + '>>>>> Jetzt noch ein Reboot durchführen' + reset)
+#        time.sleep(3)
 # # VirtualBox installieren
 # if vbox in ('Y', 'y', ''):
 #     print()
@@ -1526,12 +1581,23 @@ if vbox in ('Y', 'y', ''):
 
 
 # texlive installieren
-if texlive in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/latex'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Das Textsatzsystem latex/texlive wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Das latex/texlive wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo apt-get install -y texlive-full context-nonfree asymptote biber dblatex fontforge fonts-freefont-ttf latexdiff latex-make latex-mk openjade psutils t1utils tex-gyre texmaker texstudio')
+case $texlive in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/latex ]; then
+            echo ${frot}'>>>>> Das Textsatzsystem latex/texlive wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Das Textsatzsystem latex/texlive wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y texlive-full context-nonfree asymptote biber dblatex fontforge fonts-freefont-ttf latexdiff latex-make latex-mk openjade psutils t1utils tex-gyre texmaker texstudio
+        fi
+esac
+#if texlive in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/latex'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Das Textsatzsystem latex/texlive wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Das Textsatzsystem latex/texlive wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo apt-get install -y texlive-full context-nonfree asymptote biber dblatex fontforge fonts-freefont-ttf latexdiff latex-make latex-mk openjade psutils t1utils tex-gyre texmaker texstudio')
