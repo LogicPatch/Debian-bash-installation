@@ -1338,42 +1338,77 @@ esac
 
 
 # Enwicklungs-IDE pycharm installieren
-if pycharm in ('Y', 'y', ''):
-    print()
-    fileName=r'/var/lib/flatpak/app/com.jetbrains.PyCharm-Community'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Community-Version der Python-IDE pycharm wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Die Community-Version der Python-IDE pycharm wird installiert.' + reset)
-        time.sleep(3)
-        os.system('sudo flatpak install -y com.jetbrains.PyCharm-Community')
+case $pycharm in
+    [Yy]*|"")
+        echo ''
+        if [ -d /var/lib/flatpak/app/com.jetbrains.PyCharm-Community ]; then
+            echo ${frot}'>>>>> Die Community-Version der Python-IDE pycharm wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Community-Version der Python-IDE pycharm wird installiert.'${KF}
+            sleep 3
+            sudo flatpak install -y com.jetbrains.PyCharm-Community
+        fi
+esac
+#if pycharm in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/var/lib/flatpak/app/com.jetbrains.PyCharm-Community'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Community-Version der Python-IDE pycharm wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Die Community-Version der Python-IDE pycharm wird installiert.' + reset)
+#        time.sleep(3)
+#        os.system('sudo flatpak install -y com.jetbrains.PyCharm-Community')
 
 
 
 
 # sublime-text installieren
-if sublime in ('Y', 'y', ''):
-    print()
-    fileName=r'/usr/bin/subl'
-    if os.path.exists(fileName):
-        print(rot + '>>>>> Die Entwicklungs-IDE sublime-text wurde bereits installiert, mache nichts.' + reset)
-    else:
-        print(green + '>>>>> Die Entwicklungs-IDE sublime-text wird installiert.' + reset)
-        time.sleep(3)
-        print(yellow + '>>>>> Das Repository /etc/apt/sources.list.d/sublime.list wird hinzugefügt.' + reset)
+case $sublime in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/bin/subl ]; then
+            echo ${frot}'>>>>> Die Entwicklungs-IDE sublime-text wurde bereits installiert, mache nichts.'${KF}
+        else
+            echo ${fgreen}'>>>>> Die Entwicklungs-IDE sublime-text wird installiert.'${KF}
+            sleep 3
+            echo ${yellow}'>>>>> Das Repository /etc/apt/sources.list.d/sublime.list wird hinzugefügt.'${KF}
 
-        # apt-secure key Installation
-        os.system('wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -')
+            # apt-secure key Installation
+            wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 
-        # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
-        os.system('echo "# Debian Sublime-Text Repository" > sublime.list')
-        os.system('echo "deb https://download.sublimetext.com/ apt/stable/" >> sublime.list')
-        os.system('sudo mv sublime.list /etc/apt/sources.list.d/')
-        os.system('sudo chown root:root /etc/apt/sources.list.d/sublime.list')
+            # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
+            echo "# Debian Sublime-Text Repository" > sublime.list
+            echo "deb https://download.sublimetext.com/ apt/stable/" >> sublime.list
+            sudo mv sublime.list /etc/apt/sources.list.d/
+            sudo chown root:root /etc/apt/sources.list.d/sublime.list
 
-        # Sublime-Text installation
-        os.system('sudo apt-get update')
-        os.system('sudo apt-get install -y sublime-text')
+            # Sublime-Text installation
+            sudo apt update
+            sudo apt install -y sublime-text
+        fi
+esac
+#if sublime in ('Y', 'y', ''):
+#    print()
+#    fileName=r'/usr/bin/subl'
+#    if os.path.exists(fileName):
+#        print(rot + '>>>>> Die Entwicklungs-IDE sublime-text wurde bereits installiert, mache nichts.' + reset)
+#    else:
+#        print(green + '>>>>> Die Entwicklungs-IDE sublime-text wird installiert.' + reset)
+#        time.sleep(3)
+#        print(yellow + '>>>>> Das Repository /etc/apt/sources.list.d/sublime.list wird hinzugefügt.' + reset)
+#
+#        # apt-secure key Installation
+#        os.system('wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -')
+#
+#        # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
+#        os.system('echo "# Debian Sublime-Text Repository" > sublime.list')
+#        os.system('echo "deb https://download.sublimetext.com/ apt/stable/" >> sublime.list')
+#        os.system('sudo mv sublime.list /etc/apt/sources.list.d/')
+#        os.system('sudo chown root:root /etc/apt/sources.list.d/sublime.list')
+#
+#        # Sublime-Text installation
+#        os.system('sudo apt-get update')
+#        os.system('sudo apt-get install -y sublime-text')
 
 
 
