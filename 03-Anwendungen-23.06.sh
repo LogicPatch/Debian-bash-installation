@@ -193,15 +193,6 @@ case $firefox in
             sudo flatpak install -y org.mozilla.firefox
         fi
 esac
-#if firefox in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/org.mozilla.firefox'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die neueste Version des Firfox wurde bereits hinzugefügt, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die neueste Version des Webbrowsers Firefox wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo flatpak install -y flathub org.mozilla.firefox')
 
 
 
@@ -218,15 +209,6 @@ case $chromium in
             sudo apt install -y chromium chromium-l10n
         fi
 esac
-#if chromium in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/chromium'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Webbrowser chromium wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Webbrowser chromium wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y chromium chromium-l10n flashplayer-chromium')
 
 
 
@@ -243,15 +225,6 @@ case $brave in
             sudo flatpak install -y com.brave.Browser
         fi
 esac
-#if brave in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/com.brave.Browser'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Webbrowser brave wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Webbrowser brave wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo flatpak install -y com.brave.Browser')
 
 
 
@@ -268,15 +241,6 @@ case $chrome in
             sudo flatpak install -y com.google.Chrome
         fi
 esac
-#if chrome in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/com.google.Chrome'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Webbrowser google-chrome wurde bereits installiert, mache nichts..' + reset)
-#    else:
-#        print(green + '>>>>> Der Webbrowser google-chrome wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo flatpak install -y flathub com.google.Chrome')
 
 
 
@@ -293,15 +257,6 @@ case $thunderbird in
             sudo apt install -y thunderbird thunderbird-l10n-de
         fi
 esac
-#if thunderbird in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/thunderbird'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der E-Mailclient thunderbird wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der E-Mailclient thunderbird wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y thunderbird thunderbird-l10n-de')
 
 
 
@@ -318,15 +273,6 @@ case $geary in
             sudo apt install -y geary
         fi
 esac
-#if geary in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/geary'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der E-Mailclient geary wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der E-Mailclient geary wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y geary')
 
 
 
@@ -343,26 +289,6 @@ case $telegram in
             sudo flatpak install -y org.telegram.desktop
         fi
 esac
-case $telegram in
-    [Yy]*|"")
-        echo ''
-        if [ -f /usr/bin/telegram-desktop ]; then
-            echo ${ifrot}'>>>>> Der Messenger telegram wurde bereits installiert, mache nichts.'${KF}
-        else
-            echo ${ifgrn}'>>>>> Der Messenger telegram wird installiert.'${KF}
-            sleep 3
-            sudo apt install -y telegram-desktop
-        fi
-esac
-#if telegram in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/telegram-desktop'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Messenger telegram wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Messenger telegram wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y telegram-desktop')
 
 
 
@@ -379,15 +305,6 @@ case $signal in
             sudo flatpak install -y org.signal.Signal
         fi
 esac
-#if signal in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/org.signal.Signal'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Messenger signal wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Messenger signal wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo flatpak install -y org.signal.Signal')
 
 
 
@@ -404,15 +321,6 @@ case $viber in
             sudo flatpak install -y com.viber.Viber
         fi
 esac
-#if viber in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/com.viber.Viber'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Messenger viber wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Messenger viber wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo flatpak install -y com.viber.Viber')
 
 
 
@@ -429,15 +337,6 @@ case $discord in
             sudo flatpak install -y com.discordapp.Discord
         fi
 esac
-#if discord in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/com.discordapp.Discord'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Messenger discord wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Messenger discord wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo flatpak install -y com.discordapp.Discord')
 
 
 
@@ -454,15 +353,6 @@ case $zoom in
             sudo flatpak install -y us.zoom.Zoom
         fi
 esac
-#if zoom in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/us.zoom.Zoom'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Messenger Zoom wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Messenger Zoom wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo flatpak install -y us.zoom.Zoom')
 
 
 
@@ -495,15 +385,6 @@ case $mpv in
             sudo apt install -y mpv
         fi
 esac
-#if mpv in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/mpv'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Videoplayer mpv wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Videoplayer mpv wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y mpv')
 
 
 
@@ -520,15 +401,6 @@ case $vlc in
             sudo apt install -y vlc vlc-plugin-base vlc-plugin-access-extra vlc-plugin-qt vlc-plugin-skins2 vlc-plugin-video-output vlc-l10n vlc-data
         fi
 esac
-#if vlc in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/vlc'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Videoplayer vlc wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Videoplayer vlc wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y vlc vlc-plugin-base vlc-plugin-access-extra vlc-plugin-qt vlc-plugin-skins2 vlc-plugin-video-output vlc-l10n vlc-data')
 
 
 
@@ -545,15 +417,6 @@ case $celluloid in
             sudo apt install -y celluloid
         fi
 esac
-#if celluloid in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/celluloid'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Videoplayer celluloid wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Videoplayer celluloid wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y celluloid')
 
 
 
@@ -570,15 +433,6 @@ case $parole in
             sudo apt install -y parole libxfce4util-bin libxfce4ui-utils
         fi
 esac
-#if parole in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/parole'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Videoplayer parole wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Videoplayer parole wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y parole libxfce4util-bin libxfce4ui-utils')
 
 
 
@@ -595,15 +449,6 @@ case $rhythmbox in
             sudo apt install -y rhythmbox rhythmbox-plugins
         fi
 esac
-#if rhythmbox in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/rhythmbox'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Audioplayer rhythmbox wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Audioplayer rhythmbox wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y rhythmbox rhythmbox-plugins')
 
 
 
@@ -636,15 +481,6 @@ case $soundconverter in
             sudo apt install -y soundconverter
         fi
 esac
-#if soundconverter in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/soundconverter'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Das Programm soundconverter wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Das Programm soundconverter wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y soundconverter')
 
 
 
@@ -677,15 +513,6 @@ case $gpick in
             sudo apt install -y gpick
         fi
 esac
-#if gpick in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/gpick'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Das Programm gpick wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Das Programm gpick wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y gpick')
 
 
 
@@ -702,15 +529,6 @@ case $gimp in
             sudo apt install -y gimp gimp-help-de
         fi
 esac
-#if gimp in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/gimp'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Das Bildbearbeitungsprogramm gimp wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Das Bildbearbeitungsprogramm gimp wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y gimp gimp-help-de')
 
 
 
@@ -743,15 +561,6 @@ case $ssrecorder in
             sudo apt install -y simplescreenrecorder
         fi
 esac
-#if ssrecorder in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/simplescreenrecorder'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Desktoprecorder simplescreenrecorder wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Desktoprecorder simplescreenrecorder wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y simplescreenrecorder')
 
 
 
@@ -768,15 +577,6 @@ case $handbrake in
             sudo apt install -y handbrake handbrake-cli handbrake-gtk
         fi
 esac
-#if handbrake in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/handbrake-gtk'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Das Videobearbeitungs-Programm HandBrake wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Das Videobearbeitungs-Programm HandBrake wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y handbrake handbrake-cli handbrake-gtk')
 
 
 
@@ -793,15 +593,6 @@ case $kdenlive in
             sudo apt install -y kdenlive
         fi
 esac
-#if kdenlive in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/kdenlive'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Das Videoschnitt-Programm kdenlive wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Das Videoschnitt-Programm kdenlive wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y kdenlive')
 
 
 
@@ -818,15 +609,6 @@ case $openshot in
             sudo apt install -y openshot-qt
         fi
 esac
-#if openshot in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/openshot-qt'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Das Videoschnitt-Programm openshot wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Das Videoschnitt-Programm openshot wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y openshot-qt')
 
 
 
@@ -857,41 +639,11 @@ case $wine in
                 ##########os.system('sudo chown root:root /etc/apt/sources.list.d/winehq.list')
                 
                 #===== Installation von wine
-                ##########os.system('rm -rf winehq.key*')
                 sudo apt update
                 sudo apt install --install-recommends -y winehq-staging playonlinux fonts-liberation glx-alternative-mesa libc6-dev-i386 libedit-dev libfreetype-dev libfreetype6 libfreetype6-dev libgl1-mesa-dev libgnutls28-dev libgphoto2-dev libice-dev libjson-c-dev liblcms2-dev libldap2-dev libogg-dev libosmesa6 libosmesa6-dev libpcap-dev libpng16-16 libpng-dev libpng++-dev libpng-tools libsm-dev libsndfile1-dev libv4l-dev libvorbis-dev libwayland-client++1 libwayland-client-extra++1 libwayland-dev libx11-dev libxcursor-dev libxext-dev libxi-dev libxinerama-dev libxml2-dev libxrandr-dev libxrender-dev libxslt1-dev libxtst-dev libxxf86vm-dev ncurses-examples ocl-icd-dev ocl-icd-opencl-dev uuid-dev zlib1g zlib1g-dev
             fi
         fi
 esac
-#if wine in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/wine'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Emulatoren wine und PlayOnLinux wurden bereits installiert, mache nichts.' + reset)
-#    else:
-#        print('Zunächst wird überprüft, ob das Winehq Repository nicht bereits hinzugefügt wurde.')
-#        time.sleep(3)
-#        if os.path.isfile('/etc/apt/sources.list.d/winehq.list'):
-#            print('Das winehq-Repository wurde bereits hinzugefügt, mache nichts.')
-#        else:
-#            print(green + '>>>>> Die Emulatoren wine und PlayOnLinux werden installiert.' + reset)
-#            time.sleep(3)
-#
-#            # apt-secure key Installation
-#            os.system('sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key')
-#            ##########os.system('wget -O- https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor | sudo tee /usr/share/keyrings/winehq.gpg')
-#
-#            # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
-#            os.system('sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources')
-#            ##########os.system('echo "# Debian Winehq Repository" > winehq.list')
-#            ##########os.system('echo "deb [signed-by=/usr/share/keyrings/winehq.gpg] http://dl.winehq.org/wine-builds/debian/ bullseye main" >> winehq.list')
-#            ##########os.system('sudo mv winehq.list /etc/apt/sources.list.d/')
-#            ##########os.system('sudo chown root:root /etc/apt/sources.list.d/winehq.list')
-#
-#            # Installation von wine
-#            ##########os.system('rm -rf winehq.key*')
-#            os.system('sudo apt-get update')
-#            os.system('sudo apt-get install --install-recommends -y winehq-staging playonlinux fonts-liberation libc6-dev-i386 libedit-dev libfreetype-dev libfreetype6 libfreetype6-dev libgl1-mesa-dev libgl1-mesa-glx libgnutls28-dev libgphoto2-dev libice-dev libjson-c-dev liblcms2-dev libldap2-dev libogg-dev libosmesa6 libosmesa6-dev libpcap-dev libpng16-16 libpng-dev libpng++-dev libpng-tools libsm-dev libsndfile1-dev libv4l-dev libvorbis-dev libwayland-client++1 libwayland-client-extra++1 libwayland-dev libx11-dev libxcursor-dev libxext-dev libxi-dev libxinerama-dev libxml2-dev libxrandr-dev libxrender-dev libxslt1-dev libxtst-dev libxxf86vm-dev ncurses-examples ocl-icd-dev ocl-icd-opencl-dev uuid-dev zlib1g zlib1g-dev')
 
 
 
@@ -908,16 +660,6 @@ case $steam in
             sudo flatpak install -y com.valvesoftware.Steam
         fi
 esac
-#if steam in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/com.valvesoftware.Steam'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Spieleplattform steam wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die Spieleplattform steam wird installiert.' + reset)
-#        time.sleep(3)
-#        print()
-#        os.system('sudo flatpak install -y flathub com.valvesoftware.Steam')
 
 
 
@@ -934,40 +676,6 @@ case $lutris in
             sudo flatpak install -y net.lutris.Lutris
         fi
 esac
-#if lutris in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/net.lutris.Lutris'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Spieleplattform lutris wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die Spieleplattform lutris wird installiert.' + reset)
-#        time.sleep(3)
-#        print()
-#        os.system('sudo flatpak install -y flathub net.lutris.Lutris')
-# # lutris installieren
-# if lutris in ('Y', 'y', ''):
-#     print()
-#     fileName=r'/usr/games/lutris'
-#     if os.path.exists(fileName):
-#         print(rot + '>>>>> Die Spieleplattform lutris wurde bereits installiert, mache nichts.' + reset)
-#     else:
-#         print(green + '>>>>> Die Spieleplattform lutris wird installiert.' + reset)
-#         time.sleep(3)
-#
-#         # apt-secure key Installation
-#         os.system('wget -q https://download.opensuse.org/repositories/home:/strycore/Debian_11/Release.key')
-#         os.system('sudo apt-key add Release.key')
-#
-#         # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
-#         os.system('echo "# Debian Lutris Repository" > lutris.list')
-#         os.system('echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_11/ ./" >> lutris.list')
-#         os.system('sudo mv lutris.list /etc/apt/sources.list.d/')
-#         os.system('sudo chown root:root /etc/apt/sources.list.d/lutris.list')
-#
-#         # Installation von Lutris
-#         os.system('rm -rf Release.key*')
-#         os.system('sudo apt-get update')
-#         os.system('sudo apt-get install -y lutris vulkan-tools libvulkan1 libvulkan1:i386 nvidia-opencl-icd nvidia-opencl-icd:i386 giflib-tools libgif7 libgif7:i386 mpg123 libopenal-data libopenal1 libopenal1:i386 v4l-utils libxslt1.1 libxslt1.1:i386 libva2 libva2:i386 gstreamer1.0-pulseaudio gstreamer1.0-pulseaudio:i386 gstreamer1.0-gtk3 gstreamer1.0-gtk3:i386 gstreamer1.0-plugins-base-apps')
 
 
 
@@ -984,15 +692,6 @@ case $anydesk in
             sudo flatpak install -y com.anydesk.Anydesk
         fi
 esac
-#if anydesk in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/com.anydesk.Anydesk'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Remotesoftware anydesk wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die Remotesoftware anydesk wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo flatpak install -y com.anydesk.Anydesk')
 
 
 
@@ -1027,17 +726,6 @@ case $teamviewer in
             rm teamviewer*.deb
         fi
 esac
-#if teamviewer in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/teamviewer'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Remotesoftware teamviewer wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die Remotesoftware teamviewer wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('wget -q https://download.teamviewer.com/download/linux/teamviewer_amd64.deb')
-#        os.system('sudo apt-get install -y ./teamviewer*.deb')
-#        os.system('rm teamviewer*.deb')
 
 
 
@@ -1058,19 +746,6 @@ case $ranger in
             sleep 3
         fi
 esac
-#if ranger in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/ranger'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Terminal-Dateimanager ranger wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('apt-cache pkgnames libpoppler | grep -v dev')
-#        LIBPOPPLERVER = input(yellow + 'Welche libpoppler-Version wird aktuell verwendet? (126 von 06.2023?) ' + reset)
-#        os.system('sudo apt-get install -y highlight atool w3m libpoppler' + LIBPOPPLERVER + ' poppler-utils mediainfo ranger xfce4-terminal')
-#        print(flila + 'Für die Konfiguration von Ranger siehe zim-Wiki Dateimanager.ranger' + reset)
-#        time.sleep(3)
 
 
 
@@ -1107,19 +782,6 @@ case $zsh in
             echo ${yellow}'>>>>> Um die Login-Shell auf zsh zu ändern nutzt man als NORMALER Benutzer den Befehl:    $ chsh -s /bin/zsh'${KF}
         fi
 esac
-#if zsh in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/zsh'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Shell zsh wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die Shell zsh wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y zsh zsh-autosuggestions zsh-syntax-highlighting')
-#        os.system('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
-#        # zsh-syntax-highlighting
-#        print(yellow + 'Um syntax-highlighting in zsh zu Aktivieren muss am Ende der .zshrc-Datei folgende Zeile hinzugefügt werden:    source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh    ' + reset)
-#        print(yellow + 'Um die Login-Shell auf zsh zu ändern nutzt man als NORMALER Benutzer den Befehl:    $ chsh -s /bin/zsh    ' + reset)
 
 
 
@@ -1135,8 +797,9 @@ case $ghostty in
             sleep 3
             # Downloadlink über https://github.com/dariogriffo/ghostty-debian/releases 
             wget -c https://github.com/dariogriffo/ghostty-debian/releases/download/1.2.2%2B1/ghostty_1.2.2-1+trixie_amd64.deb
-            sudo apt install -y libgtk-layer-shell-dev
+            sudo apt install -y libgtk-layer-shell-dev libgtk4-layer-shell-dev libgtk4-layer-shell0 gir1.2-gtk4layershell-1.0
             sudo dpkg -i ghostty_1.2.2-1+trixie_amd64.deb
+            sudo rm -rf ghostty_*.deb
         fi
 esac
 
