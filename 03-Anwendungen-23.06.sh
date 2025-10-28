@@ -129,54 +129,6 @@ read -p "Soll die Virtualisierungsumgebung kvm/qemu/virt-manager installiert wer
 read -p "Soll die Virtualisierungsumgebung Virtualbox installiert werden? (Y/n): " vbox
 read -p "Soll das Textsatzsystem latex/texlive installiert werden? (Y/n): " texlive
 echo ""
-#firefox = input(fcyan + 'Soll statt der ESR-Version, die neueste Version des Webbrowsers Firefox installiert werden? (Y/n): ' + reset)
-#chromium = input(fcyan + 'Soll der Webbrowser chromium installiert werden? (Y/n): ' + reset)
-#brave = input(fcyan + 'Soll der Webbrowser brave installiert werden? (Y/n): ' + reset)
-#chrome = input(fcyan + 'Soll der Webbrowser google-chrome installiert werden? (Y/n): ' + reset)
-#thunderbird = input(fcyan + 'Soll der E-Mailclient thunderbird installiert werden? (Y/n): ' + reset)
-#geary = input(fcyan + 'Soll der E-Mailclient geary installiert werden? (Y/n): ' + reset)
-#signal = input(fcyan + 'Soll der Messenger signal installiert werden? (Y/n): ' + reset)
-#telegram = input(fcyan + 'Soll der Messenger telegram installiert werden? (Y/n): ' + reset)
-#viber = input(fcyan + 'Soll der Messenger viber installiert werden? (Y/n): ' + reset)
-#discord = input(fcyan + 'Soll der Messenger discord installiert werden? (Y/n): ' + reset)
-#teams = input(fcyan + 'Soll der Messenger Microsoft Teams installiert werden? (Y/n): ' + reset)
-#zoom = input(fcyan + 'Soll der Messenger Zoom installiert werden? (Y/n): ' + reset)
-#mpv = input(fcyan + 'Soll der Videoplayer mpv installiert werden? (Y/n): ' + reset)
-#totem = input(fcyan + 'Soll der Videoplayer totem installiert werden? (Y/n): ' + reset)
-#vlc = input(fcyan + 'Soll der Videoplayer vlc installiert werden? (Y/n): ' + reset)
-#celluloid = input(fcyan + 'Soll der Videoplayer celluloid installiert werden? (Y/n): ' + reset)
-#parole = input(fcyan + 'Soll der Videoplayer parole installiert werden? (Y/n): ' + reset)
-#rhythmbox = input(fcyan + 'Soll der Audioplayer rhythmbox installiert werden? (Y/n): ' + reset)
-#soundconverter = input(fcyan + 'Soll das Programm soundconverter installiert werden? (Y/n): ' + reset)
-#gpick = input(fcyan + 'Soll das Programm gpick installiert werden? (Y/n): ' + reset)
-#gcolor3 = input(fcyan + 'Soll das Programm gcolor3 installiert werden? (Y/n): ' + reset)
-#gimp = input(fcyan + 'Soll das Bildbearbeitungsprogramm gimp installiert werden? (Y/n): ' + reset)
-#ssrecorder = input(fcyan + 'Soll der Desktoprecorder simplescreenrecorder installiert werden? (Y/n): ' + reset)
-#handbrake = input(fcyan + 'Soll das Videobearbeitungs-Programm HandBrake installiert werden? (Y/n): ' + reset)
-#kdenlive = input(fcyan + 'Soll das Videoschnitt-Programm kdenlive installiert werden? (Y/n): ' + reset)
-#openshot = input(fcyan + 'Soll das Videoschnitt-Programm openshot installiert werden? (Y/n): ' + reset)
-#wine = input(fcyan + 'Sollen die Emulatoren Wine und playonlinux installiert werden? (Y/n) ' + reset)
-#steam = input(fcyan + 'Soll die Spieleplattform steam installiert werden? (Y/n): ' + reset)
-#lutris = input(fcyan + 'Soll die Spieleplattform lutris installiert werden? (Y/n): ' + reset)
-#anydesk = input(fcyan + 'Soll die Remotesoftware AnyDesk installiert werden? (Y/n): ' + reset)
-#teamviewer = input(fcyan + 'Soll die Remotesoftware Teamviewer für den privaten Gebrauch installiert werden? (Y/n) ' + reset)
-#ranger = input(fcyan + 'Soll der Terminal-Dateimanager ranger installiert werden? (Y/n): ' + reset)
-#zsh = input(fcyan + 'Soll die Shell zsh installiert werden? (Y/n): ' + reset)
-#urxvt = input(fcyan + 'Soll das Terminal urxvt installiert werden? (Y/n): ' + reset)
-#tilix = input(fcyan + 'Soll das Terminal tilix installiert werden? (Y/n): ' + reset)
-#conky = input(fcyan + 'Soll der Systemmonitor conky installiert werden? (Y/n): ' + reset)
-#zim = input(fcyan + 'Soll das Desktop-Wiki zim installiert werden? (Y/n): ' + reset)
-#xpad = input(fcyan + 'Soll die Notizzettel-App xpad installiert werden? (Y/n): ' + reset)
-#keepassxc = input(fcyan + 'Soll der Passwortmanager keepassxc installiert werden? (Y/n): ' + reset)
-#gsafe = input(fcyan + 'Soll der Passwortmanager gnome-passwortsafe installiert werden? (Y/n): ' + reset)
-#pycharm = input(fcyan + 'Soll die Community-Version der Python-IDE pycharm installiert werden? (Y/n): ' + reset)
-#sublime = input(fcyan + 'Soll die Entwicklungs-IDE Sublime Text installiert werden? (Y/n): ' + reset)
-#clementine = input(fcyan + 'Soll der Musik-Player clementine installiert werden? (Y/n): ' + reset)
-#weechat = input(fcyan + 'Soll der IRC-Chatclient weechat installiert werden? (Y/n): ' + reset)
-#kvm = input(fcyan + 'Soll die Virtualisierungsumgebung kvm/qemu/virt-manager installiert werden? (Y/n): ' + reset)
-#vbox = input(fcyan + 'Soll die Virtualisierungsumgebung Virtualbox installiert werden? (Y/n): ' + reset)
-#texlive = input(fcyan + 'Soll das Textsatzsystem latex/texlive installiert werden? (Y/n): ' + reset)
-#print()
 
 
 
@@ -940,12 +892,12 @@ esac
 case $pycharm in
     [Yy]*|"")
         echo ''
-        if [ -d /var/lib/flatpak/app/com.jetbrains.PyCharm-Community ]; then
+        if [ -d /var/lib/flatpak/app/com.jetbrains.PyCharm-Professional ]; then
             echo ${ifrot}'>>>>> Die Community-Version der Python-IDE pycharm wurde bereits installiert, mache nichts.'${KF}
         else
             echo ${ifgrn}'>>>>> Die Community-Version der Python-IDE pycharm wird installiert.'${KF}
             sleep 3
-            sudo flatpak install -y com.jetbrains.PyCharm-Community
+            sudo flatpak install -y com.jetbrains.PyCharm-Professional
         fi
 esac
 
@@ -999,7 +951,7 @@ esac
 
 
 
-#### !!!!!! PRÜFEN
+
 # kvm/qemu/virt-manager installieren
 case $kvm in
     [Yy]*|"")
@@ -1024,28 +976,10 @@ case $kvm in
 
         fi
 esac
-#if kvm in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/virt-manager'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y bridge-utils libvirt-clients libvirt-daemon libvirt-daemon-system python3 python3-pip qemu-kvm qemu-system qemu-utils virtinst')
-#        os.system('sudo apt-get install -y virt-manager')
-#        kvmuser = ('Wie lautet der Benutzername welcher der Gruppe libvirt hinzugefügt werden soll? ')
-#        os.system('sudo usermod -aG libvirt' + kvmuser)
-#        os.system('sudo usermod -aG kvm' + kvmuser)
-#        # Netzwerk verfügbar machen
-#        os.system('sudo virsh net-start default')
-#        os.system('sudo virsh net-autostart default')
-#        # Kernel Modul für virtuelle Netzwerke laden
-#        os.system('sudo modprobe vhost_net')
 
 
 
-#### !!!!!! PRÜFEN
+
 # VirtualBox installieren
 case $vbox in
     [Yy]*|"")
@@ -1074,76 +1008,6 @@ case $vbox in
             sleep 3
         fi
 esac
-#if vbox in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/virtualbox'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Virtualisierungsumgebung Virtualbox wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die Virtualisierungsumgebung Virtualbox wird installiert.' + reset)
-#        time.sleep(3)
-#
-#        # apt-secure key Installation
-#        os.system('wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg')
-#        os.system('rm oracle_vbox_2016.asc')
-#
-#        # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
-#        os.system('echo "# Debian Virtualbox Repository" > virtualbox.list')
-#        os.system('echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian bookworm contrib\n" >> virtualbox.list')
-#        os.system('sudo mv virtualbox.list /etc/apt/sources.list.d/')
-#        os.system('sudo chown root:root /etc/apt/sources.list.d/virtualbox.list')
-
-#         virtzeilen = [
-#         '# Debian Virtualbox Repository\n',
-#         'deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian bookworm contrib\n'
-#         ]
-#         SourcesList = open('/etc/apt/sources.list.d/virtualbox.list', 'w')
-#         SourcesList.writelines(virtzeilen)
-#         SourcesList.close()
-
-#        # Installation der Virtualbox
-#        os.system('sudo apt-get update')
-#        os.system('sudo apt-get install -y dkms gnupg2 virtualbox-7.0')
-#        os.system('sudo usermod -aG vboxusers ' + username)
-#        print(yellow + '>>>>> Jetzt noch ein Reboot durchführen' + reset)
-#        time.sleep(3)
-# # VirtualBox installieren
-# if vbox in ('Y', 'y', ''):
-#     print()
-#     fileName=r'/usr/bin/virtualbox'
-#     if os.path.exists(fileName):
-#         print(rot + '>>>>> Die Virtualisierungsumgebung Virtualbox wurde bereits installiert, mache nichts.' + reset)
-#     else:
-#         print(green + '>>>>> Die Virtualisierungsumgebung Virtualbox wird installiert.' + reset)
-#         time.sleep(3)
-
-#         # apt-secure key Installation
-#         os.system('wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -')
-#         os.system('wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -')
-#         # os.system('rm oracle_vbox_2016')
-
-#         # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
-#         os.system('echo "# Debian Virtualbox Repository" > virtualbox.list')
-#         os.system('echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bullseye contrib" >> virtualbox.list')
-#         os.system('sudo mv virtualbox.list /etc/apt/sources.list.d/')
-#         os.system('sudo chown root:root /etc/apt/sources.list.d/virtualbox.list')
-#         #####os.system('sudo echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bullseye contrib" >> /etc/apt/sources.list.d/virtualbox.list')
-
-#         #virtzeilen = [
-#         #    '# Debian Virtualbox Repository (Da kein Testing Repo vorhanden ist, wird das aktuelle Stable verwendet)\n',
-#         #    'deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bullseye contrib\n'
-#         #]
-#         #SourcesList = open('/etc/apt/sources.list.d/virtualbox.list', 'w')
-#         #SourcesList.writelines(virtzeilen)
-#         #SourcesList.close()
-
-#         # Installation der Virtualbox
-#         os.system('sudo apt-get update')
-#         os.system('sudo apt-get install -y dkms gnupg2 virtualbox-6.1')
-#         uvbox = input(yellow + '>>>>> Welcher Benutzername soll der Gruppe vboxusers hinzugefuegt werden? ' + reset)
-#         os.system('sudo usermod -aG vboxusers ' + uvbox)
-#         print(yellow + '>>>>> Jetzt noch ein Reboot durchfuehren' + reset)
-#         time.sleep(3)
 
 
 
