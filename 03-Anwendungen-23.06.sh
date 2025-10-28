@@ -742,7 +742,7 @@ case $ranger in
             apt-cache pkgnames libpoppler | grep -v dev
             read -p "Welche libpoppler-Version wird aktuell verwendet? (147 von 10.2025?) " LIBPOPPLERVER
             sudo apt install -y highlight atool w3m libpoppler${LIBPOPPLERVER} poppler-utils mediainfo ranger xfce4-terminal
-            echo ${yellow}'Für die Konfiguration von Ranger siehe zim-Wiki Dateimanager.ranger'${KF}
+            echo ${ifyellow}'Für die Konfiguration von Ranger siehe zim-Wiki Dateimanager.ranger'${KF}
             sleep 3
         fi
 esac
@@ -778,8 +778,8 @@ case $zsh in
             sudo apt install -y zsh zsh-autosuggestions zsh-syntax-highlighting
             sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
             # zsh-syntax-highlighting
-            echo ${yellow}'>>>>> Um syntax-highlighting in zsh zu Aktivieren muss am Ende der .zshrc-Datei folgende Zeile hinzugefügt werden:    source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'${KF}
-            echo ${yellow}'>>>>> Um die Login-Shell auf zsh zu ändern nutzt man als NORMALER Benutzer den Befehl:    $ chsh -s /bin/zsh'${KF}
+            echo ${ifyellow}'>>>>> Um syntax-highlighting in zsh zu Aktivieren muss am Ende der .zshrc-Datei folgende Zeile hinzugefügt werden:    source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'${KF}
+            echo ${ifyellow}'>>>>> Um die Login-Shell auf zsh zu ändern nutzt man als NORMALER Benutzer den Befehl:    $ chsh -s /bin/zsh'${KF}
         fi
 esac
 
@@ -797,7 +797,7 @@ case $ghostty in
             sleep 3
             # Downloadlink über https://github.com/dariogriffo/ghostty-debian/releases 
             wget -c https://github.com/dariogriffo/ghostty-debian/releases/download/1.2.2%2B1/ghostty_1.2.2-1+trixie_amd64.deb
-            sudo apt install -y libgtk-layer-shell-dev libgtk4-layer-shell-dev libgtk4-layer-shell0 gir1.2-gtk4layershell-1.0
+            sudo apt install -y libgtk-layer-shell-dev libgtk4-layer-shell-dev libgtk4-layer-shell0 gir1.2-gtk4layershell-1.0 libxml2-utils
             sudo dpkg -i ghostty_1.2.2-1+trixie_amd64.deb
             sudo rm -rf ghostty_*.deb
         fi
@@ -815,7 +815,7 @@ case $kitty in
         else
             echo ${ifgrn}'>>>>> Das Terminal kitty wird installiert.'${KF}
             sleep 3
-            sudo apt install -y kitty
+            sudo apt install -y kitty kitty-shell-integration kitty-terminfo libxml2-utils
         fi
 esac
 
@@ -834,15 +834,6 @@ case $tilix in
             sudo apt install -y tilix
         fi
 esac
-#if tilix in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/tilix'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Das Terminal tilix wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Das Terminal tilix wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y tilix')
 
 
 
@@ -857,21 +848,10 @@ case $urxvt in
             echo ${ifgrn}'>>>>> Das Terminal urxvt wird installiert.'${KF}
             sleep 3
             sudo apt install -y rxvt-unicode xclip
-            echo ${yellow}'>>>>> Zum konfigurieren benötigt man eine ~/.Xresources oder ~/.Xdefaults  Datei.\n      Nach ändern dieser Datei muss man ein $ xrdb -merge ~/.Xresources ausführen:'${KF}
-            time.sleep(3)
+            echo ${ifyellow}'>>>>> Zum konfigurieren benötigt man eine ~/.Xresources oder ~/.Xdefaults  Datei.\n      Nach ändern dieser Datei muss man ein $ xrdb -merge ~/.Xresources ausführen:'${KF}
+            sleep 3
         fi
 esac
-#if urxvt in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/urxvt'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Das Terminal urxvt wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Das Terminal urxvt wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y rxvt-unicode xclip')
-#        print(yellow + '>>>>> Zum konfigurieren benötigt man eine ~/.Xresources oder ~/.Xdefaults  Datei.\n      Nach ändern dieser Datei muss man ein $ xrdb -merge ~/.Xresources ausführen:' + reset)
-#        time.sleep(3)
 
 
 
@@ -885,18 +865,9 @@ case $conky in
         else
             echo ${ifgrn}'>>>>> Der Systemmonitor conky wird installiert.'${KF}
             sleep 3
-            sudo apt install -y --allow-unauthenticated conky conky-all lm-sensors
+            sudo apt install -y --allow-unauthenticated conky-all lm-sensors
         fi
 esac
-#if conky in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/conky'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Systemmonitor conky wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Systemmonitor conky wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y --allow-unauthenticated conky conky-all lm-sensors')
 
 
 
@@ -913,15 +884,6 @@ case $zim in
             sudo apt install -y zim
         fi
 esac
-#if zim in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/zim'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Das Desktop-Wiki zim wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Das Desktop-Wiki zim wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y zim')
 
 
 
@@ -938,15 +900,6 @@ case $xpad in
             sudo apt install -y xpad
         fi
 esac
-#if xpad in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/xpad'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Notizzettel-App xpad wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die Notizzettel-App xpad wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y xpad')
 
 
 
@@ -963,15 +916,6 @@ case $keepassxc in
             sudo apt install -y keepassxc
         fi
 esac
-#if keepassxc in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/keepassxc'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Passwortmanager keepassxc wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Passwortmanager keepassxc wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y keepassxc')
 
 
 
@@ -985,18 +929,9 @@ case $gsafe in
         else
             echo ${ifgrn}'>>>>> Der Passwortmanager gnome-passwordsafe wird installiert.'${KF}
             sleep 3
-            sudo apt install -y gnome-passwordsafe
+            sudo apt install -y secrets     # gnome-passwordsafe
         fi
 esac
-#if gsafe in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/secrets'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der Passwortmanager gnome-passwordsafe wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der Passwortmanager gnome-passwordsafe wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y gnome-passwordsafe')
 
 
 
@@ -1013,15 +948,6 @@ case $pycharm in
             sudo flatpak install -y com.jetbrains.PyCharm-Community
         fi
 esac
-#if pycharm in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/var/lib/flatpak/app/com.jetbrains.PyCharm-Community'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Community-Version der Python-IDE pycharm wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die Community-Version der Python-IDE pycharm wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo flatpak install -y com.jetbrains.PyCharm-Community')
 
 
 
@@ -1035,44 +961,25 @@ case $sublime in
         else
             echo ${ifgrn}'>>>>> Die Entwicklungs-IDE sublime-text wird installiert.'${KF}
             sleep 3
-            echo ${yellow}'>>>>> Das Repository /etc/apt/sources.list.d/sublime.list wird hinzugefügt.'${KF}
+            echo ${ifyellow}'>>>>> Das Repository /etc/apt/sources.list.d/sublime.list wird hinzugefügt.'${KF}
 
-            # apt-secure key Installation
-            wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+            # apt-secure key Installation 
+            wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/apt/keyrings/sublimehq-pub.asc > /dev/null
+            #wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+            #wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 
             # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
-            echo "# Debian Sublime-Text Repository" > sublime.list
-            echo "deb https://download.sublimetext.com/ apt/stable/" >> sublime.list
-            sudo mv sublime.list /etc/apt/sources.list.d/
-            sudo chown root:root /etc/apt/sources.list.d/sublime.list
+            echo 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
+            #echo "# Debian Sublime-Text Repository" > sublime.list
+            #echo "deb https://download.sublimetext.com/ apt/stable/" >> sublime.list
+            #sudo mv sublime.list /etc/apt/sources.list.d/
+            #sudo chown root:root /etc/apt/sources.list.d/sublime.list
 
             # Sublime-Text installation
             sudo apt update
             sudo apt install -y sublime-text
         fi
 esac
-#if sublime in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/subl'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Die Entwicklungs-IDE sublime-text wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Die Entwicklungs-IDE sublime-text wird installiert.' + reset)
-#        time.sleep(3)
-#        print(yellow + '>>>>> Das Repository /etc/apt/sources.list.d/sublime.list wird hinzugefügt.' + reset)
-#
-#        # apt-secure key Installation
-#        os.system('wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -')
-#
-#        # Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
-#        os.system('echo "# Debian Sublime-Text Repository" > sublime.list')
-#        os.system('echo "deb https://download.sublimetext.com/ apt/stable/" >> sublime.list')
-#        os.system('sudo mv sublime.list /etc/apt/sources.list.d/')
-#        os.system('sudo chown root:root /etc/apt/sources.list.d/sublime.list')
-#
-#        # Sublime-Text installation
-#        os.system('sudo apt-get update')
-#        os.system('sudo apt-get install -y sublime-text')
 
 
 
@@ -1089,19 +996,10 @@ case $weechat in
             sudo apt install -y weechat weechat-scripts
         fi
 esac
-#if weechat in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/weechat'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Der IRC-Client weechat wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Der IRC-Client weechat wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y weechat weechat-scripts')
 
 
 
-
+#### !!!!!! PRÜFEN
 # kvm/qemu/virt-manager installieren
 case $kvm in
     [Yy]*|"")
@@ -1147,7 +1045,7 @@ esac
 
 
 
-
+#### !!!!!! PRÜFEN
 # VirtualBox installieren
 case $vbox in
     [Yy]*|"")
@@ -1164,15 +1062,15 @@ case $vbox in
 
             ### Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
             echo "# Debian Virtualbox Repository" > virtualbox.list
-            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian bookworm contrib\n" >> virtualbox.list
+            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian trixie contrib\n" >> virtualbox.list
             sudo mv virtualbox.list /etc/apt/sources.list.d/
             sudo chown root:root /etc/apt/sources.list.d/virtualbox.list
 
             ### Installation der Virtualbox
             sudo apt update
-            sudo apt install -y dkms gnupg2 virtualbox-7.0
+            sudo apt install -y dkms gnupg2 libsdl-ttf2.0-0 virtualbox-7.2
             sudo usermod -aG vboxusers ${USER}
-            echo ${yellow}'>>>>> Jetzt noch ein Reboot durchführen'${KF}
+            echo ${ifyellow}'>>>>> Jetzt noch ein Reboot durchführen'${KF}
             sleep 3
         fi
 esac
@@ -1262,12 +1160,3 @@ case $texlive in
             sudo apt install -y texlive-full context-nonfree asymptote biber dblatex fontforge fonts-freefont-ttf latexdiff latex-make latex-mk openjade psutils t1utils tex-gyre texmaker texstudio
         fi
 esac
-#if texlive in ('Y', 'y', ''):
-#    print()
-#    fileName=r'/usr/bin/latex'
-#    if os.path.exists(fileName):
-#        print(rot + '>>>>> Das Textsatzsystem latex/texlive wurde bereits installiert, mache nichts.' + reset)
-#    else:
-#        print(green + '>>>>> Das Textsatzsystem latex/texlive wird installiert.' + reset)
-#        time.sleep(3)
-#        os.system('sudo apt-get install -y texlive-full context-nonfree asymptote biber dblatex fontforge fonts-freefont-ttf latexdiff latex-make latex-mk openjade psutils t1utils tex-gyre texmaker texstudio')
