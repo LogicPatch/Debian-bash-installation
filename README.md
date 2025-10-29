@@ -49,4 +49,53 @@ The individual scripts serve the following functions
 * By query: &emsp; Choosing a Screenshot-tool (flameshot, spectacle, scrot, xfce4-screenshooter or perhaps none)
 
 ### 03-Anwendungen.sh &emsp; (english: 03-Applications.sh)
-* 
+* By query: &emsp; Webbrowser firefox &emsp; &emsp; (newest Version with Flatpak)
+* By query: &emsp; Webbrowser chromium
+* By query: &emsp; Webbrowser brave &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; Webbrowser google-chrome &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; E-Mailclient thunderbird
+* By query: &emsp; E-Mailclient geary
+* By query: &emsp; Messenger telegram
+* By query: &emsp; Messenger signal &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; Messenger viber &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; Messenger & VoIP-App discord
+* By query: &emsp; Video-Conferencing-App Zoom &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; Video-Player showtime
+* By query: &emsp; Video-Player vlc
+* By query: &emsp; Video-Player celluloid
+* By query: &emsp; Video-Player parole
+* By query: &emsp; Audio-Player rhythmbox
+* By query: &emsp; Audio-Player musicpod
+* By query: &emsp; Audio-file-Converter soundconverter
+* By query: &emsp; Color-Picker eyedropper
+* By query: &emsp; Color-Picker gpick
+* By query: &emsp; Image-Editor gimp
+* By query: &emsp; Image-Editor krita
+* By query: &emsp; Screen-Recorder simplescreenrecorder
+* By query: &emsp; Video-Editor handbrake
+* By query: &emsp; Video-Editor kdenlive
+* By query: &emsp; Video-Editor openshot
+* By query: &emsp; Emulator wine
+* By query: &emsp; Gaming-Platform steam &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; Gaming-Platform lutris &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; Remote-Desktop-Software anydesk &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; Remote-Desktop-Software rustdesk &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; Remote-Desktop-Software teamviewer &emsp; &emsp; (By Webseite)
+* By query: &emsp; Teminal-File-Manager ranger
+* By query: &emsp; Terminal-File-Manager yazi &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; Shell zsh
+* By query: &emsp; Shell-Terminal ghostty
+* By query: &emsp; Shell-Terminal kitty
+* By query: &emsp; Shell-Terminal tilix
+* By query: &emsp; Shell-Terminal urxvt
+* By query: &emsp; Systemmonitor conky
+* By query: &emsp; Desktop-Wiki zim
+* By query: &emsp; Notes xpad
+* By query: &emsp; Password-Manager keepassxc
+* By query: &emsp; Password-Manager gnome-passwordsafe
+* By query: &emsp; IDE pycharm &emsp; &emsp; (Flatpak-Version)
+* By query: &emsp; IDE sublime-text &emsp; &emsp; (By external Repository)
+* By query: &emsp; Chat-Client weechat
+* By query: &emsp; Virtualization-Platform KVM
+* By query: &emsp; Virtualization-Platform virtualbox
+* By query: &emsp; Typesetting-System texlive/latex
