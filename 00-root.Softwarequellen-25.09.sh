@@ -34,7 +34,7 @@ read -p "Soll über Flatpak Pakete installiert werden können (Y/n)?: " flatpak
 
 ##### Den Benutzer mit Admin-Rechten der Datei  /etc/sudoers  hinzufügen
 echo ''
-echo ${ifyellow} '>>>>> Der Benutzer wird der Datei /etc/sudoers mit Admin-Rechten hinzugefügt.'${KF}
+echo -e ${ifyellow} '>>>>> Der Benutzer wird der Datei /etc/sudoers mit Admin-Rechten hinzugefügt.'${KF}
 sleep 3
 echo $(logname) 'ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
@@ -43,7 +43,7 @@ echo $(logname) 'ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
 ##### Datei /etc/apt/sources.list anpassen
 echo ""
-echo ${ifyellow}'>>>>> Die Datei /etc/apt/sources.list wird angepasst'${KF}
+echo -e ${ifyellow}'>>>>> Die Datei /etc/apt/sources.list wird angepasst'${KF}
 sleep 3
 echo "# Official Sources" > /etc/apt/sources.list
 echo "deb http://deb.debian.org/debian/ trixie main non-free-firmware contrib non-free" >> /etc/apt/sources.list
@@ -66,10 +66,10 @@ case $debmul in
     [Yy]*|"")
         echo ''
         if [ -f /etc/apt/sources.list.d/multimedia.listzz ] ; then
-            echo ${ifgrn}'>>>>> Das Debian Multimedia Repository wurde bereits hinzugefügt, mache nichts.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Debian Multimedia Repository wurde bereits hinzugefügt, mache nichts.'${KF}
             sleep 3
         else
-            echo ${ifyellow}'>>>>> Das Debian Multimedia Repository wird hinzugefügt.'${KF}
+            echo -e ${ifyellow}'>>>>> Das Debian Multimedia Repository wird hinzugefügt.'${KF}
             sleep 3
 	        ##### Keyring von deb-multimedia herunterladen und installieren
 	        wget https://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2024.9.1_all.deb
@@ -89,16 +89,16 @@ esac
 
 ##### Multilib installieren
 echo ''
-echo ${ifyellow} '>>>>> Um Mulitilib zu ermöglichen, werden zunächst die Unterstützten Architekturen angezeigt.'${KF}
+echo -e ${ifyellow} '>>>>> Um Mulitilib zu ermöglichen, werden zunächst die Unterstützten Architekturen angezeigt.'${KF}
 dpkg --print-architecture ; dpkg --print-foreign-architectures
-echo ${ifgrn} '***** Noch sollte hier nur amd64 angezeigt werden'${KF}
+echo -e ${ifgrn} '***** Noch sollte hier nur amd64 angezeigt werden'${KF}
 sleep 3
 dpkg --add-architecture i386
 apt update
 apt install -y libc6-i386 sudo
 echo ''
 dpkg --print-architecture ; dpkg --print-foreign-architectures
-echo ${ifgrn} '***** Jetzt sollte zusätzlich noch i386 angezeigt werden'${KF}
+echo -e ${ifgrn} '***** Jetzt sollte zusätzlich noch i386 angezeigt werden'${KF}
 sleep 3
 
 
@@ -109,11 +109,11 @@ sleep 3
 case $flatpak in 
     [Yy]*|"")
         echo ''
-        echo ${ifyellow} '>>>>> Es wird alles Bereit gemacht um über Flatpak Pakete installieren zu können.'${KF}
+        echo -e ${ifyellow} '>>>>> Es wird alles Bereit gemacht um über Flatpak Pakete installieren zu können.'${KF}
         sleep 3
         apt install -y flatpak
         flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-        echo ${ifgrn} '***** Es ist sinnvoll jetzt ein reboot auszuführen. Dann können Flatpak-Pakete installiert werden.'${KF}
+        echo -e ${ifgrn} '***** Es ist sinnvoll jetzt ein reboot auszuführen. Dann können Flatpak-Pakete installiert werden.'${KF}
         sleep 3
 esac
 #fi
@@ -123,7 +123,7 @@ esac
 
 ##### Update des Betriebssystems
 echo ''
-echo ${ifyellow} '>>>>> Es folgt noch ein Update des Systems'${KF}
+echo -e ${ifyellow} '>>>>> Es folgt noch ein Update des Systems'${KF}
 sleep 3
 apt update
 apt upgrade -y --allow-unauthenticated

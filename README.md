@@ -12,9 +12,11 @@ The individual scripts contain several of the most important tools and ask you w
 If you always install the same tools on multiple PCs, you can ensure that all PCs have been configured and installed identically.
 
 ## How to use  
-After cloning the Git repo, the scripts are in the directory.
-The scripts themselves can easily be executed using  
-```./<respective.script.sh>```  
+After installing the package `git` and cloning the Git repo with  
+`git clone https://github.com/LogicPatch/Debian-bash-installation`  
+the scripts are in the directory. The scripts themselves can easily be executed using  
+`cd Debian.bash.installation/`  
+`./<DESIRED_SCIPT>.sh`  
 The individual scripts serve the following functions
 
 ### 00-root.Softwarequellen.sh &emsp; (00-root.Softwaresources.sh) 
