@@ -44,7 +44,7 @@ case $emacs in
         read -p "Soll zusätzlich zu emacs noch doom-emacs installiert werden? (Y/n): " doom
 esac
 echo ''
-echo "Für die Installation es Grafiktreibers hier eine Auswahl:\n 1 NVidia      - Für NVidia muss noch getestet werden, welche Pakete notwendig sind.\n 2 AMD         - Grafikkarten und APUs von AMD\n 3 Intel       - APUs von Intel\n 4 VirtualBox  - Die GuestAdditions für den Einsatz in der VirtualBox\n 5 Gnome-Boxes - Für einen Einsatz als Gast in Gnome-Boxes\n 6 Keine Treiber für die Grafik installieren\n"
+echo -e "Für die Installation es Grafiktreibers hier eine Auswahl:\n 1 NVidia      - Für NVidia muss noch getestet werden, welche Pakete notwendig sind.\n 2 AMD         - Grafikkarten und APUs von AMD\n 3 Intel       - APUs von Intel\n 4 VirtualBox  - Die GuestAdditions für den Einsatz in der VirtualBox\n 5 Gnome-Boxes - Für einen Einsatz als Gast in Gnome-Boxes\n 6 Keine Treiber für die Grafik installieren\n"
 read -p "Welcher Grafiktreiber soll installiert werden?  1, 2, 3, 4, 5 oder 6? " grafik
 echo ''
 
@@ -59,7 +59,7 @@ echo ''
 case $basic in
     [Yy]*|"")
         echo ''
-        echo ${ifgrn} '>>>>> Grundlegende Programme werden installiert.'${KF}
+        echo -e ${ifgrn} '>>>>> Grundlegende Programme werden installiert.'${KF}
         sleep 3
         sudo apt install -y apt-transport-https git gparted htop hunspell hunspell-de-de linux-headers-$(uname -r) module-assistant ncdu nmap openssh-server python3-pip wget xinput xterm zvbi
         # Starten von daemons
@@ -74,7 +74,7 @@ esac
 case $codecs in
     [Yy]*|"")
         echo ''
-        echo ${ifgrn} '>>>>> Codecs für die einzelnen Spiel-, Bild- und Videoformate werden installiert.'${KF}
+        echo -e ${ifgrn} '>>>>> Codecs für die einzelnen Spiel-, Bild- und Videoformate werden installiert.'${KF}
         sleep 3
         sudo apt search videostab
         read -p "Welche libopencv-videostab-Version wird aktuell verwendet? (410 von 09.08.2025?)?  " VIDEOSTAB
@@ -88,7 +88,7 @@ esac
 case $cups in
     [Yy]*|"")
         echo ''
-        echo ${ifgrn} '>>>>> Basistools fuer die Drucker- bzw. Scannernutzung werden installiert.'${KF}
+        echo -e ${ifgrn} '>>>>> Basistools fuer die Drucker- bzw. Scannernutzung werden installiert.'${KF}
         sleep 3
         sudo apt install -y hplip foomatic-db foomatic-db-engine openprinting-ppds printer-driver-gutenprint printer-driver-hpijs printer-driver-all sane-airscan system-config-printer xsane
 esac
@@ -100,7 +100,7 @@ esac
 case $tlp in
     [Yy]*|"")
         echo ''
-        echo ${ifgrn} '>>>>> Notebook-Tools werden installiert.'${KF}
+        echo -e ${ifgrn} '>>>>> Notebook-Tools werden installiert.'${KF}
         sleep 3
         sudo apt install -y acpi acpid acpi-support preload tlp zram-tools
 esac
@@ -113,9 +113,9 @@ case $vim in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/vim ] && [ -f /usr/share/vim/vimfiles/spell/de.utf-8.spl ]; then
-            echo ${ifrot}'>>>>> Der Editor vim wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Editor vim wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Editor vim wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Editor vim wird installiert.'${KF}
             sleep 3
             sudo apt install -y neovim vim vim-python-jedi vim-syntastic vim-syntax-gtk
         fi
@@ -129,9 +129,9 @@ case $visualstudio in
     [Yy]*|"")
         echo ''
         if [ -f /var/lib/flatpak/app/com.visualstudio.code ]; then
-            echo ${ifrot}'>>>>> Visual Studio Code wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Visual Studio Code wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Visual Studio Code wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Visual Studio Code wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y com.visualstudio.code
         fi
@@ -145,9 +145,9 @@ case $emacs in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/emacs ]; then
-            echo ${ifrot}'>>>>> Der Editor emacs wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Editor emacs wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Editor emacs wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Editor emacs wird installiert.'${KF}
             sleep 3
             sudo apt install -y emacs emacs-el emacs-goodies-el elpa-python-environment
         fi
@@ -155,15 +155,15 @@ case $emacs in
             case $doom in
                 [Yy]*|"")
                     echo ''
-                    echo ${ifgrn}'***** doom für emacs wird installiert.'${KF}
+                    echo -e ${ifgrn}'***** doom für emacs wird installiert.'${KF}
                     if [ ! -f .emacs.d ]; then
                         #os.system('rm -rf /home/' + doomemacs + '/.emacs.d/')
                         cd && rm -rf .emacs.d/
                         cd && git clone --depth 1 https://github.com/hlissner/doom-emacs .emacs.d
-                        echo ${ifgrn}'***** Alle Fragen fuer die Installation von doom mit Ja bestätigen:'${KF}
+                        echo -e ${ifgrn}'***** Alle Fragen fuer die Installation von doom mit Ja bestätigen:'${KF}
                         ~/.emacs.d/bin/doom install
-                        echo ${ifyellow}'***** Alle Fragen fuer die Installation von doom mit Ja bestätigen:'${KF}
-                        echo ${ifyellow}'***** Der Pfad zu .emacs/bin soll noch den Pfadvariablen hinzugefügt werden.\n Dies geschieht durch Eintragen folgender Zeile entweder in ~/.bashrc oder  ~/.zshrc:\n    export PATH=$HOME/.emacs.d/bin:$PATH'${KF}
+                        echo -e ${ifyellow}'***** Alle Fragen fuer die Installation von doom mit Ja bestätigen:'${KF}
+                        echo -e ${ifyellow}'***** Der Pfad zu .emacs/bin soll noch den Pfadvariablen hinzugefügt werden.\n Dies geschieht durch Eintragen folgender Zeile entweder in ~/.bashrc oder  ~/.zshrc:\n    export PATH=$HOME/.emacs.d/bin:$PATH'${KF}
                     fi
             esac
 esac
@@ -177,9 +177,9 @@ echo ''
 case $grafik in
     1*)
         echo ">>>>> NVIDIA - Treiber für die Grafikkarte werden installiert."
-        echo ${ifgrn}'***** Für NVidia muss noch getestet werden, welche Pakete notwendig sind.'${KF}
+        echo -e ${ifgrn}'***** Für NVidia muss noch getestet werden, welche Pakete notwendig sind.'${KF}
         sleep 3
-        echo ${ifgrn}'***** Hier die aktuell eingebaute Grafikkarte.'${KF}
+        echo -e ${ifgrn}'***** Hier die aktuell eingebaute Grafikkarte.'${KF}
         lspci -nn | egrep -i "3d|display|vga"
         sleep 3
         echo ''
@@ -189,9 +189,9 @@ case $grafik in
 ;;
 ##### AMD
     2*)
-        echo ${ifgrn}'>>>>> AMD - Treiber für die Grafikkarte/APUs werden installiert.'${KF}
+        echo -e ${ifgrn}'>>>>> AMD - Treiber für die Grafikkarte/APUs werden installiert.'${KF}
         sleep 3
-        echo ${ifgrn}'***** Hier die aktuell eingebaute Grafikkarte.'${KF}
+        echo -e ${ifgrn}'***** Hier die aktuell eingebaute Grafikkarte.'${KF}
         lspci -nn | egrep -i "3d|display|vga"
         sleep 3
         echo ''
@@ -200,21 +200,21 @@ case $grafik in
 ;;
 ##### INTEL
     3*)
-        echo ${ifgrn}'>>>>> Intel - Treiber für APUs von Intel werden installiert.'${KF}
+        echo -e ${ifgrn}'>>>>> Intel - Treiber für APUs von Intel werden installiert.'${KF}
         sleep 3
         sudo apt install -y mesa-opencl-icd xserver-xorg-video-intel
 ;;
 ##### VIRTUALBOX
     4*)
-        echo ${ifgrn}'>>>>> VirtualBox - GuestAdditions für den Einsatz in der VirtualBox werden installiert.'${KF}
+        echo -e ${ifgrn}'>>>>> VirtualBox - GuestAdditions für den Einsatz in der VirtualBox werden installiert.'${KF}
         sleep 3
         sudo apt-get install -y dkms virtualbox-guest-additions-iso
-        echo ${ifyellow}'>>>>> Nach dem Einlegen der Gasterweiterungen muss noch ein    cd /media/cdrom/   und     sudo sh VBoxLinuxAdditions.run     ausgeführt werden.'${KF}
+        echo -e ${ifyellow}'>>>>> Nach dem Einlegen der Gasterweiterungen muss noch ein    cd /media/cdrom/   und     sudo sh VBoxLinuxAdditions.run     ausgeführt werden.'${KF}
         # Pakete   virtualbox-guest-utils virtualbox-guest-x11   waren nicht vorhanden
 ;;
 ##### GNOME-BOXES
     5*)
-        echo ${ifgrn}'>>>>> Gnome-Boxes - Es wird alles für einen Einsatz als Gast-System in Gnome-Boxes bereit gemacht.'${KF}
+        echo -e ${ifgrn}'>>>>> Gnome-Boxes - Es wird alles für einen Einsatz als Gast-System in Gnome-Boxes bereit gemacht.'${KF}
         sleep 3
         sudo apt-get install -y spice-vdagent spice-webdavd xserver-xorg-video-qxl xserver-xspice
 ;;
@@ -232,7 +232,7 @@ esac
 case $wlan in
     [Yy]*|"")
         echo ''
-        echo ${ifgrn} '>>>>> Basistools für das WLAN werden installiert.'${KF}
+        echo -e ${ifgrn} '>>>>> Basistools für das WLAN werden installiert.'${KF}
         sleep 3
         sudo apt install -y net-tools wpagui
         #systemctl enable NetworkManager

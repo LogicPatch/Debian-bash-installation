@@ -138,9 +138,9 @@ case $firefox in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/org.mozilla.firefox ]; then
-            echo ${ifrot}'>>>>> Die neueste Version des Firfox wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die neueste Version des Firfox wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die neueste Version des Webbrowsers Firefox wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die neueste Version des Webbrowsers Firefox wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y org.mozilla.firefox
         fi
@@ -154,9 +154,9 @@ case $chromium in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/chromium ]; then
-            echo ${ifrot}'>>>>> Der Webbrowser chromium wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Webbrowser chromium wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Webbrowser chromium wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Webbrowser chromium wird installiert.'${KF}
             sleep 3
             sudo apt install -y chromium chromium-l10n
         fi
@@ -170,9 +170,9 @@ case $brave in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/com.brave.Browser ]; then
-            echo ${ifrot}'>>>>> Der Webbrowser brave wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Webbrowser brave wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Webbrowser brave wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Webbrowser brave wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y com.brave.Browser
         fi
@@ -186,9 +186,9 @@ case $chrome in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/com.google.Chrome ]; then
-            echo ${ifrot}'>>>>> Der Webbrowser google-chrome wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Webbrowser google-chrome wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Webbrowser google-chrome wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Webbrowser google-chrome wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y com.google.Chrome
         fi
@@ -202,9 +202,9 @@ case $thunderbird in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/thunderbird ]; then
-            echo ${ifrot}'>>>>> Der E-Mailclient thunderbird wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der E-Mailclient thunderbird wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der E-Mailclient thunderbird wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der E-Mailclient thunderbird wird installiert.'${KF}
             sleep 3
             sudo apt install -y thunderbird thunderbird-l10n-de
         fi
@@ -218,9 +218,9 @@ case $geary in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/geary ]; then
-            echo ${ifrot}'>>>>> Der E-Mailclient geary wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der E-Mailclient geary wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der E-Mailclient geary wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der E-Mailclient geary wird installiert.'${KF}
             sleep 3
             sudo apt install -y geary
         fi
@@ -234,9 +234,9 @@ case $telegram in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/org.telegram.desktop ]; then
-            echo ${ifrot}'>>>>> Der Messenger telegram wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Messenger telegram wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Messenger telegram wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Messenger telegram wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y org.telegram.desktop
         fi
@@ -250,9 +250,9 @@ case $signal in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/org.signal.Signal ]; then
-            echo ${ifrot}'>>>>> Der Messenger signal wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Messenger signal wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Messenger signal wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Messenger signal wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y org.signal.Signal
         fi
@@ -266,9 +266,9 @@ case $viber in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/com.viber.Viber ]; then
-            echo ${ifrot}'>>>>> Der Messenger viber wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Messenger viber wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Messenger viber wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Messenger viber wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y com.viber.Viber
         fi
@@ -282,9 +282,9 @@ case $discord in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/com.discordapp.Discord ]; then
-            echo ${ifrot}'>>>>> Der Messenger discord wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Messenger discord wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Messenger discord wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Messenger discord wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y com.discordapp.Discord
         fi
@@ -298,9 +298,9 @@ case $zoom in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/us.zoom.Zoom ]; then
-            echo ${ifrot}'>>>>> Der Messenger Zoom wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Messenger Zoom wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Messenger Zoom wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Messenger Zoom wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y us.zoom.Zoom
         fi
@@ -314,9 +314,9 @@ case $showtime in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/showtime ]; then
-            echo ${ifrot}'>>>>> Der Videoplayer showtime wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Videoplayer showtime wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Videoplayer showtime wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Videoplayer showtime wird installiert.'${KF}
             sleep 3
             sudo apt install -y showtime
         fi
@@ -330,9 +330,9 @@ case $mpv in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/mpv ]; then
-            echo ${ifrot}'>>>>> Der Videoplayer mpv wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Videoplayer mpv wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Videoplayer mpv wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Videoplayer mpv wird installiert.'${KF}
             sleep 3
             sudo apt install -y mpv
         fi
@@ -346,9 +346,9 @@ case $vlc in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/vlc ]; then
-            echo ${ifrot}'>>>>> Der Videoplayer vlc wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Videoplayer vlc wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Videoplayer vlc wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Videoplayer vlc wird installiert.'${KF}
             sleep 3
             sudo apt install -y vlc vlc-plugin-base vlc-plugin-access-extra vlc-plugin-qt vlc-plugin-skins2 vlc-plugin-video-output vlc-l10n vlc-data
         fi
@@ -362,9 +362,9 @@ case $celluloid in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/celluloid ]; then
-            echo ${ifrot}'>>>>> Der Videoplayer celluloid wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Videoplayer celluloid wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Videoplayer celluloid wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Videoplayer celluloid wird installiert.'${KF}
             sleep 3
             sudo apt install -y celluloid
         fi
@@ -378,9 +378,9 @@ case $parole in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/parole ]; then
-            echo ${ifrot}'>>>>> Der Videoplayer parole wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Videoplayer parole wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Videoplayer parole wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Videoplayer parole wird installiert.'${KF}
             sleep 3
             sudo apt install -y parole libxfce4util-bin libxfce4ui-utils
         fi
@@ -394,9 +394,9 @@ case $rhythmbox in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/rhythmbox ]; then
-            echo ${ifrot}'>>>>> Der Audioplayer rhythmbox wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Audioplayer rhythmbox wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Audioplayer rhythmbox wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Audioplayer rhythmbox wird installiert.'${KF}
             sleep 3
             sudo apt install -y rhythmbox rhythmbox-plugins
         fi
@@ -410,9 +410,9 @@ case $musicpod in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/org.feichtmeier.Musicpod ]; then
-            echo ${ifrot}'>>>>> Der Audioplayer musicpod wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Audioplayer musicpod wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Audioplayer musicpod wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Audioplayer musicpod wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y org.feichtmeier.Musicpod
         fi
@@ -426,9 +426,9 @@ case $soundconverter in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/soundconverter ]; then
-            echo ${ifrot}'>>>>> Der Programm soundconverter wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Programm soundconverter wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Programm soundconverter wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Programm soundconverter wird installiert.'${KF}
             sleep 3
             sudo apt install -y soundconverter
         fi
@@ -442,9 +442,9 @@ case $eyedropper in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/com.github.finefindus.eyedropper ]; then
-            echo ${ifrot}'>>>>> Das Programm eyedropper wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Das Programm eyedropper wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Das Programm eyedropper wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Programm eyedropper wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y com.github.finefindus.eyedropper
         fi
@@ -458,9 +458,9 @@ case $gpick in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/gpick ]; then
-            echo ${ifrot}'>>>>> Der Programm gpick wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Programm gpick wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Programm gpick wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Programm gpick wird installiert.'${KF}
             sleep 3
             sudo apt install -y gpick
         fi
@@ -474,9 +474,9 @@ case $gimp in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/gimp ]; then
-            echo ${ifrot}'>>>>> Der Bildbearbeitungsprogramm gimp wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Bildbearbeitungsprogramm gimp wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Bildbearbeitungsprogramm gimp wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Bildbearbeitungsprogramm gimp wird installiert.'${KF}
             sleep 3
             sudo apt install -y gimp gimp-help-de
         fi
@@ -490,9 +490,9 @@ case $krita in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/krita ]; then
-            echo ${ifrot}'>>>>> Der Bildbearbeitungsprogramm krita wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Bildbearbeitungsprogramm krita wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Bildbearbeitungsprogramm krita wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Bildbearbeitungsprogramm krita wird installiert.'${KF}
             sleep 3
             sudo apt install -y krita krita-gmic krita-l10n
         fi
@@ -506,9 +506,9 @@ case $ssrecorder in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/simplescreenrecorder ]; then
-            echo ${ifrot}'>>>>> Der Desktoprecorder simplescreenrecorder wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Desktoprecorder simplescreenrecorder wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Desktoprecorder simplescreenrecorder wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Desktoprecorder simplescreenrecorder wird installiert.'${KF}
             sleep 3
             sudo apt install -y simplescreenrecorder
         fi
@@ -522,9 +522,9 @@ case $handbrake in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/handbrake-gtk ]; then
-            echo ${ifrot}'>>>>> Das Videobearbeitungs-Programm HandBrake wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Das Videobearbeitungs-Programm HandBrake wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Das Videobearbeitungs-Programm HandBrake wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Videobearbeitungs-Programm HandBrake wird installiert.'${KF}
             sleep 3
             sudo apt install -y handbrake handbrake-cli handbrake-gtk
         fi
@@ -538,9 +538,9 @@ case $kdenlive in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/kdenlive ]; then
-            echo ${ifrot}'>>>>> Das Videoschnitt-Programm kdenlive wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Das Videoschnitt-Programm kdenlive wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Das Videoschnitt-Programm kdenlive wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Videoschnitt-Programm kdenlive wird installiert.'${KF}
             sleep 3
             sudo apt install -y kdenlive
         fi
@@ -554,9 +554,9 @@ case $openshot in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/openshot-qt ]; then
-            echo ${ifrot}'>>>>> Das Videoschnitt-Programm openshot wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Das Videoschnitt-Programm openshot wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Das Videoschnitt-Programm openshot wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Videoschnitt-Programm openshot wird installiert.'${KF}
             sleep 3
             sudo apt install -y openshot-qt
         fi
@@ -570,12 +570,12 @@ case $wine in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/wine ]; then
-            echo ${ifrot}'>>>>> Die Emulatoren wine und PlayOnLinux wurden bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Emulatoren wine und PlayOnLinux wurden bereits installiert, mache nichts.'${KF}
         else
             if [ -f /etc/apt/sources.list.d/winehq.list ]; then
-                echo ${ifrot}'Das winehq-Repository wurde bereits hinzugefügt, mache nichts.'${KF}
+                echo -e ${ifrot}'Das winehq-Repository wurde bereits hinzugefügt, mache nichts.'${KF}
             else
-                echo ${ifgrn}'>>>>> Die Emulatoren wine und PlayOnLinux werden installiert.'${KF}
+                echo -e ${ifgrn}'>>>>> Die Emulatoren wine und PlayOnLinux werden installiert.'${KF}
                 sleep 3
 
                 #===== apt-secure key Installation
@@ -605,9 +605,9 @@ case $steam in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/com.valvesoftware.Steam ]; then
-            echo ${ifrot}'>>>>> Die Spieleplattform steam wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Spieleplattform steam wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Spieleplattform steam wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Spieleplattform steam wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y com.valvesoftware.Steam
         fi
@@ -621,9 +621,9 @@ case $lutris in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/net.lutris.Lutris ]; then
-            echo ${ifrot}'>>>>> Die Spieleplattform lutris wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Spieleplattform lutris wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Spieleplattform lutris wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Spieleplattform lutris wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y net.lutris.Lutris
         fi
@@ -637,9 +637,9 @@ case $anydesk in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/com.anydesk.Anydesk ]; then
-            echo ${ifrot}'>>>>> Die Remotesoftware anydesk wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Remotesoftware anydesk wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Remotesoftware anydesk wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Remotesoftware anydesk wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y com.anydesk.Anydesk
         fi
@@ -653,9 +653,9 @@ case $rustdesk in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/com.rustdesk.RustDesk ]; then
-            echo ${ifrot}'>>>>> Die Remotesoftware rustdesk wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Remotesoftware rustdesk wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Remotesoftware rustdesk wwird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Remotesoftware rustdesk wwird installiert.'${KF}
             sleep 3
             sudo flatpak install -y com.rustdesk.RustDesk
         fi
@@ -669,9 +669,9 @@ case $teamviewer in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/teamviewer ]; then
-            echo ${ifrot}'>>>>> Die Remotesoftware teamviewer wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Remotesoftware teamviewer wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Remotesoftware teamviewer wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Remotesoftware teamviewer wird installiert.'${KF}
             sleep 3
             wget -q https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
             sudo apt install -y ./teamviewer*.deb
@@ -687,14 +687,14 @@ case $ranger in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/ranger ]; then
-            echo ${ifrot}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
             sleep 3
             apt-cache pkgnames libpoppler | grep -v dev
             read -p "Welche libpoppler-Version wird aktuell verwendet? (147 von 10.2025?) " LIBPOPPLERVER
             sudo apt install -y highlight atool w3m libpoppler${LIBPOPPLERVER} poppler-utils mediainfo ranger xfce4-terminal
-            echo ${ifyellow}'Für die Konfiguration von Ranger siehe zim-Wiki Dateimanager.ranger'${KF}
+            echo -e ${ifyellow}'Für die Konfiguration von Ranger siehe zim-Wiki Dateimanager.ranger'${KF}
             sleep 3
         fi
 esac
@@ -707,9 +707,9 @@ case $yazi in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/io.github.sxyazi.yazi ]; then
-            echo ${ifrot}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
             sleep 3
             sudo flatpak install -y io.github.sxyazi.yazi
         fi
@@ -723,15 +723,15 @@ case $zsh in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/zsh ]; then
-            echo ${ifrot}'>>>>> Die Shell zsh wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Shell zsh wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Shell zsh wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Shell zsh wird installiert.'${KF}
             sleep 3
             sudo apt install -y zsh zsh-autosuggestions zsh-syntax-highlighting
             sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
             # zsh-syntax-highlighting
-            echo ${ifyellow}'>>>>> Um syntax-highlighting in zsh zu Aktivieren muss am Ende der .zshrc-Datei folgende Zeile hinzugefügt werden:    source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'${KF}
-            echo ${ifyellow}'>>>>> Um die Login-Shell auf zsh zu ändern nutzt man als NORMALER Benutzer den Befehl:    $ chsh -s /bin/zsh'${KF}
+            echo -e ${ifyellow}'>>>>> Um syntax-highlighting in zsh zu Aktivieren muss am Ende der .zshrc-Datei folgende Zeile hinzugefügt werden:    source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'${KF}
+            echo -e ${ifyellow}'>>>>> Um die Login-Shell auf zsh zu ändern nutzt man als NORMALER Benutzer den Befehl:    $ chsh -s /bin/zsh'${KF}
         fi
 esac
 
@@ -743,9 +743,9 @@ case $ghostty in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/ghostty ]; then
-            echo ${ifrot}'>>>>> Das Terminal ghostty wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Das Terminal ghostty wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Das Terminal ghostty wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Terminal ghostty wird installiert.'${KF}
             sleep 3
             # Downloadlink über https://github.com/dariogriffo/ghostty-debian/releases 
             wget -c https://github.com/dariogriffo/ghostty-debian/releases/download/1.2.2%2B1/ghostty_1.2.2-1+trixie_amd64.deb
@@ -763,9 +763,9 @@ case $kitty in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/kitty ]; then
-            echo ${ifrot}'>>>>> Das Terminal kitty wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Das Terminal kitty wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Das Terminal kitty wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Terminal kitty wird installiert.'${KF}
             sleep 3
             sudo apt install -y kitty kitty-shell-integration kitty-terminfo libxml2-utils
         fi
@@ -779,9 +779,9 @@ case $tilix in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/tilix ]; then
-            echo ${ifrot}'>>>>> Das Terminal tilix wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Das Terminal tilix wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Das Terminal tilix wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Terminal tilix wird installiert.'${KF}
             sleep 3
             sudo apt install -y tilix
         fi
@@ -795,12 +795,12 @@ case $urxvt in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/urxvt ]; then
-            echo ${ifrot}'>>>>> Das Terminal urxvt wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Das Terminal urxvt wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Das Terminal urxvt wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Terminal urxvt wird installiert.'${KF}
             sleep 3
             sudo apt install -y rxvt-unicode xclip
-            echo ${ifyellow}'>>>>> Zum konfigurieren benötigt man eine ~/.Xresources oder ~/.Xdefaults  Datei.\n      Nach ändern dieser Datei muss man ein $ xrdb -merge ~/.Xresources ausführen:'${KF}
+            echo -e ${ifyellow}'>>>>> Zum konfigurieren benötigt man eine ~/.Xresources oder ~/.Xdefaults  Datei.\n      Nach ändern dieser Datei muss man ein $ xrdb -merge ~/.Xresources ausführen:'${KF}
             sleep 3
         fi
 esac
@@ -813,9 +813,9 @@ case $conky in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/conky ]; then
-            echo ${ifrot}'>>>>> Der Systemmonitor conky wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Systemmonitor conky wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Systemmonitor conky wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Systemmonitor conky wird installiert.'${KF}
             sleep 3
             sudo apt install -y --allow-unauthenticated conky-all lm-sensors
         fi
@@ -829,9 +829,9 @@ case $zim in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/zim ]; then
-            echo ${ifrot}'>>>>> Das Desktop-Wiki zim wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Das Desktop-Wiki zim wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Das Desktop-Wiki zim wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Desktop-Wiki zim wird installiert.'${KF}
             sleep 3
             sudo apt install -y zim
         fi
@@ -845,9 +845,9 @@ case $xpad in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/xpad ]; then
-            echo ${ifrot}'>>>>> Die Notizzettel-App xpad wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Notizzettel-App xpad wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Notizzettel-App xpad wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Notizzettel-App xpad wird installiert.'${KF}
             sleep 3
             sudo apt install -y xpad
         fi
@@ -861,9 +861,9 @@ case $keepassxc in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/keepassxc ]; then
-            echo ${ifrot}'>>>>> Der Passwortmanager keepassxc wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Passwortmanager keepassxc wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Passwortmanager keepassxc wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Passwortmanager keepassxc wird installiert.'${KF}
             sleep 3
             sudo apt install -y keepassxc
         fi
@@ -877,9 +877,9 @@ case $gsafe in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/secrets ]; then
-            echo ${ifrot}'>>>>> Der Passwortmanager gnome-passwordsafe wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Passwortmanager gnome-passwordsafe wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Passwortmanager gnome-passwordsafe wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Passwortmanager gnome-passwordsafe wird installiert.'${KF}
             sleep 3
             sudo apt install -y secrets     # gnome-passwordsafe
         fi
@@ -893,9 +893,9 @@ case $pycharm in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/com.jetbrains.PyCharm-Professional ]; then
-            echo ${ifrot}'>>>>> Die Community-Version der Python-IDE pycharm wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Community-Version der Python-IDE pycharm wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Community-Version der Python-IDE pycharm wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Community-Version der Python-IDE pycharm wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y com.jetbrains.PyCharm-Professional
         fi
@@ -909,11 +909,11 @@ case $sublime in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/subl ]; then
-            echo ${ifrot}'>>>>> Die Entwicklungs-IDE sublime-text wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Entwicklungs-IDE sublime-text wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Entwicklungs-IDE sublime-text wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Entwicklungs-IDE sublime-text wird installiert.'${KF}
             sleep 3
-            echo ${ifyellow}'>>>>> Das Repository /etc/apt/sources.list.d/sublime.list wird hinzugefügt.'${KF}
+            echo -e ${ifyellow}'>>>>> Das Repository /etc/apt/sources.list.d/sublime.list wird hinzugefügt.'${KF}
 
             # apt-secure key Installation 
             wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/apt/keyrings/sublimehq-pub.asc > /dev/null
@@ -941,9 +941,9 @@ case $weechat in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/weechat ]; then
-            echo ${ifrot}'>>>>> Der IRC-Client weechat wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der IRC-Client weechat wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der IRC-Client weechat wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Der IRC-Client weechat wird installiert.'${KF}
             sleep 3
             sudo apt install -y weechat weechat-scripts
         fi
@@ -957,9 +957,9 @@ case $kvm in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/virt-manager ]; then
-            echo ${ifrot}'>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Virtualisierungsumgebung kvm/qemu/virt-manager wird installiert.'${KF}
             sleep 3
             ### Installation von KVM
             sudo apt install -y bridge-utils libvirt-clients libvirt-daemon libvirt-daemon-system python3 python3-pip qemu-kvm qemu-system qemu-utils virtinst
@@ -985,9 +985,9 @@ case $vbox in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/virtualbox ]; then
-            echo ${ifrot}'>>>>> Die Virtualisierungsumgebung Virtualbox wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Die Virtualisierungsumgebung Virtualbox wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Die Virtualisierungsumgebung Virtualbox wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Die Virtualisierungsumgebung Virtualbox wird installiert.'${KF}
             sleep 3
 
             ### apt-secure key Installation
@@ -1004,7 +1004,7 @@ case $vbox in
             sudo apt update
             sudo apt install -y dkms gnupg2 libsdl-ttf2.0-0 virtualbox-7.2
             sudo usermod -aG vboxusers ${USER}
-            echo ${ifyellow}'>>>>> Jetzt noch ein Reboot durchführen'${KF}
+            echo -e ${ifyellow}'>>>>> Jetzt noch ein Reboot durchführen'${KF}
             sleep 3
         fi
 esac
@@ -1017,9 +1017,9 @@ case $texlive in
     [Yy]*|"")
         echo ''
         if [ -f /usr/bin/latex ]; then
-            echo ${ifrot}'>>>>> Das Textsatzsystem latex/texlive wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Das Textsatzsystem latex/texlive wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Das Textsatzsystem latex/texlive wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Das Textsatzsystem latex/texlive wird installiert.'${KF}
             sleep 3
             sudo apt install -y texlive-full context-nonfree asymptote biber dblatex fontforge fonts-freefont-ttf latexdiff latex-make latex-mk openjade psutils t1utils tex-gyre texmaker texstudio
         fi

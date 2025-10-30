@@ -20,7 +20,7 @@ ifyellow='\e[1;93m'     # intensives fettes Gelb
 
 
 echo ""
-echo ${ifyellow} '>>>>> Hier wird eine komplettinstallation von gnome angeboten, für den Fall dass noch\n      keine Installation von gnome durchgeführt wurde oder die Installation von gnome\n      fehlerhaft ist und die Konfiguration zurückgesetzt werden soll.'${KF}
+echo -e ${ifyellow} '>>>>> Hier wird eine komplettinstallation von gnome angeboten, für den Fall dass noch\n      keine Installation von gnome durchgeführt wurde oder die Installation von gnome\n      fehlerhaft ist und die Konfiguration zurückgesetzt werden soll.'${KF}
 
 
 
@@ -29,25 +29,25 @@ read -p "Soll eine Komplettinstallation von gnome durchgeführt werden? (Y/n): "
 read -p "Sollen noch weitere Anwendungen speziell für den gnome-Desktop installiert werden? (Y/n): " appsgnome
 read -p "Sollen weitere Themes und Styles für GTK-basierte Desktops wie Budgie, Gnome oder Mate installiert werden? (Y/n): " themes
 echo ""
-echo ${ifyellow} "Soll ein Displaymanager installiert werden und falls ja welcher Displaymanager soll verwendet werden?\n" ${KF}"(1) LightDM - Den Standarddisplaymanager von xfce, budgie, i3 u.a. verwenden\n (2) GDM     - Den Standard-Displaymanager von Gnome verwenden\n (3) sddm    - Den Simple-Desktop-Display-Manager von KDE-Plasma verwenden\n (4) Kein Displaymanager Installieren bzw. den bereits installierten nutzen"
+echo -e ${ifyellow} "Soll ein Displaymanager installiert werden und falls ja welcher Displaymanager soll verwendet werden?\n" ${KF}"(1) LightDM - Den Standarddisplaymanager von xfce, budgie, i3 u.a. verwenden\n (2) GDM     - Den Standard-Displaymanager von Gnome verwenden\n (3) sddm    - Den Simple-Desktop-Display-Manager von KDE-Plasma verwenden\n (4) Kein Displaymanager Installieren bzw. den bereits installierten nutzen"
 read -p "  " displaymanager
 echo ""
-echo ${ifyellow} "Soll ein bestimmter Dateibrowser installiert werden und falls ja welcher?\n" ${KF}"(1) thunar der Dateibrowser des Xfce4-Desktops\n (2) nautlius der Dateibrowser des Gnome-Desktops\n (3) dolphin der Dateibrowser des KDE-Plasma-Desktops\n (4) Alle genannten Dateibrowser installieren\n (5) Keinen Dateibrowser"
+echo -e ${ifyellow} "Soll ein bestimmter Dateibrowser installiert werden und falls ja welcher?\n" ${KF}"(1) thunar der Dateibrowser des Xfce4-Desktops\n (2) nautlius der Dateibrowser des Gnome-Desktops\n (3) dolphin der Dateibrowser des KDE-Plasma-Desktops\n (4) Alle genannten Dateibrowser installieren\n (5) Keinen Dateibrowser"
 read -p "  " files
 echo ""
-echo ${ifyellow} "Soll eine Kalenderapplikation installiert werden und falls ja welche?\n" ${KF}"(1) gnome-calendar des Gnome-Desktops\n (2) korganizer von KDE-Plasma\n (3) calindori für Plasma-Mobile\n (4) Alle genannten Kalenderapplikation\n (5) Keine Kalenderapplikation"
+echo -e ${ifyellow} "Soll eine Kalenderapplikation installiert werden und falls ja welche?\n" ${KF}"(1) gnome-calendar des Gnome-Desktops\n (2) korganizer von KDE-Plasma\n (3) calindori für Plasma-Mobile\n (4) Alle genannten Kalenderapplikation\n (5) Keine Kalenderapplikation"
 read -p "  " kalender
 echo ""
-echo ${ifyellow} "Soll ein Editor installiert werden und falls ja welcher?\n" ${KF}"(1) gedit des Gnome-Desktops\n (2) kate von KDE-Plasma\n (3) geany - Kann über Plugins erweitert werden\n (4) Alle genannten Editoren installieren\n (5) Keine Editorapplikation"
+echo -e ${ifyellow} "Soll ein Editor installiert werden und falls ja welcher?\n" ${KF}"(1) gedit des Gnome-Desktops\n (2) kate von KDE-Plasma\n (3) geany - Kann über Plugins erweitert werden\n (4) Alle genannten Editoren installieren\n (5) Keine Editorapplikation"
 read -p "  " editor
 echo ""
-echo ${ifyellow} "Soll ein bestimmter Bildbetrachter installiert werden und falls ja welcher?\n" ${KF}"(1) eog der Bildbetrachter des Gnome-Desktops\n (2) gwenview der Bildbetrachter des KDE-Plasma-Desktops\n (3) lximage der Bildbetrachter des LxQT-Desktops\n (4) sxiv - ein schneller und schlanker Bildbetrachter\n (5) Alle genannten Bildbetrachter installieren\n (6) Keinen Bildbetrachter"
+echo -e ${ifyellow} "Soll ein bestimmter Bildbetrachter installiert werden und falls ja welcher?\n" ${KF}"(1) eog der Bildbetrachter des Gnome-Desktops\n (2) gwenview der Bildbetrachter des KDE-Plasma-Desktops\n (3) lximage der Bildbetrachter des LxQT-Desktops\n (4) sxiv - ein schneller und schlanker Bildbetrachter\n (5) Alle genannten Bildbetrachter installieren\n (6) Keinen Bildbetrachter"
 read -p "  " image
 echo ""
-echo ${ifyellow} "Soll ein bestimmter PDF-Reader installiert werden und falls ja welcher?\n" ${KF}"(1) papers der PDF-Reader des Gnome-Desktops\n (2) okular der PDF-Reader des KDE-Plasma-Desktops\n (3) mupdf - ein schlanker und genügsamer PDF-Reader\n (4) Alle genannten PDF-Reader installieren\n (5) Keinen PDF-Reader"
+echo -e ${ifyellow} "Soll ein bestimmter PDF-Reader installiert werden und falls ja welcher?\n" ${KF}"(1) papers der PDF-Reader des Gnome-Desktops\n (2) okular der PDF-Reader des KDE-Plasma-Desktops\n (3) mupdf - ein schlanker und genügsamer PDF-Reader\n (4) Alle genannten PDF-Reader installieren\n (5) Keinen PDF-Reader"
 read -p "  " pdf
 echo ""
-echo ${ifyellow} "Soll ein Tool für Bildschirmfotos installiert werden und falls ja welches?\n" ${KF}"(1) flameshot - GUI um Fotos zu erstellen und vor dem speichern zu bearbeiten\n (2) spectacle - Das Screenshot-Tool des KDE-Plasma-Desktops\n (3) scrot - Bildschirmfotos über die Kommandozeile\n (4) xfce4-screenshooter - Das Screenshot-Tool des xfce-Desktops\n (5) Alle genannten Tools für Screenshots installieren\n (6) Kein Tool für Screenshots"
+echo -e ${ifyellow} "Soll ein Tool für Bildschirmfotos installiert werden und falls ja welches?\n" ${KF}"(1) flameshot - GUI um Fotos zu erstellen und vor dem speichern zu bearbeiten\n (2) spectacle - Das Screenshot-Tool des KDE-Plasma-Desktops\n (3) scrot - Bildschirmfotos über die Kommandozeile\n (4) xfce4-screenshooter - Das Screenshot-Tool des xfce-Desktops\n (5) Alle genannten Tools für Screenshots installieren\n (6) Kein Tool für Screenshots"
 read -p "  " screen
 
 
@@ -58,23 +58,23 @@ case $gnome in
     [Yy]*|"")
         echo ''
         if [ -f /usr/share/xsessions/gnome.desktop ]; then
-            echo ${ifrot}">>>>> Es wurde bereits eine gnome-Session gefunden. Soll dennoch die gnome-Komplettinstallation durchgeführt werden? (1/2)\n"${KF}
+            echo -e ${ifrot}">>>>> Es wurde bereits eine gnome-Session gefunden. Soll dennoch die gnome-Komplettinstallation durchgeführt werden? (1/2)\n"${KF}
             echo "(1) Ja, die vorhandene Installation ist fehlerhaft und muss reinstalliert werden.\n(2) Nein, ich überprüfe erst noch die bereits installierte gnome-Session, bevor ich Tools überschreibe."
             read -p " " sessiongnome
             #read -p ">>> 1. Ja, die vorhandene Installation ist fehlerhaft und muss reinstalliert werden.\n>>> 2. Nein, ich überprüfe erst noch die bereits installierte gnome-Session, bevor ich Tools überschreibe. " sessiongnome
             case $sessiongnome in
                 1*)
-                    echo ${ifgrn}'>>>>> Eine Komplettinstallation von gnome, mit allen Anwendungen wird installiert.'${KF}
+                    echo -e ${ifgrn}'>>>>> Eine Komplettinstallation von gnome, mit allen Anwendungen wird installiert.'${KF}
                     sleep 3
                     sudo apt reinstall -y task-gnome-desktop wayland-utils
                 ;;
                 2*)
-                    echo ${ifrot}'>>>>> Die vorhandene Installation wird zur Überprüfung beibehalten, mache nichts.'${KF}
+                    echo -e ${ifrot}'>>>>> Die vorhandene Installation wird zur Überprüfung beibehalten, mache nichts.'${KF}
                     sleep 3
                 ;;
             esac
         else
-            echo ${ifgrn}'>>>>> Eine Komplettinstallation von gnome, mit allen Anwendungen wird installiert.'${KF}
+            echo -e ${ifgrn}'>>>>> Eine Komplettinstallation von gnome, mit allen Anwendungen wird installiert.'${KF}
             sleep 3
             sudo apt install -y task-gnome-desktop wayland-utils
         fi
@@ -87,7 +87,7 @@ esac
 case $gnome in
     [Yy]*|"")
         echo ''
-        echo ${ifgrn} '>>>>> Es werden noch weitere Anwendungen speziell für gnome installiert.'${KF}
+        echo -e ${ifgrn} '>>>>> Es werden noch weitere Anwendungen speziell für gnome installiert.'${KF}
         sleep 3
         sudo apt install -y plank transmission-gtk
 esac
