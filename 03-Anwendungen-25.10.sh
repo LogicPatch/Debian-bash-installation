@@ -707,9 +707,9 @@ case $yazi in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/io.github.sxyazi.yazi ]; then
-            echo -e ${ifrot}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifrot}'>>>>> Der Terminal-Dateimanager yazi wurde bereits installiert, mache nichts.'${KF}
         else
-            echo -e ${ifgrn}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            echo -e ${ifgrn}'>>>>> Der Terminal-Dateimanager yazi wurde bereits installiert, mache nichts.'${KF}
             sleep 3
             sudo flatpak install -y io.github.sxyazi.yazi
         fi
