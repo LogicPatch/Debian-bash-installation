@@ -996,7 +996,7 @@ case $vbox in
 
             ### Repository hinzufügen (Da ein direktes echo in /etc/ wegen Dateirechten scheiterte, wurde die Datei lokal angelegt, dann verschoben und dann ein chown ausgeführt.)
             echo "# Debian Virtualbox Repository" > virtualbox.list
-            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian trixie contrib\n" >> virtualbox.list
+            echo -e "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian trixie contrib\n" >> virtualbox.list
             sudo mv virtualbox.list /etc/apt/sources.list.d/
             sudo chown root:root /etc/apt/sources.list.d/virtualbox.list
 
