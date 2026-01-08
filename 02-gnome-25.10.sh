@@ -89,7 +89,7 @@ case $gnome in
         echo ''
         echo -e ${ifgrn} '>>>>> Es werden noch weitere Anwendungen speziell für gnome installiert.'${KF}
         sleep 3
-        sudo apt install -y plank transmission-gtk
+        sudo apt install -y gnome-shell-extensions-manager plank transmission-gtk
 esac
 
 
