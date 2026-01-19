@@ -51,3 +51,44 @@ echo ""
 echo -e ${ifyellow} "Soll ein Tool für Bildschirmfotos installiert werden und falls ja welches?\n" ${KF}"(1) flameshot - GUI um Fotos zu erstellen und vor dem speichern zu bearbeiten\n (2) spectacle - Das Screenshot-Tool des KDE-Plasma-Desktops\n (3) scrot - Bildschirmfotos über die Kommandozeile\n (4) xfce4-screenshooter - Das Screenshot-Tool des xfce-Desktops\n (5) Alle genannten Tools für Screenshots installieren\n (6) Kein Tool für Screenshots"
 read -p "  " screen
 
+
+
+
+# Komplettinstallation von xfce
+case $xfce in
+    [Yy]*|"")
+        echo ''
+        if [ -f /usr/share/xsessions/xfce.desktop ]; then
+            echo -e ${ifrot}">>>>> Es wurde bereits eine xfce-Session gefunden. Soll dennoch die xfce-Komplettinstallation durchgeführt werden? (1/2)\n"${KF}
+            echo "(1) Ja, die vorhandene Installation ist fehlerhaft und muss reinstalliert werden.\n(2) Nein, ich überprüfe erst noch die bereits installierte xfce-Session, bevor ich Tools überschreibe."
+            read -p " " sessiongnome
+            #read -p ">>> 1. Ja, die vorhandene Installation ist fehlerhaft und muss reinstalliert werden.\n>>> 2. Nein, ich überprüfe erst noch die bereits installierte gnome-Session, bevor ich Tools überschreibe. " sessiongnome
+            case $sessionxfce in
+                1*)
+                    echo -e ${ifgrn}'>>>>> Eine Komplettinstallation von xfce, mit allen Anwendungen wird installiert.'${KF}
+                    sleep 3
+                    sudo apt reinstall -y task-xfce-desktop
+                ;;
+                2*)
+                    echo -e ${ifrot}'>>>>> Die vorhandene Installation wird zur Überprüfung beibehalten, mache nichts.'${KF}
+                    sleep 3
+                ;;
+            esac
+        else
+            echo -e ${ifgrn}'>>>>> Eine Komplettinstallation von xfce, mit allen Anwendungen wird installiert.'${KF}
+            sleep 3
+            sudo apt install -y task-xfce-desktop
+        fi
+esac
+
+
+
+
+# Weitere Anwendungen speziell für Xfce
+case $appsxfce in
+    [Yy]*|"")
+        echo ''
+        echo -e ${ifgrn} '>>>>> Es werden noch weitere Anwendungen speziell für xfce installiert.'${KF}
+        sleep 3
+        sudo apt install -y plank transmission-gtk
+esac
