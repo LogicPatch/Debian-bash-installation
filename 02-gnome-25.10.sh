@@ -84,7 +84,7 @@ esac
 
 
 # Weitere Anwendungen speziell für gnome
-case $gnome in
+case $appsgnome in
     [Yy]*|"")
         echo ''
         echo -e ${ifgrn} '>>>>> Es werden noch weitere Anwendungen speziell für gnome installiert.'${KF}
