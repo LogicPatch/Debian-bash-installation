@@ -92,3 +92,52 @@ case $appsxfce in
         sleep 3
         sudo apt install -y plank transmission-gtk
 esac
+
+
+
+
+# Displaymanager
+. ./Desktops2510.sh
+displaymanager
+
+
+
+
+# Dateibrowser installieren
+. ./Desktops2510.sh
+files
+
+
+
+
+# Kalenderapplikation(en) installieren
+. ./Desktops2510.sh
+kalender
+
+
+
+
+# Editoren(en) installieren
+. ./Desktops2510.sh
+editor
+
+
+
+
+# Bildbetrachter installieren
+. ./Desktops2510.sh
+image
+
+
+
+
+# PDF-Reader installieren
+. ./Desktops2510.sh
+pdf
+
+
+
+
+# Tool für Bildschirmfotos installieren
+. ./Desktops2510.sh
+screen
