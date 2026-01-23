@@ -96,6 +96,18 @@ esac
 
 
 
+# Themes und Styles installieren
+case $themes in
+    [Yy]*|"")
+        . ./Desktops2510.sh
+        themes
+        icons
+        fonts
+esac
+
+
+
+
 # Displaymanager
 . ./Desktops2510.sh
 displaymanager
