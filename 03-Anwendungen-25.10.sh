@@ -689,7 +689,7 @@ case $ranger in
         if [ -f /usr/bin/ranger ]; then
             echo ${ifrot}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            echo ${ifgrn}'>>>>> Der Terminal-Dateimanager ranger wird installiert.'${KF}
             sleep 3
             apt-cache pkgnames libpoppler | grep -v dev
             read -p "Welche libpoppler-Version wird aktuell verwendet? (147 von 10.2025?) " LIBPOPPLERVER
@@ -707,9 +707,9 @@ case $yazi in
     [Yy]*|"")
         echo ''
         if [ -d /var/lib/flatpak/app/io.github.sxyazi.yazi ]; then
-            echo ${ifrot}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            echo ${ifrot}'>>>>> Der Terminal-Dateimanager yazi wurde bereits installiert, mache nichts.'${KF}
         else
-            echo ${ifgrn}'>>>>> Der Terminal-Dateimanager ranger wurde bereits installiert, mache nichts.'${KF}
+            echo ${ifgrn}'>>>>> Der Terminal-Dateimanager yazi wird installiert.'${KF}
             sleep 3
             sudo flatpak install -y io.github.sxyazi.yazi
         fi
