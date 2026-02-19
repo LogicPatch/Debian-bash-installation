@@ -26,6 +26,7 @@ ifyellow='\e[1;93m'     # intensives fettes Gelb
 
 
 
+read -p "Soll der angemeldete Benutzer der Datei  /etc/sudoers  hinzugefügt werden? (Y/n): " sudoer
 read -p "Soll das Debian Multimedia Repository hinzugefügt werden? (Y/n): " debmul
 read -p "Soll über Flatpak Pakete installiert werden können (Y/n)?: " flatpak
 
@@ -33,10 +34,13 @@ read -p "Soll über Flatpak Pakete installiert werden können (Y/n)?: " flatpak
 
 
 ##### Den Benutzer mit Admin-Rechten der Datei  /etc/sudoers  hinzufügen
-echo ''
-echo -e ${ifyellow} '>>>>> Der Benutzer wird der Datei /etc/sudoers mit Admin-Rechten hinzugefügt.'${KF}
-sleep 3
-echo $(logname) 'ALL=(ALL:ALL) ALL' >> /etc/sudoers
+case $sudoer in
+    [Yy]*|"")
+        echo ''
+        echo -e ${ifyellow} '>>>>> Der Benutzer wird der Datei /etc/sudoers mit Admin-Rechten hinzugefügt.'${KF}
+        sleep 3
+        echo $(logname) 'ALL=(ALL:ALL) ALL' >> /etc/sudoers
+esac
 
 
 
@@ -65,7 +69,7 @@ apt-get update
 case $debmul in
     [Yy]*|"")
         echo ''
-        if [ -f /etc/apt/sources.list.d/multimedia.listzz ] ; then
+        if [ -f /etc/apt/sources.list.d/multimedia.list ] ; then
             echo -e ${ifgrn}'>>>>> Das Debian Multimedia Repository wurde bereits hinzugefügt, mache nichts.'${KF}
             sleep 3
         else
